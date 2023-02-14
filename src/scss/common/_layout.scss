@@ -1,0 +1,47 @@
+// 반응형 대응 브라우저 사이즈
+$sLaptop: 1024px;
+$Ltablet: 992px;
+$tablet: 778px;
+$mobile: 576px;
+$sMobile: 425px;
+
+.content {
+  padding-top: 80px;
+  figure {
+    width: 100%;
+    height: 300px;
+    background: #bbb;
+    
+  }
+  .inner {
+    width: 1180px;
+    min-height: 400px;
+    margin: 100px auto 150px;
+    position: relative;
+    h1 {
+      font: normal 30px/1 'arial';
+      color: #777;
+      margin-bottom: 50px;
+    }
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .content {
+    padding-top: 80px;
+    figure {
+      height: 200px;
+      
+    }
+    .inner {
+      width: 100%;
+      margin: 80px auto 120px;
+      position: relative;
+      h1 {
+        font: normal 30px/1 'arial';
+        color: #777;
+        margin-bottom: 50px;
+      }
+    }
+  }
+}

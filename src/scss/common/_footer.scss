@@ -1,0 +1,170 @@
+#footer {
+	width: 100%;
+	> .inner {
+		width: 100%;
+		margin: 0 auto;
+		border-left: 1px solid #777;
+		border-right: 1px solid #777;
+		.footerTop {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 30px 20px;
+			.footerLogo {
+				.logo {
+					.logoText {
+						display: block;
+
+						span {
+							display: block;
+						}
+						.logoTitle {
+							@include sectionTitle($fz: 40px);
+						}
+						.logoSub {
+							font-family: $titleFont;
+							font-size: 12px;
+							font-weight: normal;
+							line-height: 1;
+							letter-spacing: 1px;
+							color: #777;
+						}
+					}
+				}
+			}
+			.footerContent {
+				display: flex;
+				align-items: flex-start;
+			}
+			.footerContTitle {
+				font-family: $titleFont;
+				font-size: 18px;
+				color: #333;
+			}
+			.footerEmail {
+				margin-right: 50px;
+				.emailText {
+					font-size: 14px;
+					color: #777;
+					margin-top: 4px;
+					margin-bottom: 20px;
+				}
+				.contBtn {
+					width: 50%;
+					height: 40px;
+					.btnText {
+						font-size: 12px;
+					}
+				}
+			}
+			.footerSns {
+				.snsWrap {
+					margin-top: 4px;
+					.snsList {
+						padding-bottom: 4px;
+						.snsLink {
+							display: block;
+							font-size: 14px;
+							line-height: 1;
+							letter-spacing: normal;
+							font-weight: normal;
+							color: #777;
+						}
+					}
+				}
+			}
+		}
+		.footerBottom {
+			padding: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			.footerLink {
+				display: inline-block;
+				margin-right: 4px;
+				font-size: 14px;
+				line-height: 1;
+				letter-spacing: normal;
+				font-weight: normal;
+				color: #777;
+			}
+			.copyright {
+				font-size: 14px;
+				line-height: 1;
+				letter-spacing: normal;
+				font-weight: normal;
+				color: #777;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	#footer {
+		.inner {
+			.footerTop {
+				flex-direction: column;
+				align-items: center;
+				.footerLogo {
+					margin-bottom: 30px;
+					.logo {
+						.logoText {
+							.logoTitle {
+								@include sectionTitle($fz: 24px);
+							}
+							.logoSub {
+								font-size: 10px;
+							}
+						}
+					}
+				}
+				.footerContTitle {
+					font-size: 14px;
+				}
+				.footerContent {
+					flex-direction: column;
+				}
+				.footerEmail {
+					text-align: center;
+					margin-right: 0;
+					margin-bottom: 12px;
+					.emailText {
+						font-size: 12px;
+						margin-bottom: 10px;
+					}
+					.contBtn {
+						width: 100%;
+						height: 30px;
+					}
+				}
+				.footerSns {
+					margin-top: 20px;
+					text-align: center;
+					width: 100%;
+					.snsWrap {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						.snsList {
+							margin-right: 6px;
+							.snsLink {
+								font-size: 12px;
+							}
+						}
+					}
+				}
+			}
+			.footerBottom {
+				flex-direction: column;
+				.footerLink {
+					font-size: 12px;
+					margin-bottom: 10px;
+				}
+				.copyright {
+					font-size: 12px;
+				}
+			}
+		}
+	}
+}
