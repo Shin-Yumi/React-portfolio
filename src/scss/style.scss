@@ -1,16 +1,19 @@
 //common
-@import 'common/reset';
 @import 'common/font';
 @import 'common/color';
 @import 'common/mixin';
+@import 'common/reset';
 @import 'common/layout';
 @import 'common/common';
+@import 'common/sub-header';
+@import 'common/sub-common';
 @import 'common/header';
 @import 'common/footer';
 
 //main
 @import 'main/contents';
 @import 'main/visual';
+@import 'main/main';
 
 //sub
 @import 'sub/about';

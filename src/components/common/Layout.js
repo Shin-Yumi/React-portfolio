@@ -1,14 +1,46 @@
+import { Link } from 'react-router-dom';
+
 function Layout(props) {
 	return (
-		<section className={`content ${props.name}`}>
+		<main className={`subPage ${props.name}`}>
 			<div className='wrap'>
-				<figure></figure>
-				<div className='inner'>
-					<h1>{props.name}</h1>
-          {props.children}
+				<div className='subContents'>
+					<header className={`subHeader ${props.name}`}>
+						<div className='inner'>
+							<h1 className='subHeaderTitle'>{props.name}</h1>
+							<div className='subHeaderMenu'>
+								<ul>
+									<li className='subHeadaerMenuList'>
+										<Link to={`/${props.sub01}`}>{props.sub01}</Link>
+									</li>
+									<li className='subHeadaerMenuList'>
+										<Link to={`/${props.sub02}`}>{props.sub02}</Link>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</header>
+					<section className='subSection'>
+						<div className='inner'>
+							<div className='sectionExp'>
+								<h3 className='expTitle'>{props.title} / <span>{props.subTitle}</span></h3>
+								<p className='expCaption'>{props.expCaption}</p>
+							</div>
+							<div className='sectionCont'>{props.children}</div>
+						</div>
+					</section>
 				</div>
 			</div>
-		</section>
+		</main>
+		// <section className={`content ${props.name}`}>
+		// 	<div className='wrap'>
+		// 		<figure></figure>
+		// 		<div className='inner'>
+		// 			<h1>{props.name}</h1>
+		//       {props.children}
+		// 		</div>
+		// 	</div>
+		// </section>
 	);
 }
 

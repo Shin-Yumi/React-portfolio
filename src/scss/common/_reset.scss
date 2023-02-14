@@ -3,10 +3,27 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+body {
+	background-color: $backgroundColor;
+}
 ul,
 li {
 	list-style: none;
 }
 a {
 	text-decoration: none;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+fieldset {
+	border: none;
+}
+
+.hidden {
+	position: absolute;
+	top: -99999999999999999px;
+	opacity: 0;
 }

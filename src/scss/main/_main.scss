@@ -1,0 +1,1010 @@
+#main {
+	width: 100%;
+	overflow-x: hidden;
+	background: #ecece3;
+
+	.wrap {
+		width: 100%;
+		padding-top: 80px;
+		//mainCont 영역
+		.mainCont {
+			width: 100%;
+			// visual 영역
+			.visualCont {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				.visualImgBox {
+					width: 400px;
+					height: 500px;
+					overflow: hidden;
+					margin: 0 auto;
+					&:hover {
+						.visualImg {
+							transform: scale(1.2);
+						}
+					}
+				}
+				.visualImg {
+					width: 100%;
+					height: 100%;
+					background-image: url(../../../public/img/main-dummy.jpg);
+					background-repeat: no-repeat;
+					background-position: center;
+					background-size: cover;
+					filter: grayscale(1);
+					transition: 0.5s;
+				}
+			}
+
+			// description 영역
+			.mainDescription {
+				position: relative;
+				.mainTextBox {
+					position: absolute;
+					left: 0;
+					bottom: 30px;
+					padding: 50px 160px 50px 50px;
+					.mainTitle {
+						font-family: $titleFont;
+						font-size: 30px;
+						font-weight: 400;
+						letter-spacing: -0.56px;
+						line-height: 1;
+						text-transform: uppercase;
+						color: #333;
+						margin-bottom: 10px;
+					}
+					.mainInfo {
+						@include sectionText;
+					}
+				}
+			}
+		}
+		// aboutCont 영역
+		.aboutCont {
+			// visual 영역
+			.aboutImgFull {
+				.aboutImg {
+					width: 100%;
+					height: 100%;
+					margin: 0 auto;
+
+					.aboutFigure {
+						width: 100%;
+						height: 100%;
+
+						img {
+							width: 100%;
+							height: 100%;
+							object-fit: cover;
+							filter: grayscale(1);
+						}
+					}
+				}
+			}
+
+			// description 영역
+			.aboutDescription {
+				position: relative;
+				.aboutTextBox {
+					width: 100%;
+					height: 100%;
+					padding: 30px;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+				}
+
+				.subTitle {
+					margin-bottom: 40px;
+
+					.aboutSubTitle {
+						@include sectionSubTitle;
+					}
+
+					.contentsLine {
+						margin: 10px 0;
+					}
+
+					.subTitleDesc {
+						@include sectionText($captionFontColor: #9da592);
+					}
+				}
+
+				.aboutDesc {
+					@include sectionText;
+					color: #777;
+					padding-bottom: 40px;
+				}
+			}
+		}
+		// galleryCont 영역
+		.galleryCont {
+			position: relative;
+			width: 100%;
+			height: calc(100vh - 80px);
+			min-height: 600px;
+			.inner {
+				width: 100%;
+				height: 100%;
+				margin: 0 auto;
+				display: flex;
+				align-items: center;
+				border: 1px solid #777;
+				border-top: none;
+				&::after {
+					@include line($wid: 0);
+				}
+				.galleryTextCont {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					padding: 30px 20px;
+					width: 30%;
+					height: 100%;
+					border-right: 1px solid #777;
+					.contentsText {
+						@include sectionText($captionFz: 14px);
+						padding-left: 20px;
+						margin-top: 30px;
+					} // button css
+					.contBtn {
+						width: 100%;
+					}
+				}
+				.galleryTabCont {
+					width: 70%;
+					height: 100%;
+					.galleryTabs {
+						width: 100%;
+						height: 10%;
+						display: flex;
+						align-items: center;
+						border-bottom: 1px solid $borderColor;
+						.galleryTab {
+							width: 50%;
+							height: 100%;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							transition: 0.5s;
+							&:nth-of-type(1) {
+								border-right: 1px solid $borderColor;
+							}
+							a {
+								display: block;
+								font-size: 18px;
+								color: $textColor;
+							}
+							&:hover {
+								background-color: $hoverColor;
+								a {
+									color: $backgroundColor;
+								}
+							}
+							&.on {
+								background-color: $hoverColor;
+								a {
+									color: $backgroundColor;
+								}
+							}
+						}
+					}
+					.gallerySlideCont {
+						width: 100%;
+						height: 90%;
+						display: flex;
+						align-items: center;
+						overflow: hidden;
+						position: relative;
+						.gallerySlideNav {
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 20%;
+							.swiper-button-next {
+								right: 20px;
+								left: auto;
+								&::after {
+									font-size: 20px;
+									color: $borderColor;
+								}
+							}
+							.swiper-button-prev {
+								right: 100px;
+								left: auto;
+
+								&::after {
+									font-size: 20px;
+									color: $borderColor;
+								}
+							}
+						}
+						// swiper
+						.gallerySlide {
+							position: absolute;
+							left: 0;
+							bottom: 0;
+							width: 100%;
+							height: 90%;
+							transition: all 0.5s;
+							opacity: 0;
+							.swiper-wrapper {
+								.swiper-slide {
+									.listCont {
+										width: 100%;
+										height: 100%;
+										padding: 0 20px 20px 20px;
+										display: flex;
+										flex-direction: column;
+										justify-content: center;
+										.galleryTitle {
+											font-size: 24px;
+											font-weight: 300;
+											color: #9da592;
+											margin-bottom: 10px;
+											text-transform: uppercase;
+										}
+										.galleryImg {
+											width: 100%;
+											height: 80%;
+											margin-bottom: 10px;
+											figure {
+												width: 100%;
+												height: 100%;
+												img {
+													width: 100%;
+													height: 100%;
+													object-fit: cover;
+													filter: grayscale(0.8);
+												}
+											}
+										}
+
+										.galleryText {
+											display: flex;
+											align-items: center;
+											justify-content: space-between;
+											.galleryNum {
+												font-size: 16px;
+												color: #333;
+											}
+											.galleryInfo {
+												font-size: 16px;
+												color: #777;
+											}
+										}
+									}
+								}
+							}
+							&.on {
+								opacity: 1;
+							}
+						}
+					}
+				}
+			}
+		}
+		// boardCont 영역
+		.boardCont {
+			position: relative;
+			width: 100%;
+			height: calc(100vh - 80px);
+			min-height: 600px;
+			.inner {
+				width: 100%;
+				height: 100%;
+				margin: 0 auto;
+				border: 1px solid #777;
+				border-top: none;
+				padding: 30px;
+				overflow: hidden;
+				.boardWrap {
+					width: 100%;
+					.boardMo {
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+						margin-bottom: 40px;
+					}
+					.contentsTitle {
+						@include sectionTitle;
+					}
+					.boardMoBtn {
+						width: 100px;
+						&:hover {
+							.boarLink {
+								font-size: 14px;
+								color: #9da592;
+								.theArrow {
+									&.left {
+										.shaft {
+											width: 50px;
+											transition-delay: 0.1s;
+											background-color: #9da592;
+											&::before,
+											&::after {
+												width: 8px;
+												transition-delay: 0.1s;
+												background-color: #9da592;
+											}
+											&::before {
+												transform: rotate(40deg);
+											}
+											&::after {
+												transform: rotate(-40deg);
+											}
+										}
+									}
+								}
+								.linkText {
+									text-transform: uppercase;
+									transform: translateX(70%);
+									line-height: 1;
+									.theArrow {
+										&.right {
+											.shaft {
+												width: 0;
+												transform: translateX(180%);
+												transition-delay: 0;
+												&::before,
+												&::after {
+													width: 0;
+													transition-delay: 0;
+													transition: all 0.1s;
+												}
+												&::before {
+													transform: rotate(0);
+												}
+												&::after {
+													transform: rotate(0);
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+
+					.boarLink {
+						position: relative;
+						display: inline-block;
+						font-size: 16px;
+						font-weight: normal;
+						color: $borderColor;
+						transition: all 0.2s;
+						display: none;
+						.theArrow {
+							width: 1px;
+							transition: all 0.2s;
+							&.left {
+								position: absolute;
+								top: 50%;
+								left: 0;
+								.shaft {
+									width: 0;
+									background-color: $borderColor;
+
+									&::before,
+									&::after {
+										width: 0;
+										background-color: $borderColor;
+									}
+
+									&::before {
+										transform: rotate(0);
+									}
+
+									&::after {
+										transform: rotate(0);
+									}
+								}
+							}
+							&.right {
+								.shaft {
+									width: 1px;
+									transition-delay: 0.2s;
+									&::before,
+									&::after {
+										width: 8px;
+										transition-delay: 0.3s;
+										transition: all 0.5s;
+									}
+
+									&::before {
+										transform: rotate(40deg);
+									}
+
+									&::after {
+										transform: rotate(-40deg);
+									}
+								}
+							}
+							.shaft {
+								background-color: $borderColor;
+								display: block;
+								height: 1px;
+								position: relative;
+								transition: all 0.2s;
+								transition-delay: 0;
+								will-change: transform;
+								&:before,
+								&:after {
+									background-color: $borderColor;
+									content: '';
+									display: block;
+									height: 1px;
+									position: absolute;
+									top: 0;
+									right: 0;
+									transition: all 0.2s;
+									transition-delay: 0;
+								}
+								&:before {
+									transform-origin: top right;
+								}
+								&:after {
+									transform-origin: bottom right;
+								}
+							}
+						}
+						.linkText {
+							display: flex;
+							align-items: center;
+							transition: all 0.2s;
+
+							.text {
+								width: 60px;
+								margin-right: 50px;
+							}
+							.theArrow {
+								position: relative;
+							}
+						}
+					}
+
+					.boardBox {
+						position: relative;
+						width: 100%;
+						display: flex;
+						align-items: center;
+						margin-bottom: 20px;
+						.boardTextArea {
+							width: 70%;
+							height: 200px;
+							background: #333;
+							padding: 20px;
+							margin-right: 50px;
+							p {
+								color: #ecece3;
+								font-size: 18px;
+								margin: 5px 0 0 5px;
+								white-space: nowrap;
+								overflow: hidden;
+								width: 100%;
+								opacity: 0;
+								transition: 0.5s;
+								a {
+									color: #ecece3;
+									text-decoration: none;
+								}
+							}
+							&.on {
+								p {
+									opacity: 1;
+									animation: type 4s steps(60, end);
+									&:nth-child(2) {
+										animation: type2 8s steps(60, end);
+									}
+									&:nth-child(3) {
+										animation: type3 12s steps(60, end);
+									}
+									&:nth-child(4) {
+										animation: type4 18s steps(60, end);
+									}
+									span {
+										animation: blink 1s infinite;
+									}
+								}
+							}
+						}
+						.boardBtn {
+							width: 150px;
+							height: 150px;
+							border-radius: 50%;
+							border: 1px solid #777;
+							background: #d9d9ce;
+							cursor: pointer;
+							.boardBtnText {
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								width: 100%;
+								height: 100%;
+								font-size: 16px;
+								color: #333;
+							}
+							&:hover {
+								background: $hoverColor;
+							}
+						}
+					}
+				}
+				.boardInfo {
+					display: flex;
+					align-items: flex-start;
+					justify-content: center;
+					width: 100%;
+					padding-left: 150px;
+					h2 {
+						@include sectionSubTitle;
+						margin-right: 50px;
+					}
+					.sectionAccodion {
+						max-width: 100%;
+						display: flex;
+						flex-direction: column;
+						.tab {
+							position: relative;
+							margin-top: 20px;
+							overflow: hidden;
+							input[type='radio'] {
+								appearance: none;
+
+								&:checked + label::after {
+									transform: rotate(-45deg);
+								}
+
+								&:checked ~ .tabContents {
+									max-height: 80vh;
+								}
+								&:checked ~ label h3 {
+									padding: 2px 10px;
+									border-radius: 2px;
+								}
+							}
+							label {
+								display: flex;
+								align-items: center;
+								cursor: pointer;
+								&::after {
+									content: '-';
+									position: absolute;
+									right: 0;
+									font-size: 30px;
+									font-weight: 300;
+									transition: 1s;
+									color: #777;
+								}
+
+								h2 {
+									color: $textColor;
+									font-size: 20px;
+									font-weight: 400;
+									border-radius: 5px;
+									margin-right: 10px;
+									font-family: $enFont;
+								}
+								h3 {
+									z-index: 10;
+									font-size: 20px;
+									font-weight: 400;
+									font-family: $enFont;
+								}
+							}
+							.tabContents {
+								border-top: 1px solid #777;
+								max-height: 0;
+								transition: 1s;
+								p {
+									position: relative;
+									padding: 15px 0;
+									color: #333;
+									z-index: 10;
+								}
+							}
+							&:nth-of-type(1) {
+								margin-top: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+// 반응형
+
+//반응형 1024px
+@media screen and (max-width: $sLaptop) {
+	#main {
+		.wrap {
+			padding-top: 60px;
+
+			.mainCont {
+				.visualCont {
+					.visualImgBox {
+						width: 300px;
+						height: 400px;
+					}
+				}
+				.mainDescription {
+					.mainTextBox {
+						//bottom: 30px;
+						.mainTitle {
+							font-size: 24px;
+							letter-spacing: -0.36px;
+						}
+						.mainInfo {
+							@include sectionText($captionFz: 12px, $captionLetterS: -0.34px);
+						}
+					}
+				}
+			}
+			.aboutCont {
+				.aboutDescription {
+					.subTitle {
+						.aboutSubTitle {
+							@include sectionSubTitle($subFz: 20px);
+						}
+						.subTitleDesc {
+							@include sectionText($captionFz: 12px, $captionFontColor: #9da592);
+						}
+					}
+				}
+			}
+			.galleryCont {
+				.inner {
+					.galleryTabCont {
+						.contentsTitle {
+							@include sectionTitle($fz: 40px);
+						}
+					}
+				}
+			}
+			.boardCont {
+				height: calc(100vh - 60px);
+				.inner {
+					.boardWrap {
+						.contentsTitle {
+							@include sectionTitle($fz: 40px);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+//반응형 992px
+@media screen and (max-width: $Ltablet) {
+	#main {
+		.wrap {
+			.boardCont {
+				height: 600px;
+				.inner {
+					.boardWrap {
+						.boardBox {
+							.boardTextArea {
+								p {
+									font-size: 16px;
+								}
+							}
+							.boardBtn {
+								width: 120px;
+								height: 120px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+//반응형 778px
+@media screen and (max-width: $tablet) {
+	#main {
+		.wrap {
+			padding-top: 60px;
+
+			.mainCont {
+				.visualCont {
+					.visualImgBox {
+						width: 200px;
+						height: 250px;
+					}
+				}
+				.mainDescription {
+					.mainTextBox {
+						bottom: 20px;
+						padding: 30px 80px 30px 30px;
+						.mainTitle {
+							font-size: 20px;
+							letter-spacing: -0.36px;
+						}
+						.mainInfo {
+							@include sectionText($captionFz: 12px, $captionLetterS: -0.34px, $captionLh: 1.4);
+						}
+					}
+				}
+			}
+			.aboutCont {
+				.aboutDescription {
+					.subTitle {
+						.aboutSubTitle {
+							@include sectionSubTitle($subFz: 20px);
+						}
+						.subTitleDesc {
+							@include sectionText($captionFz: 12px, $captionFontColor: #9da592);
+						}
+					}
+					.aboutDesc {
+						@include sectionText($captionFz: 12px);
+					}
+				}
+			}
+			.galleryCont {
+				.inner {
+					.galleryTextCont {
+						.contentsText {
+							@include sectionText($captionFz: 12px);
+						}
+					}
+					.galleryTabCont {
+						.galleryTabs {
+							.galleryTab {
+								a {
+									font-size: 16px;
+								}
+							}
+						}
+						.gallerySlideCont {
+							.gallerySlideNav {
+								.swiper-button-next {
+									&::after {
+										font-size: 18px;
+									}
+								}
+								.swiper-button-prev {
+									&::after {
+										font-size: 18px;
+									}
+								}
+							}
+							// swiper
+							.gallerySlide {
+								.swiper-wrapper {
+									.swiper-slide {
+										.listCont {
+											.galleryTitle {
+												font-size: 20px;
+											}
+											.galleryImg {
+												height: 70%;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.boardCont {
+				.inner {
+					.boardWrap {
+						.contentsTitle {
+							@include sectionTitle($fz: 30px);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+//반응형 576px
+@media screen and (max-width: $mobile) {
+	#main {
+		.wrap {
+			//mainCont 영역
+			.mainCont {
+				// visual 영역
+				.visualCont {
+					.visualImgBox {
+						width: 100%;
+						height: 100%;
+					}
+					.visualImg {
+						background-image: url(../../../public/img/mobile-main.jpeg);
+					}
+				}
+
+				// description 영역
+				.mainDescription {
+					position: auto;
+					.mainTextBox {
+						position: auto;
+						left: auto;
+						bottom: auto;
+						width: 100%;
+						padding: 20px;
+						.mainTitle {
+							font-size: 24px;
+							margin-bottom: 20px;
+						}
+						.mainInfo {
+							@include sectionText($captionFz: 12px);
+						}
+					}
+				}
+			}
+			//aboutCont 영역
+			.aboutCont {
+				// description 영역
+				.aboutDescription {
+					.aboutTextBox {
+						padding: 20px;
+						.subTitle {
+							display: none;
+						}
+
+						.aboutDesc {
+							@include sectionText($captionFz: 12px);
+							color: #777;
+							padding-bottom: 20px;
+						}
+					}
+				}
+			}
+			//galleryCont 영역
+			.galleryCont {
+				.inner {
+					.galleryTextCont {
+						width: 100%;
+						height: 45%;
+						border-right: none;
+						border-bottom: 1px solid $borderColor;
+						.contentsText {
+							padding-left: 0;
+							margin-top: 20px;
+							margin-bottom: 20px;
+						}
+					}
+					.galleryTabCont {
+						width: 100%;
+
+						.galleryTabs {
+							width: 100%;
+							height: 15%;
+							display: flex;
+							align-items: center;
+							border-bottom: 1px solid $borderColor;
+							.galleryTab {
+								width: 50%;
+								height: 100%;
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								&:nth-of-type(1) {
+									border-right: 1px solid $borderColor;
+								}
+								a {
+									display: block;
+									font-size: 15px;
+									color: $textColor;
+								}
+								&:hover {
+									background-color: $hoverColor;
+									a {
+										color: $backgroundColor;
+									}
+								}
+								&.on {
+									background-color: $hoverColor;
+									a {
+										color: $backgroundColor;
+									}
+								}
+							}
+						}
+						.gallerySlideCont {
+							.gallerySlideNav {
+								height: 25%;
+								.swiper-button-next {
+									&::after {
+										font-size: 12px;
+									}
+								}
+								.swiper-button-prev {
+									&::after {
+										font-size: 12px;
+									}
+								}
+							}
+							// swiper
+							.gallerySlide {
+								position: absolute;
+								left: 0;
+								bottom: 0;
+								width: 100%;
+								height: 90%;
+								transition: all 0.5s;
+								opacity: 0;
+								.swiper-wrapper {
+									.swiper-slide {
+										.listCont {
+											.galleryTitle {
+												font-size: 14px;
+												font-weight: 300;
+												color: #9da592;
+												margin-bottom: 10px;
+											}
+											.galleryText {
+												.galleryNum {
+													font-size: 12px;
+												}
+												.galleryInfo {
+													font-size: 12px;
+												}
+											}
+										}
+									}
+								}
+								&.on {
+									opacity: 1;
+								}
+							}
+						}
+					}
+				}
+			}
+			//boardCont 영역
+			.boardCont {
+				.inner {
+					width: 100%;
+					padding: 20px;
+					.boardWrap {
+						.boardMo {
+							margin-bottom: 20px;
+						}
+						.boarLink {
+							display: block;
+						}
+						.boardBox {
+							align-items: flex-end;
+							flex-direction: column;
+							margin-bottom: 20px;
+							.boardTextArea {
+								width: 100%;
+								height: 150px;
+								margin-right: 0;
+								margin-bottom: 10px;
+							}
+							.boardBtn {
+								display: none;
+							}
+						}
+					}
+					.boardInfo {
+						padding-left: 0;
+						.sectionAccodion {
+							margin: 0;
+							.tab {
+								label {
+									h2 {
+										font-size: 16px;
+									}
+									h3 {
+										font-size: 16px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

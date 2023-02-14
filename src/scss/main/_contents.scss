@@ -1,13 +1,26 @@
-main {
-  width: 100%;
-  margin: 150px auto;
-  min-height: 500px;
-}
+.contents {
+	position: relative;
+	width: 100%;
+	height: calc(100vh - 80px);
+	min-height: 600px;
+	.inner {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		border: 1px solid #777;
+		border-top: none;
+		&::after {
+			@include line;
+		}
+		.contentsHalf {
+			width: 50%;
+			height: 100%;
+		}
 
-@media screen and (max-width: $tablet) {
-  main {
-    width: 100%;
-    padding: 0 40px;
-  }
-  
+		.contentsTitle {
+			@include sectionTitle;
+		}
+	}
 }

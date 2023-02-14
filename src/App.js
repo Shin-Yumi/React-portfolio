@@ -5,12 +5,13 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 
 //main
-import Visual from './components/main/Visual';
-import Contents from './components/main/Contents';
+import Main from './components/main/Main';
 
 //sub
 import About from './components/sub/About';
+import Map from './components/sub/Map';
 import Gallery from './components/sub/Gallery';
+import Flickr from './components/sub/Flickr';
 import Board from './components/sub/Board';
 import Join from './components/sub/Join';
 import Contact from './components/sub/Contact';
@@ -24,8 +25,7 @@ function App() {
 			<Switch>
 				<Route exact path='/'>
 					<Header type={'main'} />
-					<Visual />
-					<Contents />
+					<Main />
 				</Route>
 
 				<Route path='/'>
@@ -36,8 +36,14 @@ function App() {
 			<Route path='/about'>
 				<About />
 			</Route>
+			<Route path='/map'>
+				<Map />
+			</Route>
 			<Route path='/gallery'>
 				<Gallery />
+			</Route>
+			<Route path='/flickr'>
+				<Flickr />
 			</Route>
 			<Route path='/board'>
 				<Board />
