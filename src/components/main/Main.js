@@ -25,7 +25,7 @@ function Main(props) {
 					<article className='contentsHalf aboutImgFull'>
 						<div className='aboutImg'>
 							<figure className='aboutFigure'>
-								<img src='img/about02.jpg' alt='' />
+								<img src={process.env.PUBLIC_URL +'/img/about02.jpg'} alt='' />
 							</figure>
 						</div>
 					</article>
@@ -92,7 +92,7 @@ function Main(props) {
 											<h3 className='galleryTitle'>youtube title</h3>
 											<div className='galleryImg'>
 												<figure className='galleryFigure'>
-													<img src='img/dummy-yt01.jpg' alt='' />
+													<img src={process.env.PUBLIC_URL +'/img/dummy-yt01.jpg'} alt='' />
 												</figure>
 											</div>
 											<div className='galleryText'>
@@ -106,7 +106,7 @@ function Main(props) {
 											<h3 className='galleryTitle'>youtube title</h3>
 											<div className='galleryImg'>
 												<figure className='galleryFigure'>
-													<img src='img/dummy-yt02.jpg' alt='' />
+													<img src={process.env.PUBLIC_URL +'/img/dummy-yt02.jpg'} alt='' />
 												</figure>
 											</div>
 											<div className='galleryText'>
@@ -120,7 +120,7 @@ function Main(props) {
 											<h3 className='galleryTitle'>youtube title</h3>
 											<div className='galleryImg'>
 												<figure className='galleryFigure'>
-													<img src='img/dummy-yt03.jpg' alt='' />
+													<img src={process.env.PUBLIC_URL +'/img/dummy-yt03.jpg'} alt='' />
 												</figure>
 											</div>
 											<div className='galleryText'>
@@ -138,7 +138,7 @@ function Main(props) {
 											<h3 className='galleryTitle'>gallery title</h3>
 											<div className='galleryImg'>
 												<figure className='galleryFigure'>
-													<img src='img/dummy-gallery01.jpg' alt='' />
+													<img src={process.env.PUBLIC_URL +'/img/dummy-gallery01.jpg'} alt='' />
 												</figure>
 											</div>
 											<div className='galleryText'>
@@ -152,7 +152,7 @@ function Main(props) {
 											<h3 className='galleryTitle'>gallery title</h3>
 											<div className='galleryImg'>
 												<figure className='galleryFigure'>
-													<img src='img/dummy-gallery02.jpg' alt='' />
+													<img src={process.env.PUBLIC_URL +'/img/dummy-gallery02.jpg'} alt='' />
 												</figure>
 											</div>
 											<div className='galleryText'>
@@ -166,7 +166,7 @@ function Main(props) {
 											<h3 className='galleryTitle'>gallery title</h3>
 											<div className='galleryImg'>
 												<figure className='galleryFigure'>
-													<img src='img/dummy-gallery03.jpg' alt='' />
+													<img src={process.env.PUBLIC_URL +'/img/dummy-gallery03.jpg'} alt='' />
 												</figure>
 											</div>
 											<div className='galleryText'>

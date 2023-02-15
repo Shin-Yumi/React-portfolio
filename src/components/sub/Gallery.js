@@ -45,8 +45,10 @@ function Gallery() {
 							return (
 								<article key={el.id} className='youtubeCont'>
 									<Link
+										to='/'
 										className='pic'
-										onClick={() => {
+										onClick={(e) => {
+											e.preventDefault();
 											setOpen(true);
 											setIndex(index);
 										}}
@@ -67,7 +69,7 @@ function Gallery() {
 				<Modal setOpen={setOpen}>
 					<iframe
 						title={Vids[0].id}
-						src={`https://www.youtube.com/embed/${Vids[Index].snippet.resourceId.vidId}`}
+						src={`https://www.youtube.com/embed/${Vids[Index].snippet.resourceId.videoId}`}
 					></iframe>
 				</Modal>
 			)}

@@ -34,11 +34,9 @@ function App() {
 				</Route>
 			</Switch>
 
-			<Route path='/about'>
-				<About />
-			</Route>
-			<Route path='/map'>
-				<Map />
+			<Route path='/about' element={<About />}>
+				<Route path="/organization" element={<About />}/>
+				<Route path="/map " element={<Map />}/>
 			</Route>
 			<Route path='/gallery'>
 				<Gallery />

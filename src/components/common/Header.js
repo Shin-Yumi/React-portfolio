@@ -1,10 +1,17 @@
-import React from 'react';
+import { useState, useEffect, React } from 'react';
+
 import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 function Header(props) {
 	const active = { color: '#9DA592' };
+	const [isOpen, setOpen] = useState(false);
+	
+	function toggle() {
+		setOpen(!isOpen);
+	}
+
 	return (
 		<header id='header' className={props.type}>
 			<div className='inner'>
@@ -18,7 +25,7 @@ function Header(props) {
 				<nav id='menuPC'>
 					<ul className='menuWrap'>
 						<li className='menuList'>
-							<NavLink to='/about' className='menuLink' activeStyle={active}>
+							<NavLink to='/about/organization' className='menuLink' activeStyle={active}>
 								About
 							</NavLink>
 							<ul></ul>
@@ -45,10 +52,10 @@ function Header(props) {
 						</li>
 					</ul>
 				</nav>
-				<Link to='/' className='hamMenu'>
+				<Link to='/' className={isOpen ? 'hamMenu on' : 'hamMenu'} onClick={toggle}>
 					<span>메뉴호출</span>
 				</Link>
-				<nav id='menuMo'>
+				<nav id='menuMo' className={isOpen ? 'on' : ''}>
 					<div className='inner'>
 						<div className='mobileMenu'>
 							<h1 className='menuLogo'>YOOM</h1>
@@ -57,10 +64,10 @@ function Header(props) {
 									<p className='mMenuTitle'>About</p>
 									<ul className='aboutSub'>
 										<li className='aboutSubList'>
-											<NavLink to='/about'>Organization</NavLink>
+											<NavLink to='/about/organization'>Organization</NavLink>
 										</li>
 										<li className='aboutSubList'>
-											<NavLink to='/about'>map</NavLink>
+											<NavLink to='/about/map'>map</NavLink>
 										</li>
 									</ul>
 								</li>
