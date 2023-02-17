@@ -1,4 +1,4 @@
-import { useState, useEffect, React } from 'react';
+import { useState } from 'react';
 
 import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -67,7 +67,7 @@ function Header(props) {
 											<NavLink to='/about/organization'>Organization</NavLink>
 										</li>
 										<li className='aboutSubList'>
-											<NavLink to='/about/map'>map</NavLink>
+											<NavLink to='/map'>map</NavLink>
 										</li>
 									</ul>
 								</li>

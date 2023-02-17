@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
-import Contents from './Contents';
+// import Contents from './Contents';
+// import AboutMain from './AboutMain';
+// import BoardMain from './BoardMain';
+// import GallMain from './GallMain';
 
 function Main(props) {
 	return (
 		<main id='main'>
 			<div className='wrap'>
-				<Contents name='mainCont'>
+				{/* <Contents name='mainCont'>
 					<article className='contentsHalf visualCont'>
 						<div className='visualImgBox'>
 							<div className='visualImg'></div>
@@ -179,7 +182,7 @@ function Main(props) {
 							</div>
 						</div>
 					</div>
-				</Contents>
+				</Contents> */}
 				<section className='boardCont'>
 					<div className='inner'>
 						<div className='boardWrap'>

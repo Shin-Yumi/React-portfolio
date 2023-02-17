@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Layout from '../common/Layout';
-
+import { useRef, useEffect } from 'react';
 
 function Map() {
 	const name = 'About';
@@ -8,11 +8,69 @@ function Map() {
 	const subTitle = '지도';
 	const expCaption =
 		'차별화 된 기획과 크리에이티브한 비주얼로 사람들에게 영감을 주는 패션 매거진의 대명사 보그 코리아의 위치를 확인하세요';
+	const container = useRef(null);
+	// 실제 윈도우 객체에서 kakao 객체를 비구조화 할당으로 바로 할당
+	const { kakao } = window;
+
+	useEffect(() => {
+		kakaomap();
+	}, []);
+
+	const kakaomap = () => {
+		const options = {
+			center: new kakao.maps.LatLng(37.5665256, 127.0092219),
+			level: 8,
+		};
+		const mapInstance = new kakao.maps.Map(container.current, options);
+		const markerPoints = [
+			{
+				title: 'DDP',
+				latlng: new kakao.maps.LatLng(37.5665256, 127.0092219),
+				imgSrc: process.env.PUBLIC_URL +'/img/marker-border.png',
+				imgSize: new kakao.maps.Size(25, 35),
+				imgPos: { offset: new kakao.maps.Point(12, 69) },
+			},
+			{
+				title: '경복궁',
+				latlng: new kakao.maps.LatLng(37.579617, 126.977041),
+				imgSrc: process.env.PUBLIC_URL +'/img/marker-border.png',
+				imgSize: new kakao.maps.Size(25, 35),
+				imgPos: { offset: new kakao.maps.Point(12, 69) },
+			},
+			{
+				title: '남산',
+				latlng: new kakao.maps.LatLng(37.5511694, 126.9882266),
+				imgSrc: process.env.PUBLIC_URL +'/img/marker-border.png',
+				imgSize: new kakao.maps.Size(25, 35),
+				imgPos: { offset: new kakao.maps.Point(12, 69) },
+			},
+			{
+				title: '반포한강공원',
+				latlng: new kakao.maps.LatLng(37.5103556, 126.9960308),
+				imgSrc: process.env.PUBLIC_URL +'/img/marker-border.png',
+				imgSize: new kakao.maps.Size(25, 35),
+				imgPos: { offset: new kakao.maps.Point(12, 69) },
+			},
+		];
+
+		markerPoints.forEach((el) => {
+			// 마커를 생성합니다
+			new kakao.maps.Marker({
+				//마커가 표시 될 지도
+				map: mapInstance,
+				//마커가 표시 될 위치
+				position: el.latlng,
+				image: new kakao.maps.MarkerImage(el.imgSrc, el.imgSize, el.imgPos),
+				//마커에 hover시 나타날 title
+				title: el.title,
+			});
+		});
+	};
 
 	return (
 		<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption}>
 			<article id='location'>
-				<div id='map'></div>
+				<div id='map' ref={container}></div>
 				<div className='mapTxt'>
 					<p>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique culpa dolorum,
