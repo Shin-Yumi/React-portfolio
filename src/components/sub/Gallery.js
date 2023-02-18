@@ -36,7 +36,7 @@ function Gallery() {
 				sub01={sub01}
 				sub02={sub02}
 			>
-				<div className='youtube'>
+				<div className='youtube' >
 					<div id='youtube'>
 						{Vids.map((el, index) => {
 							const tit = el.snippet.title;

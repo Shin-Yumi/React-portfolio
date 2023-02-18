@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function BoardMain() {
   return (
-    <section className='boardCont'>
+    <section className='boardCont myScroll'>
 					<div className='inner'>
 						<div className='boardWrap'>
 							<div className='boardMo'>
