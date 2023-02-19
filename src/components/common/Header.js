@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,9 +8,12 @@ function Header(props) {
 	const active = { color: '#9DA592' };
 	const [isOpen, setOpen] = useState(false);
 	
-	function toggle() {
+	const toggle = () => {
 		setOpen(!isOpen);
 	}
+	// useEffect(() => {
+	// 	toggle();
+	// },[])
 
 	return (
 		<header id='header' className={props.type}>
@@ -25,7 +28,7 @@ function Header(props) {
 				<nav id='menuPC'>
 					<ul className='menuWrap'>
 						<li className='menuList'>
-							<NavLink to='/about/organization' className='menuLink' activeStyle={active}>
+							<NavLink to='/about' className='menuLink' activeStyle={active}>
 								About
 							</NavLink>
 							<ul></ul>
@@ -64,7 +67,7 @@ function Header(props) {
 									<p className='mMenuTitle'>About</p>
 									<ul className='aboutSub'>
 										<li className='aboutSubList'>
-											<NavLink to='/about/organization'>Organization</NavLink>
+											<NavLink to='/about'>Organization</NavLink>
 										</li>
 										<li className='aboutSubList'>
 											<NavLink to='/map'>map</NavLink>

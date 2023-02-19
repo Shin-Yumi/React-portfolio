@@ -11,6 +11,7 @@ function Btns({ setScrolled, setPos }) {
 	const getPos = () => {
 		pos.current = [];
 		const secs = btnRef.current.parentElement.querySelectorAll('.myScroll');
+    //const header = 
 		for (const sec of secs) pos.current.push(sec.offsetTop);
 		setPos(pos.current);
 	};
@@ -20,7 +21,7 @@ function Btns({ setScrolled, setPos }) {
 		const btns = btnRef.current.children;
 		const secs = btnRef.current.parentElement.querySelectorAll('.myScroll');
 		const scroll = window.scrollY;
-		const base = -window.innerHeight / 3 ;
+		const base = -window.innerHeight / 3;
 		//부모컴포넌트로부터 전달받은 setScrolled함수로
 		//현재 내부적으로 만들어지고 있는 scroll거리값을 부모 Scrolled state에 옮겨담음
 		setScrolled(scroll);

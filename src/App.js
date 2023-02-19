@@ -1,9 +1,8 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 //common
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
-
 
 //main
 import Main from './components/main/Main';
@@ -23,16 +22,10 @@ import './scss/style.scss';
 function App() {
 	return (
 		<>
-			<Switch>
-				<Route exact path='/'>
-					<Header type={'main'} />
-					<Main />
-				</Route>
-
-				<Route path='/'>
-					<Header type={'sub'} />
-				</Route>
-			</Switch>
+			<Header />
+			<Route exact path='/'>
+				<Main />
+			</Route>
 
 			<Route path='/about'>
 				<About />
