@@ -1,4 +1,6 @@
 import Layout from '../common/Layout';
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 function Contact() {
 	const name = 'Contact';
@@ -6,6 +8,21 @@ function Contact() {
 	const subTitle = '연락하기';
 	const expCaption =
 		'If you are interested in our portfolio, please email me! Vogue와의 협업을 원하시면 메일을 보내주세요!';
+
+	const form = useRef();
+
+	const sendEmail = (e) => {
+		e.preventDefault();
+
+		emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY').then(
+			(result) => {
+				console.log(result.text);
+			},
+			(error) => {
+				console.log(error.text);
+			}
+		);
+	};
 	return (
 		<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption}>
 			<section id='contact'>

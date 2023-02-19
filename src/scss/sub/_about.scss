@@ -80,13 +80,16 @@
 						background: rgba(164, 161, 152, 0.6);
 					}
 					&:nth-of-type(3) .organizationBox .organizationImg {
-						background: rgba(160, 161, 151, 0.6);
+						background: rgba(155, 161, 151, 0.6);
 					}
 					&:nth-of-type(4) .organizationBox .organizationImg {
 						background: hsl(160, 5%, 64%, 0.6);
 					}
 					&:nth-of-type(5) .organizationBox .organizationImg {
 						background: hsl(207, 6%, 61%, 0.6);
+					}
+					&:nth-of-type(6) .organizationBox .organizationImg {
+						background: hsla(245, 6%, 61%, 0.6);
 					}
 
 					&::after {

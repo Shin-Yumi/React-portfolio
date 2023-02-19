@@ -16,8 +16,8 @@
 		transition: 1s;
 		cursor: pointer;
 		&.on {
-			height: 100px;
-			background: #111;
+			height: 140px;
+			background: $borderColor;
 		}
 	}
 }
