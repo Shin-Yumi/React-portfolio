@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Layout from '../common/Layout';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 function Map() {
 	const name = 'About';
@@ -9,64 +9,100 @@ function Map() {
 	const expCaption =
 		'차별화 된 기획과 크리에이티브한 비주얼로 사람들에게 영감을 주는 패션 매거진의 대명사 보그 코리아의 위치를 확인하세요';
 	const container = useRef(null);
-	// 실제 윈도우 객체에서 kakao 객체를 비구조화 할당으로 바로 할당
 	const { kakao } = window;
+	const mapTypeControl = new kakao.maps.MapTypeControl();
+	const zoomControl = new kakao.maps.ZoomControl();
+	const markerPoints = [
+		{
+			title: 'DDP',
+			latlng: new kakao.maps.LatLng(37.5665256, 127.0092219),
+			imgSrc: process.env.PUBLIC_URL + '/img/marker-red.png',
+			imgSize: new kakao.maps.Size(25, 35),
+			imgPos: { offset: new kakao.maps.Point(12, 69) },
+			//button: Move(false)
+		},
+		{
+			title: '경복궁',
+			latlng: new kakao.maps.LatLng(37.579617, 126.977041),
+			imgSrc: process.env.PUBLIC_URL + '/img/marker-red.png',
+			imgSize: new kakao.maps.Size(25, 35),
+			imgPos: { offset: new kakao.maps.Point(12, 69) },
+		},
+		{
+			title: '남산',
+			latlng: new kakao.maps.LatLng(37.5511694, 126.9882266),
+			imgSrc: process.env.PUBLIC_URL + '/img/marker-red.png',
+			imgSize: new kakao.maps.Size(25, 35),
+			imgPos: { offset: new kakao.maps.Point(12, 69) },
+		},
+		{
+			title: '반포한강공원',
+			latlng: new kakao.maps.LatLng(37.5103556, 126.9960308),
+			imgSrc: process.env.PUBLIC_URL + '/img/marker-red.png',
+			imgSize: new kakao.maps.Size(25, 35),
+			imgPos: { offset: new kakao.maps.Point(12, 69) },
+		},
+	];
+	const [Location, setLocation] = useState(null);
+	const [Index, setIndex] = useState(0);
+	const [Traffic, setTraffic] = useState(false);
+	const [Road, setRoad] = useState(false);
 
-	useEffect(() => {
-		kakaomap();
-	}, []);
-
-	const kakaomap = () => {
-		const options = {
-			center: new kakao.maps.LatLng(37.5665256, 127.0092219),
-			level: 8,
-		};
-		const mapInstance = new kakao.maps.Map(container.current, options);
-		const markerPoints = [
-			{
-				title: 'DDP',
-				latlng: new kakao.maps.LatLng(37.5665256, 127.0092219),
-				imgSrc: process.env.PUBLIC_URL +'/img/marker-border.png',
-				imgSize: new kakao.maps.Size(25, 35),
-				imgPos: { offset: new kakao.maps.Point(12, 69) },
-			},
-			{
-				title: '경복궁',
-				latlng: new kakao.maps.LatLng(37.579617, 126.977041),
-				imgSrc: process.env.PUBLIC_URL +'/img/marker-border.png',
-				imgSize: new kakao.maps.Size(25, 35),
-				imgPos: { offset: new kakao.maps.Point(12, 69) },
-			},
-			{
-				title: '남산',
-				latlng: new kakao.maps.LatLng(37.5511694, 126.9882266),
-				imgSrc: process.env.PUBLIC_URL +'/img/marker-border.png',
-				imgSize: new kakao.maps.Size(25, 35),
-				imgPos: { offset: new kakao.maps.Point(12, 69) },
-			},
-			{
-				title: '반포한강공원',
-				latlng: new kakao.maps.LatLng(37.5103556, 126.9960308),
-				imgSrc: process.env.PUBLIC_URL +'/img/marker-border.png',
-				imgSize: new kakao.maps.Size(25, 35),
-				imgPos: { offset: new kakao.maps.Point(12, 69) },
-			},
-		];
-
-		markerPoints.forEach((el) => {
-			// 마커를 생성합니다
-			new kakao.maps.Marker({
-				//마커가 표시 될 지도
-				map: mapInstance,
-				//마커가 표시 될 위치
-				position: el.latlng,
-				image: new kakao.maps.MarkerImage(el.imgSrc, el.imgSize, el.imgPos),
-				//마커에 hover시 나타날 title
-				title: el.title,
-			});
-		});
+	const options = {
+		center: markerPoints[Index].latlng,
+		level: 3,
 	};
 
+	useEffect(() => {
+		container.current.innerHtml = '';
+		const mapInstance = new kakao.maps.Map(container.current, options);
+		setLocation(mapInstance);
+
+		//마커포인트 변경
+		markerPoints.forEach((el) => {
+			new kakao.maps.Marker({
+				map: mapInstance,
+				position: el.latlng,
+				image: new kakao.maps.MarkerImage(el.imgSrc, el.imgSize, el.imgPos),
+			});
+			
+		});
+
+		//지도 중심좌표 부드럽게 이동
+		mapInstance.panTo(options.center);
+
+		// 줌아웃, 컨트롤
+		mapInstance.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+		mapInstance.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+		const setCenter = () => {
+			mapInstance.setCenter(options.center);
+		};
+
+		mapInstance.setZoomable(false);
+
+		//브라우저 리사이즈 될떄마다 마커 가운데 위치시키는 함수 호출
+		window.addEventListener('resize', setCenter);
+
+		
+
+		//해당 컴포넌트 unmount시 setCenter함수 이벤트 제거
+		return () => {
+			window.removeEventListener('resize', setCenter);
+		};
+	}, [Index]);
+
+	useEffect(() => {
+		Traffic
+			? Location?.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
+			: Location?.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+	}, [Traffic]);
+
+	useEffect(() => {
+		Road
+			? Location?.addOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW)
+			: Location?.removeOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW);
+	}, [Road]);
 	return (
 		<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption}>
 			<article id='location'>
@@ -85,11 +121,21 @@ function Map() {
 							<div className='listBox'>
 								<h3 className='listTitle'>교통상황</h3>
 								<ul className='traffic'>
-									<li className='trafficList'>
-										<Link to='#'>교통정보 보기</Link>
+									<li
+										className={Traffic ? 'trafficList on' : 'trafficList'}
+										onClick={() => setTraffic(!Traffic)}
+									>
+										<Link to='#' replace>
+											교통정보 보기
+										</Link>
 									</li>
-									<li className='trafficList on'>
-										<Link to='#'>교통정보 끄기</Link>
+									<li
+										className={Traffic ? 'trafficList' : 'trafficList on'}
+										onClick={() => setTraffic(!Traffic)}
+									>
+										<Link to='#' replace>
+											교통정보 끄기
+										</Link>
 									</li>
 								</ul>
 							</div>
@@ -98,11 +144,21 @@ function Map() {
 							<div className='listBox'>
 								<h3 className='listTitle'>로드뷰</h3>
 								<ul className='roadView'>
-									<li className='roadViewList'>
-										<Link to='#'>로드뷰 켜기</Link>
+									<li
+										className={Road ? 'roadViewList on' : 'roadViewList'}
+										onClick={() => setRoad(!Road)}
+									>
+										<Link to='#' replace>
+											로드뷰 켜기
+										</Link>
 									</li>
-									<li className='roadViewList on'>
-										<Link to='#'>로드뷰 끄기</Link>
+									<li
+										className={Road ? 'roadViewList' : 'roadViewList on'}
+										onClick={() => setRoad(!Road)}
+									>
+										<Link to='#' replace>
+											로드뷰 끄기
+										</Link>
 									</li>
 								</ul>
 							</div>
@@ -111,18 +167,24 @@ function Map() {
 							<div className='listBox'>
 								<h3 className='listTitle'>다른 명소 더 보기</h3>
 								<ul className='favLocation'>
-									<li className='locaList on' data-index='0'>
-										<Link to='#'> DDP(동대문디자인플라자) </Link>
-									</li>
-									<li className='locaList' data-index='1'>
-										<Link to='#'> 경복궁 </Link>
-									</li>
-									<li className='locaList' data-index='2'>
-										<Link to='#'> 남산 N 타워 </Link>
-									</li>
-									<li className='locaList' data-index='3'>
-										<Link to='#'> 반포한강공원 </Link>
-									</li>
+									{markerPoints.map((el, idx) => {
+										return (
+											<li
+												key={idx}
+												className={idx === Index ? 'locaList on' : 'locaList'}
+												onClick={() => {
+													setIndex(idx);
+													setTraffic(false);
+													setRoad(false);
+												}}
+											>
+												<Link to='#' replace>
+													{' '}
+													{el.title}{' '}
+												</Link>
+											</li>
+										);
+									})}
 								</ul>
 							</div>
 						</li>

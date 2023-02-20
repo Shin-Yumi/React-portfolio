@@ -139,7 +139,7 @@
 		//width: 80%;
 		height: 400px;
 		border: 1px solid $borderColor;
-		filter: sepia(20%) grayscale(50%);
+		filter: saturate(0%) invert(90%);
 	}
 	.mapTxt {
 		width: 60%;

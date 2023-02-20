@@ -2,7 +2,7 @@ import Layout from '../common/Layout';
 
 function Join() {
 	const name = 'Join';
-	const title = 'Join';
+	const title = 'Join'; 
 	const subTitle = '회원가입';
 	const expCaption =
 		'vogue의 회원이 되어 정기구독과 할인의 혜택을 누려보세요.';
