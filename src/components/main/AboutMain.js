@@ -27,7 +27,7 @@ function AboutMain() {
 							강력한 하나의 브랜드로 존재감을 발휘하고 있습니다
 						</p>
 						<div className='contBtn'>
-							<Link to='/about' className='btnText'>
+							<Link to='/about/organization' className='btnText'>
 								view &nbsp; <span> about</span>
 							</Link>
 						</div>

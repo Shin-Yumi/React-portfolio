@@ -2,8 +2,8 @@ import Layout from '../common/Layout';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function About() {
-	const name = 'About';
+function Organization() {
+	const name = 'about';
 	const title = 'Organization';
 	const subTitle = '조직도';
 	const sub01 = 'organization';
@@ -45,7 +45,7 @@ function About() {
 												<img src={`${process.env.PUBLIC_URL}/img/${el.pic}`} alt={el.name} />
 											</div>
 											<p className='organizationJob'>
-												{el.index} / <span>{el.name}</span>
+												0{index + 1} / <span>{el.name}</span>
 											</p>
 										</div>
 									</li>
@@ -59,4 +59,4 @@ function About() {
 	);
 }
 
-export default About;
+export default Organization;

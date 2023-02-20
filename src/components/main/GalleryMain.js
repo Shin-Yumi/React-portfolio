@@ -24,7 +24,7 @@ function GallMain() {
 					</p>
 				</div>
 				<div className='contBtn'>
-					<Link to='/gallery' className='btnText'>
+					<Link to='/gallery/youtube' className='btnText'>
 						view &nbsp; <span>Gallery</span>
 					</Link>
 				</div>

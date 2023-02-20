@@ -21,20 +21,20 @@ function Header(props) {
 				<div className='logo'>
 					<h1 className='headerLogo'>
 						<NavLink exact to='/'>
-							Yoom
+							Vogue
 						</NavLink>
 					</h1>
 				</div>
 				<nav id='menuPC'>
 					<ul className='menuWrap'>
 						<li className='menuList'>
-							<NavLink to='/about' className='menuLink' activeStyle={active}>
+							<NavLink to='/about/organization' className='menuLink' activeStyle={active}>
 								About
 							</NavLink>
 							<ul></ul>
 						</li>
 						<li className='menuList'>
-							<NavLink to='/gallery' className='menuLink' activeStyle={active}>
+							<NavLink to='/gallery/youtube' className='menuLink' activeStyle={active}>
 								Gallery
 							</NavLink>
 						</li>
@@ -67,10 +67,10 @@ function Header(props) {
 									<p className='mMenuTitle'>About</p>
 									<ul className='aboutSub'>
 										<li className='aboutSubList'>
-											<NavLink to='/about'>Organization</NavLink>
+											<NavLink to='/about/organization'>Organization</NavLink>
 										</li>
 										<li className='aboutSubList'>
-											<NavLink to='/map'>map</NavLink>
+											<NavLink to='/about/map'>map</NavLink>
 										</li>
 									</ul>
 								</li>
@@ -78,10 +78,10 @@ function Header(props) {
 									<p className='mMenuTitle'>Gallery</p>
 									<ul className='aboutSub'>
 										<li className='aboutSubList'>
-											<NavLink to='/gallery'>youtube</NavLink>
+											<NavLink to='/gallery/youtube'>youtube</NavLink>
 										</li>
 										<li className='aboutSubList'>
-											<NavLink to='/gallery'>flickr</NavLink>
+											<NavLink to='/gallery/flickr'>flickr</NavLink>
 										</li>
 									</ul>
 								</li>

@@ -3,9 +3,11 @@ import Layout from '../common/Layout';
 import { useRef, useEffect, useState } from 'react';
 
 function Map() {
-	const name = 'About';
+	const name = 'about';
 	const title = 'Map';
 	const subTitle = '지도';
+	const sub01 = 'organization';
+	const sub02 = 'map';
 	const expCaption =
 		'차별화 된 기획과 크리에이티브한 비주얼로 사람들에게 영감을 주는 패션 매거진의 대명사 보그 코리아의 위치를 확인하세요';
 	const container = useRef(null);
@@ -104,7 +106,7 @@ function Map() {
 			: Location?.removeOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW);
 	}, [Road]);
 	return (
-		<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption}>
+		<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption} sub01={sub01} sub02={sub02}>
 			<article id='location'>
 				<div id='map' ref={container}></div>
 				<div className='mapTxt'>

@@ -1,16 +1,77 @@
 import Layout from '../common/Layout';
+import { useState, useEffect } from 'react';
 
 function Join() {
 	const name = 'Join';
-	const title = 'Join'; 
+	const title = 'Join';
 	const subTitle = '회원가입';
-	const expCaption =
-		'vogue의 회원이 되어 정기구독과 할인의 혜택을 누려보세요.';
+	const expCaption = 'vogue의 회원이 되어 정기구독과 할인의 혜택을 누려보세요.';
+
+	const initVal = {
+		userid: '',
+		pwd1: '',
+		pwd2: '',
+		name: '',
+		email: '',
+		comments: '',
+
+	};
+	const [Val, setVal] = useState(initVal);
+	const [Err, setErr ] = useState({});
+	const [Submit, setSubmit] =useState(false);
+
+	//인증 체크함수
+	const check = (value) => {
+		const errs = {};
+		const eng = /[a-zA-Z]/;
+		const num = /[0-9]/;
+		const spc = /[~!@#$%^&*)]/;
+
+		if (value.userid.length < 5) {
+			errs.userid = '아이디를 5글자 이상 입력하세요';
+		}
+		if (value.pwd1.length < 5 || !eng.test(value.pwd1) || !num.test(value.pwd1) || !spc.test(value.pwd1)) {
+			errs.pwd1 = '비밀번호는 5글자 이상, 영문, 숫자, 특수문자를 모두 포함하세요';
+		}
+		if (value.pwd1 !== value.pwd2 || !value.pwd2) {
+			errs.pwd2 = '두개의 비밀번호를 동일하게 입력하세요';
+		}
+		if (value.name.length < 2) {
+			errs.name = '이름을 두글자 이상 입력하세요';
+		}
+		if (value.email.length < 8 || !/@/.test(value.email)) {
+			errs.email = '이메일은 8글자 이상 @를 포함하세요';
+		}
+		if (value.comments.length < 20) {
+			errs.comments = '코멘트는 20글자 이상 입력하세요';
+		}
+
+		return errs;
+	};
+
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setVal({ ...Val, [name]: value });
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setErr(check(Val));
+	};
+
+	useEffect(() => {
+		const len = Object.keys(Err).length;
+		if (len === 0 && Submit) {
+			alert('모든 인증을 통과했습니다.');
+			setVal(initVal);
+		}
+	}, [Err]);
+
 	return (
 		<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption}>
 			<article className='joinCont'>
 				<div className='inner'>
-					<form action='result.html' method='get' id='member'>
+					<form action='result.html' method='get' id='member' onSubmit={handleSubmit}>
 						<fieldset>
 							<legend className='hidden'>회원 가입 폼 입력 양식</legend>
 							<div className='joinWrap'>
@@ -26,7 +87,9 @@ function Join() {
 													name='userid'
 													id='userid'
 													placeholder='아이디를 입력하세요.'
+													onChange={handleChange}
 												/>
+												<p className='err'>{Err.userid}</p>
 											</div>
 										</div>
 									</li>
@@ -42,7 +105,9 @@ function Join() {
 													name='pwd1'
 													id='pwd1'
 													placeholder='비밀번호를 입력하세요.'
+													onChange={handleChange}
 												/>
+												<p className='err'>{Err.pwd1}</p>
 											</div>
 										</div>
 									</li>
@@ -58,7 +123,9 @@ function Join() {
 													name='pwd2'
 													id='pwd2'
 													placeholder='비밀번호를 입력하세요.'
+													onChange={handleChange}
 												/>
+												<p className='err'>{Err.pwd2}</p>
 											</div>
 										</div>
 									</li>
@@ -69,7 +136,8 @@ function Join() {
 												Name
 											</label>
 											<div className='joinInput'>
-												<input type='text' name='name' id='name' placeholder='이름을 입력하세요' />
+												<input type='text' name='name' id='name' placeholder='이름을 입력하세요' onChange={handleChange} />
+												<p className='err'>{Err.name}</p>
 											</div>
 										</div>
 									</li>
@@ -119,7 +187,9 @@ function Join() {
 													name='email'
 													id='email'
 													placeholder='이메일을 입력하세요.'
+													onChange={handleChange}
 												/>
+												<p className='err'>{Err.email}</p>
 											</div>
 										</div>
 									</li>
@@ -180,7 +250,9 @@ function Join() {
 													name='comments'
 													id='comments'
 													placeholder='남기는 말을 입력하세요'
+													onChange={handleChange}
 												></textarea>
+												<p className='err'>{Err.comments}</p>
 											</div>
 										</div>
 									</li>
@@ -190,7 +262,7 @@ function Join() {
 												button
 											</label>
 											<div className='joinInput'>
-												<input type='submit' value='submit' />
+												<input type='submit' value='submit' onClick={() => setSubmit(true)} />
 											</div>
 										</div>
 									</li>

@@ -11,10 +11,10 @@ function Layout(props) {
 							<div className='subHeaderMenu'>
 								<ul>
 									<li className='subHeadaerMenuList'>
-										<Link to={`/${props.sub01}`}>{props.sub01}</Link>
+										<Link to={`/${props.name}/${props.sub01}`}>{props.sub01}</Link>
 									</li>
 									<li className='subHeadaerMenuList'>
-										<Link to={`/${props.sub02}`}>{props.sub02}</Link>
+										<Link to={`/${props.name}/${props.sub02}`}>{props.sub02}</Link>
 									</li>
 								</ul>
 							</div>

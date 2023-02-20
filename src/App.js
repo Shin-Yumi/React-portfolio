@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 //common
 import Header from './components/common/Header';
@@ -8,9 +8,9 @@ import Footer from './components/common/Footer';
 import Main from './components/main/Main';
 
 //sub
-import About from './components/sub/About';
+import Organization from './components/sub/Organization';
 import Map from './components/sub/Map';
-import Gallery from './components/sub/Gallery';
+import Youtube from './components/sub/Youtube';
 import Flickr from './components/sub/Flickr';
 import Board from './components/sub/Board';
 import Join from './components/sub/Join';
@@ -23,31 +23,23 @@ function App() {
 	return (
 		<>
 			<Header />
-			<Route exact path='/'>
-				<Main />
-			</Route>
+			<Route exact path='/' component={Main} />
 
-			<Route path='/about'>
-				<About />
-			</Route>
-			<Route path='/map'>
-				<Map />
-			</Route>
-			<Route path='/gallery'>
-				<Gallery />
-			</Route>
-			<Route path='/flickr'>
-				<Flickr />
-			</Route>
-			<Route path='/board'>
-				<Board />
-			</Route>
-			<Route path='/join'>
-				<Join />
-			</Route>
-			<Route path='/contact'>
-				<Contact />
-			</Route>
+			<Switch>
+				<Route path='/about/organization' component={Organization} />
+				<Route path='/about/map' component={Map}/>
+			</Switch>
+
+			<Switch>
+				<Route path='/gallery/youtube' component={Youtube} />
+				<Route path='/gallery/flickr' component={Flickr}/>
+			</Switch>
+
+			<Route path='/board' component={Board} />
+
+			<Route path='/join' component={Join} />
+
+			<Route path='/contact' component={Contact} />
 
 			<Footer />
 		</>
