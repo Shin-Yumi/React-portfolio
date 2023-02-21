@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Layout from '../common/Layout';
+import { useState } from 'react';
 
 function Board() {
 	const name = 'Board';
@@ -7,6 +8,9 @@ function Board() {
 	const subTitle = '자유게시판';
 	const expCaption =
 		'미풍양속을 해치지 않는 범위 내에서 Vogue에 대한 의견을 자유롭게 작성해주세요.';
+		
+	const [Posts, setPosts] = useState([]);
+
 	return (
 		<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption}>
 			<div className='boardSectionCont'>

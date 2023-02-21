@@ -1,5 +1,6 @@
 import Layout from '../common/Layout';
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Join() {
 	const name = 'Join';
@@ -7,6 +8,7 @@ function Join() {
 	const subTitle = '회원가입';
 	const expCaption = 'vogue의 회원이 되어 정기구독과 할인의 혜택을 누려보세요.';
 
+	const history = useHistory();
 	const initVal = {
 		userid: '',
 		pwd1: '',
@@ -14,11 +16,11 @@ function Join() {
 		name: '',
 		email: '',
 		comments: '',
-
 	};
+
 	const [Val, setVal] = useState(initVal);
-	const [Err, setErr ] = useState({});
-	const [Submit, setSubmit] =useState(false);
+	const [Err, setErr] = useState({});
+	const [Submit, setSubmit] = useState(false);
 
 	//인증 체크함수
 	const check = (value) => {
@@ -30,7 +32,12 @@ function Join() {
 		if (value.userid.length < 5) {
 			errs.userid = '아이디를 5글자 이상 입력하세요';
 		}
-		if (value.pwd1.length < 5 || !eng.test(value.pwd1) || !num.test(value.pwd1) || !spc.test(value.pwd1)) {
+		if (
+			value.pwd1.length < 5 ||
+			!eng.test(value.pwd1) ||
+			!num.test(value.pwd1) ||
+			!spc.test(value.pwd1)
+		) {
 			errs.pwd1 = '비밀번호는 5글자 이상, 영문, 숫자, 특수문자를 모두 포함하세요';
 		}
 		if (value.pwd1 !== value.pwd2 || !value.pwd2) {
@@ -39,8 +46,17 @@ function Join() {
 		if (value.name.length < 2) {
 			errs.name = '이름을 두글자 이상 입력하세요';
 		}
+		if (value.edu === '') {
+			errs.edu = '최종 학력을 선택하세요.';
+		}
+		if (!value.gender) {
+			errs.gender = '성별을 선택하세요.';
+		}
 		if (value.email.length < 8 || !/@/.test(value.email)) {
 			errs.email = '이메일은 8글자 이상 @를 포함하세요';
+		}
+		if (!value.favorite) {
+			errs.interests = '관심사를 하나이상 선택하세요.';
 		}
 		if (value.comments.length < 20) {
 			errs.comments = '코멘트는 20글자 이상 입력하세요';
@@ -54,6 +70,31 @@ function Join() {
 		setVal({ ...Val, [name]: value });
 	};
 
+	//라디오버튼 체크시 Val state 업데이트 함수
+	const handleRadio = (e) => {
+		const { name } = e.target;
+		const isChecked = e.target.checked;
+		setVal({ ...Val, [name]: isChecked });
+	};
+
+	//체크박스 체크시 Val state 업데이트 함수
+	const handleCheck = (e) => {
+		const { name } = e.target;
+		let isChecked = false;
+		const inputs = e.target.parentElement.querySelectorAll('input');
+
+		//모든 체크박스를 반복을 돌면서 하나라도 체크된게 있으면 true값으로 변경후 리턴
+		inputs.forEach((el) => el.checked && (isChecked = true));
+		setVal({ ...Val, [name]: isChecked });
+	};
+
+	//select요소 선택시 Val state 업데이트 함수
+	const handleSelect = (e) => {
+		const { name } = e.target;
+		const selected = e.target.value;
+		setVal({ ...Val, [name]: selected });
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setErr(check(Val));
@@ -64,6 +105,7 @@ function Join() {
 		if (len === 0 && Submit) {
 			alert('모든 인증을 통과했습니다.');
 			setVal(initVal);
+			history.push('/');
 		}
 	}, [Err]);
 
@@ -136,7 +178,13 @@ function Join() {
 												Name
 											</label>
 											<div className='joinInput'>
-												<input type='text' name='name' id='name' placeholder='이름을 입력하세요' onChange={handleChange} />
+												<input
+													type='text'
+													name='name'
+													id='name'
+													placeholder='이름을 입력하세요'
+													onChange={handleChange}
+												/>
 												<p className='err'>{Err.name}</p>
 											</div>
 										</div>
@@ -147,7 +195,7 @@ function Join() {
 											<p className='joinTitle'>Education</p>
 											<div className='joinInput'>
 												<div className='eduBox'>
-													<select name='edu' id='edu'>
+													<select name='edu' id='edu' onChange={handleSelect}>
 														<option value=''>선택하세요</option>
 														<option value='elementary school'>초등학교 졸업</option>
 														<option value='middle school'>중학교 졸업</option>
@@ -155,6 +203,7 @@ function Join() {
 														<option value='college'>대학교 졸업</option>
 													</select>
 												</div>
+												<p className='err'>{Err.name}</p>
 											</div>
 										</div>
 									</li>
@@ -165,14 +214,27 @@ function Join() {
 											<div className='joinInput'>
 												<div className='radioBox'>
 													<div className='joinRadio'>
-														<input type='radio' name='gender' id='male' value='male' />
+														<input
+															type='radio'
+															name='gender'
+															id='male'
+															value='male'
+															onChange={handleRadio}
+														/>
 														<label htmlFor='male'>Male</label>
 													</div>
 													<div className='joinRadio'>
-														<input type='radio' name='gender' id='female' value='female' />
+														<input
+															type='radio'
+															name='gender'
+															id='female'
+															value='female'
+															onChange={handleRadio}
+														/>
 														<label htmlFor='female'>Female</label>
 													</div>
 												</div>
+												<p className='err'>{Err.gender}</p>
 											</div>
 										</div>
 									</li>
@@ -199,14 +261,26 @@ function Join() {
 											<div className='joinInput'>
 												<div className='joinCheck'>
 													<label htmlFor='html'>
-														<input type='checkbox' name='favorite' id='html' value='html' />
+														<input
+															type='checkbox'
+															name='favorite'
+															id='html'
+															value='html'
+															onChange={handleCheck}
+														/>
 														<span className='checkIcon'></span>
 														<span className='checkTxt'>html</span>
 													</label>
 												</div>
 												<div className='joinCheck'>
 													<label htmlFor='css'>
-														<input type='checkbox' name='favorite' id='css' value='css' />
+														<input
+															type='checkbox'
+															name='favorite'
+															id='css'
+															value='css'
+															onChange={handleCheck}
+														/>
 														<span className='checkIcon'></span>
 														<span className='checkTxt'>Css</span>
 													</label>
@@ -218,6 +292,7 @@ function Join() {
 															name='favorite'
 															id='javascript'
 															value='javascript'
+															onChange={handleCheck}
 														/>
 														<span className='checkIcon'></span>
 														<span className='checkTxt'>Javascript</span>
@@ -225,18 +300,31 @@ function Join() {
 												</div>
 												<div className='joinCheck'>
 													<label htmlFor='react'>
-														<input type='checkbox' name='favorite' id='react' value='react' />
+														<input
+															type='checkbox'
+															name='favorite'
+															id='react'
+															value='react'
+															onChange={handleCheck}
+														/>
 														<span className='checkIcon'></span>
 														<span className='checkTxt'>React</span>
 													</label>
 												</div>
 												<div className='joinCheck'>
 													<label htmlFor='vue'>
-														<input type='checkbox' name='favorite' id='vue' value='vue' />
+														<input
+															type='checkbox'
+															name='favorite'
+															id='vue'
+															value='vue'
+															onChange={handleCheck}
+														/>
 														<span className='checkIcon'></span>
 														<span className='checkTxt'>Vue</span>
 													</label>
 												</div>
+												<p className='err'>{Err.favorite}</p>
 											</div>
 										</div>
 									</li>
