@@ -2,6 +2,7 @@ import Layout from '../common/Layout';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
+
 function Join() {
 	const name = 'Join';
 	const title = 'Join';
@@ -56,7 +57,7 @@ function Join() {
 			errs.email = '이메일은 8글자 이상 @를 포함하세요';
 		}
 		if (!value.favorite) {
-			errs.interests = '관심사를 하나이상 선택하세요.';
+			errs.favorite = '관심사를 하나이상 선택하세요.';
 		}
 		if (value.comments.length < 20) {
 			errs.comments = '코멘트는 20글자 이상 입력하세요';

@@ -55,7 +55,7 @@ function Header(props) {
 						</li>
 					</ul>
 				</nav>
-				<Link to='/' className={isOpen ? 'hamMenu on' : 'hamMenu'} onClick={toggle}>
+				<Link to='/' className={isOpen ? 'hamMenu on' : 'hamMenu'} onToggle={toggle}>
 					<span>메뉴호출</span>
 				</Link>
 				<nav id='menuMo' className={isOpen ? 'on' : ''}>
