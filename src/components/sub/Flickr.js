@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Layout from '../common/Layout';
 import Modal from '../common/Modal';
+import Masonry from 'react-masonry-component';
+import Loading from '../common/Loading';
 
 function Flickr() {
 	const name = 'Gallery';
@@ -11,29 +13,48 @@ function Flickr() {
 	const sub01 = 'youtube';
 	const sub02 = 'flickr';
 	const expCaption = 'Vogue의 새로운 화보와 잡지를 flickr에서 만나보세요';
+	const frame = useRef(null);
 	const [Imgs, setImgs] = useState([]);
 	const [Open, setOpen] = useState(false);
 	const [Index, setIndex] = useState(0);
+	const [Loading, setLoading] = useState(true);
 
-	useEffect(() => {
+	const getFlickr = async (opt) => {
 		// api base url
 		const base = 'https://www.flickr.com/services/rest/?';
 
 		//api method
-		const method = 'flickr.interestingness.getList';
-		//const method2 = 'flickr.photos.search';
+		const method_interest = 'flickr.interestingness.getList';
+		const method_search = 'flickr.photos.search';
+		const method_user = 'flickr.people.getPhotos';
 
 		//api key
 		const key = 'aa8b086c0a30b1699395af33dd844533';
 		const per_page = 30;
 
 		//api
-		const url = `${base}method=${method}&api_key=${key}&per_page=${per_page}&format=json&nojsoncallback=1`;
-		// const url2 = `${base}method=${method2}&api_key=${key}&per_page=${per_page}&format=json&nojsoncallback=1&tags=바다&privacy_filter=1`;
+		let url = '';
 
-		axios.get(url).then((json) => {
-			setImgs(json.data.photos.photo);
-		});
+		if (opt.type === 'interest')
+			url = `${base}method=${method_interest}&api_key=${key}&per_page=${per_page}&format=json&nojsoncallback=1`;
+		if (opt.type === 'search')
+			url = `${base}method=${method_search}&api_key=${key}&per_page=${per_page}&format=json&nojsoncallback=1&tags=${opt.tags}&privacy_filter=1`;
+		if (opt.type === 'user')
+			url = `${base}&method=${method_user}&api_key=${key}&per_page=${per_page}&format=json&nojsoncallback=1&user_id=${opt.user}`;
+
+		const result = await axios.get(url);
+		setImgs(result.data.photos.photo);
+
+		setTimeout(() => {
+			setLoading(false);
+			frame.current.classList.add('on');
+		}, 500);
+	};
+
+	useEffect(() => {
+		getFlickr({ type: 'interest' });
+		//getFlickr({ type: 'search', tags: 'sea' });
+		//getFlickr({ type: 'user', user: '197649413@N03' });
 	}, []);
 	return (
 		<>
@@ -50,8 +71,9 @@ function Flickr() {
 						<input type='text' id='search' placeholder='검색어를 입력하세요' />
 						<button className='btnSearch'>Search</button>
 					</article>
-					<article className='wrap'>
-						<ul id='list'>
+					{Loading && <Loading></Loading>}
+					<article className='wrap' ref={frame}>
+						<Masonry elementType={'ul'} options={{ transitionDuration: '0.5s' }} className='list'>
 							{Imgs.map((el, index) => {
 								const imgSrcBig = `https://live.staticflickr.com/${el.server}/${el.id}_${el.secret}_b.jpg`;
 
@@ -74,7 +96,7 @@ function Flickr() {
 									</li>
 								);
 							})}
-						</ul>
+						</Masonry>
 					</article>
 				</div>
 			</Layout>

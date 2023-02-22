@@ -7,13 +7,10 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 function Header(props) {
 	const active = { color: '#9DA592' };
 	const [isOpen, setOpen] = useState(false);
-	
-	const toggle = () => {
-		setOpen(!isOpen);
-	}
-	// useEffect(() => {
-	// 	toggle();
-	// },[])
+
+	useEffect(() => {
+		setOpen(false);
+	}, []);
 
 	return (
 		<header id='header' className={props.type}>
@@ -55,7 +52,7 @@ function Header(props) {
 						</li>
 					</ul>
 				</nav>
-				<Link to='/' className={isOpen ? 'hamMenu on' : 'hamMenu'} onToggle={toggle}>
+				<Link to='/' className={isOpen ? 'hamMenu on' : 'hamMenu'} onClick={() => setOpen(!isOpen)}>
 					<span>메뉴호출</span>
 				</Link>
 				<nav id='menuMo' className={isOpen ? 'on' : ''}>
