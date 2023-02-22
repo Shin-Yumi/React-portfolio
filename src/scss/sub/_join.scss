@@ -98,7 +98,7 @@ join scss 작업
                 border: none;
                 border: 1px solid $borderColor;
                 &:focus {
-                  outline: none;
+                  outline: 1px solid $hoverColor;
                 }
                 &::placeholder {
                   color: $borderColor;
@@ -133,7 +133,7 @@ join scss 작업
                 background: transparent;
                 color: $borderColor;
                 &:focus {
-                  outline: none;
+                  outline: 1px solid $hoverColor;
                 }
               }
               input[type='checkbox'] {
@@ -155,12 +155,10 @@ join scss 작업
                 width: 100%;
                 height: 150px;
                 background: transparent;
-                border: 1px solid #aaa;
+                border: 1px solid $borderColor;
                 padding: 10px;
                 &:focus {
-                  &:focus {
-                    outline: none;
-                  }
+                  outline: 1px solid $hoverColor;
                 }
               }
               input[type='submit'] {

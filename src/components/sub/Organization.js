@@ -13,7 +13,7 @@ function Organization() {
 
 	const [Members, setMembers] = useState([]);
 
-	useEffect(() => {
+	useEffect(() => { 
 		axios.get(`${process.env.PUBLIC_URL}/DB/member.json`).then((json) => {
 			setMembers(json.data.members);
 		});

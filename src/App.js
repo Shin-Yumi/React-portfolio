@@ -15,7 +15,6 @@ import Flickr from './components/sub/Flickr';
 import Board from './components/sub/Board';
 import Join from './components/sub/Join';
 import Contact from './components/sub/Contact';
-import Community from './components/sub/Community';
 
 //sass
 import './scss/style.scss';
@@ -37,7 +36,6 @@ function App() {
 			</Switch>
 
 			<Route path='/board' component={Board} />
-			<Route path='/community' component={Community} />
 
 			<Route path='/join' component={Join} />
 

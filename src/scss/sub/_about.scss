@@ -1,6 +1,5 @@
 #organization {
 	width: 100%;
-	//height: calc(100vh - 80px);
 	.inner {
 		.aboutSectionTitle {
 			text-transform: uppercase;
@@ -23,11 +22,12 @@
 				.organizationList {
 					position: relative;
 					width: calc(100% / 3);
-					height: 500px;
+					height: 600px;
 					padding: 30px;
 					border: 1px solid $borderColor;
 					border-bottom: none;
 					margin-left: -1px;
+					min-height: 500px;
 					.organizationBox {
 						display: flex;
 						flex-direction: column;
@@ -139,7 +139,7 @@
 		//width: 80%;
 		height: 400px;
 		border: 1px solid $borderColor;
-		filter: saturate(0%) invert(90%);
+		filter: saturate(0%) invert(100%);
 	}
 	.mapTxt {
 		width: 60%;
@@ -328,6 +328,30 @@
 				.subSection {
 					.inner {
 						.sectionCont {
+							#organization {
+								width: 100%;
+								.inner {
+									.aboutSectionTitle {
+										text-transform: uppercase;
+										font-size: 20px;
+										font-weight: 400;
+										padding-bottom: 30px;
+										span {
+											font-family: $koFont;
+											font-size: 16px;
+											color: $textColor;
+										}
+									}
+									.aboutSectionCont {
+										.organizationWarp {
+											.organizationList {
+												height: 400px;
+												min-height: 300px;
+											}
+										}
+									}
+								}
+							}
 							#location {
 								width: 90%;
 								margin-left: 10%;
@@ -347,60 +371,73 @@
 }
 //$Ltablet: 992px;
 @media screen and (max-width: $Ltablet) {
-	#organization {
-		> .inner {
-			.aboutSectionCont {
-				.organizationWarp {
-					.organizationList {
-						width: 50%;
+	.about {
+		.wrap {
+			.subContents {
+				.subSection {
+					.inner {
+						.sectionCont {
+							#organization {
+								> .inner {
+									.aboutSectionCont {
+										.organizationWarp {
+											.organizationList {
+												width: 50%;
+												height: 500px;
 
-						&:nth-last-child(-n + 4) {
-							border-top: none;
+												&:nth-last-child(-n + 4) {
+													border-top: none;
+												}
+												&:nth-of-type(1),
+												&:nth-of-type(4) {
+													border-left: 1px solid $borderColor;
+												}
+												&:nth-of-type(3),
+												&:nth-of-type(6) {
+													border-left: 1px solid $borderColor;
+												}
+												&:nth-of-type(odd) {
+													border-left: none;
+												}
+												&:nth-of-type(even) {
+													border-right: none;
+												}
+											}
+										}
+									}
+								}
+							}
+							#location {
+								#map {
+								}
+								.mapTxt {
+									width: 60%;
+									margin-top: 20px;
+									p {
+										@include sectionText;
+									}
+								}
+								.mapBtn {
+									display: flex;
+									align-items: flex-start;
+									margin-top: 30px;
+									.mapBtnTitle {
+									}
+									.mapBtnLists {
+										width: 85%;
+										display: flex;
+										align-items: center;
+										flex-wrap: wrap;
+										.mapBtnList {
+											&:nth-of-type(3) {
+												width: 100%;
+												margin-right: 0;
+											}
+										}
+									}
+								}
+							}
 						}
-						&:nth-of-type(1),
-						&:nth-of-type(4) {
-							border-left: 1px solid $borderColor;
-						}
-						&:nth-of-type(3),
-						&:nth-of-type(6) {
-							border-left: 1px solid $borderColor;
-						}
-						&:nth-of-type(odd) {
-							border-left: none;
-						}
-						&:nth-of-type(even) {
-							border-right: none;
-						}
-					}
-				}
-			}
-		}
-	}
-	#location {
-		#map {
-		}
-		.mapTxt {
-			width: 60%;
-			margin-top: 20px;
-			p {
-				@include sectionText;
-			}
-		}
-		.mapBtn {
-			display: flex;
-			align-items: flex-start;
-			margin-top: 30px;
-			.mapBtnTitle {
-			}
-			.mapBtnLists {
-				width: 85%;
-				display: flex;
-				align-items: center;
-				flex-wrap: wrap;
-				.mapBtnList {
-					&:nth-of-type(3) {
-						width: 100%;
-						margin-right: 0;
 					}
 				}
 			}
@@ -409,53 +446,65 @@
 }
 //$tablet : 778px;
 @media screen and (max-width: $tablet) {
-	#organization {
-		> .inner {
-			.aboutSectionCont {
-				.organizationWarp {
-					.organizationList {
-						height: 400px;
-						&.intro {
-							.organizationBox {
-								.organizationTitle {
-									@include sectionTitle($fz: 30px, $fontWeight: bold);
-									margin-bottom: 30px;
+	.about {
+		.wrap {
+			.subContents {
+				.subSection {
+					.inner {
+						.sectionCont {
+							#organization {
+								> .inner {
+									.aboutSectionCont {
+										.organizationWarp {
+											.organizationList {
+												height: 400px;
+												&.intro {
+													.organizationBox {
+														.organizationTitle {
+															@include sectionTitle($fz: 30px, $fontWeight: bold);
+															margin-bottom: 30px;
+														}
+														.organizationSub {
+															@include sectionSubTitle($subFz: 20px, $fontWeight: 400);
+														}
+													}
+												}
+											}
+										}
+									}
 								}
-								.organizationSub {
-									@include sectionSubTitle($subFz: 20px, $fontWeight: 400);
+							}
+							#location {
+								width: 100%;
+								margin-left: 0;
+								#map {
+									width: 100%;
+									height: 300px;
+								}
+								.mapTxt {
+									width: 70%;
+									margin-top: 20px;
+									p {
+										@include sectionText;
+									}
+								}
+								.mapBtn {
+									flex-direction: column;
+									.mapBtnTitle {
+										width: 100%;
+										margin-bottom: 30px;
+									}
+									.mapBtnLists {
+										width: 100%;
+										.mapBtnList {
+											width: 100%;
+											margin-right: 0;
+										}
+									}
 								}
 							}
 						}
 					}
-				}
-			}
-		}
-	}
-	#location {
-		width: 100%;
-		margin-left: 0;
-		#map {
-			width: 100%;
-			height: 300px;
-		}
-		.mapTxt {
-			width: 70%;
-			margin-top: 20px;
-			p {
-				@include sectionText;
-			}
-		}
-		.mapBtn {
-			flex-direction: column;
-			.mapBtnTitle {
-				width: 100%;
-				margin-bottom: 30px;
-			}
-			.mapBtnLists {
-				width: 100%;
-				.mapBtnList {
-					width: 100%;
-					margin-right: 0;
 				}
 			}
 		}
@@ -463,84 +512,108 @@
 }
 //$mobile : 576px;
 @media screen and (max-width: $mobile) {
-	#organization {
-		> .inner {
-			.aboutSectionCont {
-				.organizationWarp {
-					.organizationList {
-						width: 100%;
-						height: 500px;
-						border-left: none;
-						border-right: none;
-						padding: 20px;
-						//margin-top: -1px;
-						margin-left: 0;
-						&::after {
-							display: none;
-						}
-						&.intro {
-							.organizationBox {
-								.organizationTitle {
-									@include sectionTitle($fz: 40px, $fontWeight: bold);
-									margin-bottom: 30px;
-								}
-								.organizationSub {
-									@include sectionSubTitle($subFz: 24px, $fontWeight: 400);
-								}
-								.organizationCaption {
-									@include sectionText($captionFz: 16px);
+	.about {
+		.wrap {
+			.subContents {
+				.subSection {
+					.inner {
+						.sectionCont {
+							#organization {
+								> .inner {
+									.aboutSectionCont {
+										.organizationWarp {
+											.organizationList {
+												width: 100%;
+												height: 500px;
+												border-left: none;
+												border-right: none;
+												padding: 20px;
+												//margin-top: -1px;
+												margin-left: 0;
+												&::after {
+													display: none;
+												}
+												&.intro {
+													.organizationBox {
+														.organizationTitle {
+															@include sectionTitle($fz: 40px, $fontWeight: bold);
+															margin-bottom: 30px;
+														}
+														.organizationSub {
+															@include sectionSubTitle($subFz: 24px, $fontWeight: 400);
+														}
+														.organizationCaption {
+															@include sectionText($captionFz: 16px);
+														}
+													}
+												}
+												&:nth-last-child(-n + 4) {
+													border-top: 1px solid $borderColor;
+												}
+												&:nth-of-type(4) {
+													border-left: none;
+												}
+												&:nth-of-type(6) {
+													border-left: none;
+													border-bottom: 1px solid $borderColor;
+												}
+											}
+										}
+									}
 								}
 							}
-						}
-						&:nth-last-child(-n + 4) {
-							border-top: 1px solid $borderColor;
-						}
-						&:nth-of-type(4) {
-							border-left: none;
-						}
-						&:nth-of-type(6) {
-							border-left: none;
-							border-bottom: 1px solid $borderColor;
+							#location {
+								.mapTxt {
+									width: 80%;
+								}
+							}
 						}
 					}
 				}
 			}
-		}
-	}
-	#location {
-		.mapTxt {
-			width: 80%;
 		}
 	}
 }
 //$mobile : 425px;
 @media screen and (max-width: $sMobile) {
-	#organization {
-		> .inner {
-			.aboutSectionCont {
-				.organizationWarp {
-					.organizationList {
-						height: 400px;
-					}
-				}
-			}
-		}
-	}
-	#location {
-		.mapBtn {
-			.mapBtnLists {
-				.mapBtnList {
-					.listBox {
-						.favLocation {
-							flex-wrap: wrap;
-							.locaList {
-								margin-bottom: 10px;
+	.about {
+		.wrap {
+			.subContents {
+				.subSection {
+					.inner {
+						.sectionCont {
+							#organization {
+								> .inner {
+									.aboutSectionCont {
+										.organizationWarp {
+											.organizationList {
+												height: 400px;
+											}
+										}
+									}
+								}
 							}
-							.locaList + .locaList {
-								margin-left: 20px;
-							}
-							.locaList:last-child {
-								margin-left: 0;
+							#location {
+								.mapBtn {
+									.mapBtnLists {
+										.mapBtnList {
+											.listBox {
+												.favLocation {
+													flex-wrap: wrap;
+													.locaList {
+														margin-bottom: 10px;
+													}
+													.locaList + .locaList {
+														margin-left: 20px;
+													}
+													.locaList:last-child {
+														margin-left: 0;
+													}
+												}
+											}
+										}
+									}
+								}
 							}
 						}
 					}

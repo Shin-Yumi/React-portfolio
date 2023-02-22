@@ -12,7 +12,7 @@ board scss 작업
 		.boardImg {
 			width: 50%;
 			height: 250px;
-			background: url(../../../public/img/dummy-gallery01.jpg) no-repeat center/cover;
+			background: url(../../../public/img/board-image.jpg) no-repeat center/cover;
 			border-right: 1px solid $borderColor;
 		}
 		.inputBox {
@@ -27,7 +27,11 @@ board scss 작업
 				border: 1px solid $borderColor;
 				resize: none;
 				margin-bottom: 10px;
-				background: $btnColor;
+				background: transparent;
+				&:focus {
+					outline: 1px solid $hoverColor;
+				}
+				
 			}
 
 			.btnSet {
@@ -35,10 +39,10 @@ board scss 작업
 					width: 130px;
 					height: 30px;
 					display: inline-block;
-					background: transparent;
+					background: $btnColor;
 					border: 1px solid $borderColor;
 					font-size: 12px;
-					color: $borderColor;
+					color: $textColor;
 					cursor: pointer;
 					&:hover {
 						background: $hoverColor;
@@ -85,8 +89,11 @@ board scss 작업
 							padding: 8px 10px;
 							border: 1px solid $borderColor;
 							margin-bottom: 10px;
-							background: $btnColor;
+							background: transparent;
 							resize: none;
+							&:focus {
+								outline: 1px solid $hoverColor;
+							}
 						}
 						textarea {
 							margin-bottom: 0;
@@ -98,10 +105,10 @@ board scss 작업
 								width: 130px;
 								height: 30px;
 								display: inline-block;
-								background: transparent;
+								background: $btnColor;
 								border: 1px solid $borderColor;
 								font-size: 12px;
-								color: $borderColor;
+								color: $textColor;
 								cursor: pointer;
 								&:hover {
 									background: $hoverColor;
@@ -247,7 +254,6 @@ $mobile : 576px;
 */
 @media screen and (max-width: $sLaptop) {
 	.boardSectionCont {
-		
 		table {
 			tr {
 				td {
@@ -282,12 +288,30 @@ $mobile : 576px;
 				}
 			}
 		}
+		table {
+			tr {
+				td {
+					.boardList {
+						.boardTit {
+							font-size: 20px;
+						}
+						.boardTxt {
+							font-size: 18px;
+						}
+						.btnSet {
+							button {
+								font-size: 14px;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
 @media screen and (max-width: $mobile) {
 	.boardSectionCont {
-
 		table {
 			tr {
 				td {
@@ -309,15 +333,18 @@ $mobile : 576px;
 						}
 						.boardTit {
 							width: 100%;
+							font-size: 18px;
 						}
 						.boardTxt {
 							width: 100%;
 							margin-top: 10px;
+							font-size: 16px;
 						}
 						.btnSet {
 							width: 100%;
 							margin-top: 10px;
 							justify-content: flex-start;
+							font-size: 14px;
 						}
 					}
 				}
