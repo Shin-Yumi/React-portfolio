@@ -2,7 +2,7 @@ import Layout from '../common/Layout';
 import Modal from '../common/Modal';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function Gallery() {
 	const name = 'Gallery';
@@ -11,9 +11,11 @@ function Gallery() {
 	const sub01 = 'youtube';
 	const sub02 = 'flickr';
 	const expCaption = 'Vogue의 새로운 video를 Youtube에서 만나보세요';
+	const frame = useRef(null);
 	const [Vids, setVids] = useState([]);
 	const [Open, setOpen] = useState(false);
 	const [Index, setIndex] = useState(0);
+	const [Loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const key = 'AIzaSyA6RtwwaDd7lctAx_sccqFQtFnSErCl-jc';
@@ -24,6 +26,11 @@ function Gallery() {
 		axios.get(url).then((json) => {
 			setVids(json.data.items);
 		});
+		
+		setTimeout(() => {
+			setLoading(false);
+			frame.current.classList.add('on');
+		}, 500);
 	}, []);
 
 	return (
@@ -36,8 +43,17 @@ function Gallery() {
 				sub01={sub01}
 				sub02={sub02}
 			>
-				<div className='youtube' >
-					<div id='youtube'>
+				<div className='youtube'>
+					{Loading && (
+						<div className='loading'>
+							<div className='dot'></div>
+							<div className='dot'></div>
+							<div className='dot'></div>
+							<div className='dot'></div>
+							<div className='dot'></div>
+						</div>
+					)}
+					<div id='youtube' ref={frame}>
 						{Vids.map((el, index) => {
 							const tit = el.snippet.title;
 							const date = el.snippet.publishedAt;

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Layout from '../common/Layout';
 import Modal from '../common/Modal';
 import Masonry from 'react-masonry-component';
-import Loading from '../common/Loading';
 
 function Flickr() {
 	const name = 'Gallery';
@@ -13,6 +12,7 @@ function Flickr() {
 	const sub01 = 'youtube';
 	const sub02 = 'flickr';
 	const expCaption = 'Vogue의 새로운 화보와 잡지를 flickr에서 만나보세요';
+
 	const frame = useRef(null);
 	const [Imgs, setImgs] = useState([]);
 	const [Open, setOpen] = useState(false);
@@ -54,7 +54,7 @@ function Flickr() {
 	useEffect(() => {
 		getFlickr({ type: 'interest' });
 		//getFlickr({ type: 'search', tags: 'sea' });
-		//getFlickr({ type: 'user', user: '197649413@N03' });
+		getFlickr({ type: 'user', user: '197649413@N03' });
 	}, []);
 	return (
 		<>
@@ -71,7 +71,35 @@ function Flickr() {
 						<input type='text' id='search' placeholder='검색어를 입력하세요' />
 						<button className='btnSearch'>Search</button>
 					</article>
-					{Loading && <Loading></Loading>}
+					<div className='sortBtn'>
+						<button
+							onClick={() => {
+								frame.current.classList.remove('on');
+								setLoading(true);
+								getFlickr({ type: 'interest' });
+							}}
+						>
+							Interest Gallery
+						</button>
+						<button
+							onClick={() => {
+								frame.current.classList.remove('on');
+								setLoading(true);
+								getFlickr({ type: 'user', user: '164021883@N04' });
+							}}
+						>
+							My Gallery
+						</button>
+					</div>
+					{Loading && (
+						<div className='loading'>
+							<div className='dot'></div>
+							<div className='dot'></div>
+							<div className='dot'></div>
+							<div className='dot'></div>
+							<div className='dot'></div>
+						</div>
+					)}
 					<article className='wrap' ref={frame}>
 						<Masonry elementType={'ul'} options={{ transitionDuration: '0.5s' }} className='list'>
 							{Imgs.map((el, index) => {
