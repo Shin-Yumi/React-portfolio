@@ -11,8 +11,15 @@ function Btns({ setScrolled, setPos }) {
 	const getPos = () => {
 		pos.current = [];
 		const secs = btnRef.current.parentElement.querySelectorAll('.myScroll');
-    //const header = 
-		for (const sec of secs) pos.current.push(sec.offsetTop);
+
+		for (const sec of secs) {
+			if (matchMedia('screen and (min-width: 1024px)').matches) {
+				pos.current.push(sec.offsetTop - 80);
+			} else {
+				pos.current.push(sec.offsetTop - 60);
+			}
+		}
+
 		setPos(pos.current);
 	};
 
@@ -38,7 +45,7 @@ function Btns({ setScrolled, setPos }) {
 
 	//처음 컴포넌트 마운트시 한번만 이벤트 연결
 	useEffect(() => {
-		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		window.scrollTo({ top: -80, left: 0, behavior: 'smooth' });
 		getPos();
 		window.addEventListener('resize', getPos);
 		window.addEventListener('scroll', activation);

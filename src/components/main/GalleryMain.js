@@ -11,7 +11,7 @@ import 'swiper/css/pagination';
 
 function GallMain() {
 	return (
-		<Contents name='galleryCont myScroll'>
+		<Contents name='galleryCont'>
 			<div className='galleryTextCont'>
 				<div>
 					<h1 className='contentsTitle'>Gallery</h1>
