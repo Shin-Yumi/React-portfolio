@@ -21,7 +21,7 @@ function Flickr() {
 
 	const getFlickr = async (opt) => {
 		// api base url
-		const base = 'https://www.flickr.com/services/rest/?';
+		const base = 'https://www.flickr.com/services/rest/?format=json&nojsoncallback=1';
 
 		//api method
 		const method_interest = 'flickr.interestingness.getList';
@@ -36,11 +36,11 @@ function Flickr() {
 		let url = '';
 
 		if (opt.type === 'interest')
-			url = `${base}method=${method_interest}&api_key=${key}&per_page=${per_page}&format=json&nojsoncallback=1`;
+			url = `${base}method=${method_interest}&api_key=${key}&per_page=${per_page}`;
 		if (opt.type === 'search')
-			url = `${base}method=${method_search}&api_key=${key}&per_page=${per_page}&format=json&nojsoncallback=1&tags=${opt.tags}&privacy_filter=1`;
+			url = `${base}method=${method_search}&api_key=${key}&per_page=${per_page}&tags=${opt.tags}&privacy_filter=1`;
 		if (opt.type === 'user')
-			url = `${base}&method=${method_user}&api_key=${key}&per_page=${per_page}&format=json&nojsoncallback=1&user_id=${opt.user}`;
+			url = `${base}&method=${method_user}&api_key=${key}&per_page=${per_page}&user_id=${opt.user}`;
 
 		const result = await axios.get(url);
 		setImgs(result.data.photos.photo);
@@ -54,7 +54,7 @@ function Flickr() {
 	useEffect(() => {
 		getFlickr({ type: 'interest' });
 		//getFlickr({ type: 'search', tags: 'sea' });
-		getFlickr({ type: 'user', user: '197649413@N03' });
+		//getFlickr({ type: 'user', user: '197649413@N03' });
 	}, []);
 	return (
 		<>
@@ -85,7 +85,7 @@ function Flickr() {
 							onClick={() => {
 								frame.current.classList.remove('on');
 								setLoading(true);
-								getFlickr({ type: 'user', user: '164021883@N04' });
+								getFlickr({ type: 'user', user: '197649413@N03' });
 							}}
 						>
 							My Gallery
