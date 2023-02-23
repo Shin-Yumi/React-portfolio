@@ -12,8 +12,8 @@ function Gallery() {
 	const sub02 = 'flickr';
 	const expCaption = 'Vogue의 새로운 video를 Youtube에서 만나보세요';
 	const frame = useRef(null);
+	const open = useRef(null);
 	const [Vids, setVids] = useState([]);
-	const [Open, setOpen] = useState(false);
 	const [Index, setIndex] = useState(0);
 	const [Loading, setLoading] = useState(true);
 
@@ -26,7 +26,7 @@ function Gallery() {
 		axios.get(url).then((json) => {
 			setVids(json.data.items);
 		});
-		
+
 		setTimeout(() => {
 			setLoading(false);
 			frame.current.classList.add('on');
@@ -65,7 +65,7 @@ function Gallery() {
 										className='pic'
 										onClick={(e) => {
 											e.preventDefault();
-											setOpen(true);
+											open.current.open();
 											setIndex(index);
 										}}
 									>
@@ -81,15 +81,13 @@ function Gallery() {
 					</div>
 				</div>
 			</Layout>
-			{Open && (
-				<Modal setOpen={setOpen}>
-					<iframe
-						title={Vids[0].id}
-						src={`https://www.youtube.com/embed/${Vids[Index].snippet.resourceId.videoId}`}
-					></iframe>
-				</Modal>
-			)}
-			{/* open이 참이면 && 뒤의 부분이 실행 */}
+			<Modal ref={open}>
+				{/* Youtube컴포넌트 첨 마운트시 Modal컴포넌트 자체는 동작되기 때문에 첫번째 랜더링 싸이클일떄 Vids[Index]값이 비어있으므로 에러 따라서 Optional Chaining으로 해당 객체값이 비어있을때는 id값을 읽지않고 값이 담겨 있을떄에만 실행 */}
+				<iframe
+					title={Vids[Index]?.id}
+					src={`https://www.youtube.com/embed/${Vids[Index]?.snippet.resourceId.videoId}`}
+				></iframe>
+			</Modal>
 		</>
 	);
 }

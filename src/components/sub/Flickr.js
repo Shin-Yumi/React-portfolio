@@ -5,6 +5,7 @@ import Layout from '../common/Layout';
 import Modal from '../common/Modal';
 import Masonry from 'react-masonry-component';
 
+
 function Flickr() {
 	const name = 'Gallery';
 	const title = 'Flickr';
@@ -14,8 +15,9 @@ function Flickr() {
 	const expCaption = 'Vogue의 새로운 화보와 잡지를 flickr에서 만나보세요';
 
 	const frame = useRef(null);
+	const open = useRef(null);
+	const input = useRef(null);
 	const [Imgs, setImgs] = useState([]);
-	const [Open, setOpen] = useState(false);
 	const [Index, setIndex] = useState(0);
 	const [Loading, setLoading] = useState(true);
 
@@ -36,19 +38,53 @@ function Flickr() {
 		let url = '';
 
 		if (opt.type === 'interest')
-			url = `${base}method=${method_interest}&api_key=${key}&per_page=${per_page}`;
+			url = `${base}&api_key=${key}&method=${method_interest}&per_page=${per_page}`;
 		if (opt.type === 'search')
-			url = `${base}method=${method_search}&api_key=${key}&per_page=${per_page}&tags=${opt.tags}&privacy_filter=1`;
+			url = `${base}&api_key=${key}&method=${method_search}&per_page=${per_page}&tags=${opt.tags}`;
 		if (opt.type === 'user')
 			url = `${base}&method=${method_user}&api_key=${key}&per_page=${per_page}&user_id=${opt.user}`;
 
 		const result = await axios.get(url);
+		//flickr로 반환한 데이터 배열값이 0개일 대 (결과이미지가 없을 때) 기존 items state를 변경하지않고 이전 갤러리 홤녀을 다시 보이게 하기
+		if (result.data.photos.photo.length === 0) {
+			frame.current.classList.remove('on');
+			setLoading(true);
+			return alert('해당 검색어의 결과 이미지가 없습니다.');
+		}
 		setImgs(result.data.photos.photo);
 
 		setTimeout(() => {
 			setLoading(false);
 			frame.current.classList.add('on');
 		}, 500);
+	};
+
+	const showInterest = () => {
+		frame.current.classList.remove('on');
+		setLoading(true);
+		getFlickr({ type: 'interest' });
+	};
+	const showMine = () => {
+		frame.current.classList.remove('on');
+		setLoading(true);
+		getFlickr({ type: 'user', user: '197649413@N03' });
+	};
+	const showUser = (e) => {
+		frame.current.classList.remove('on');
+		setLoading(true);
+		getFlickr({ type: 'user', user: e.target.innerText });
+	};
+	const showSearch = () => {
+		const result = input.current.value.trim();
+		if (!result) return alert('검색어를 입력하세요.');
+		input.current.value = '';
+		frame.current.classList.remove('on');
+		setLoading(true);
+		getFlickr({ type: 'search', tags: result });
+	};
+
+	let handleKeyUp = (e) => {
+		e.key === 'Enter' && showSearch();
 	};
 
 	useEffect(() => {
@@ -68,28 +104,20 @@ function Flickr() {
 			>
 				<div id='flickr'>
 					<article className='searchBox'>
-						<input type='text' id='search' placeholder='검색어를 입력하세요' />
-						<button className='btnSearch'>Search</button>
+						<input
+							type='text'
+							id='search'
+							placeholder='검색어를 입력하세요'
+							ref={input}
+							onKeyDown={handleKeyUp}
+						/>
+						<button className='btnSearch' onClick={showSearch}>
+							Search
+						</button>
 					</article>
 					<div className='sortBtn'>
-						<button
-							onClick={() => {
-								frame.current.classList.remove('on');
-								setLoading(true);
-								getFlickr({ type: 'interest' });
-							}}
-						>
-							Interest Gallery
-						</button>
-						<button
-							onClick={() => {
-								frame.current.classList.remove('on');
-								setLoading(true);
-								getFlickr({ type: 'user', user: '197649413@N03' });
-							}}
-						>
-							My Gallery
-						</button>
+						<button onClick={showInterest}>Interest Gallery</button>
+						<button onClick={showMine}>My Gallery</button>
 					</div>
 					{Loading && (
 						<div className='loading'>
@@ -108,12 +136,25 @@ function Flickr() {
 								return (
 									<li key={el.id} className='item'>
 										<div className='itemBox'>
+											<div className='profile'>
+												<img
+													src={`http://farm${el.farm}.staticflickr.com/${el.server}/buddyicons/${el.owner}.jpg`}
+													alt={el.owner}
+													onError={(e) => {
+														e.target.setAttribute(
+															'src',
+															'https://www.flickr.com/images/buddyicon.gif'
+														);
+													}}
+												/>
+												<span onClick={showUser}>{el.owner}</span>
+											</div>
 											<Link
 												to='/'
 												className='galleryImg'
 												onClick={(e) => {
 													e.preventDefault();
-													setOpen(true);
+													open.current.open();
 													setIndex(index);
 												}}
 											>
@@ -128,14 +169,12 @@ function Flickr() {
 					</article>
 				</div>
 			</Layout>
-			{Open && (
-				<Modal setOpen={setOpen}>
-					<img
-						src={`https://live.staticflickr.com/${Imgs[Index].server}/${Imgs[Index].id}_${Imgs[Index].secret}_b.jpg`}
-						alt={Imgs[Index].title}
-					/>
-				</Modal>
-			)}
+			<Modal ref={open}>
+				<img
+					src={`https://live.staticflickr.com/${Imgs[Index]?.server}/${Imgs[Index]?.id}_${Imgs[Index]?.secret}_b.jpg`}
+					alt={Imgs[Index]?.title}
+				/>
+			</Modal>
 		</>
 	);
 }
