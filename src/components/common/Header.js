@@ -13,7 +13,7 @@ function Header(props) {
 	}, []);
 
 	return (
-		<header id='header' className={props.type}>
+		<header id='header'>
 			<div className='inner'>
 				<div className='logo'>
 					<h1 className='headerLogo'>

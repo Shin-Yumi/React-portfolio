@@ -2,7 +2,7 @@ import Contents from "./Contents";
 
 function VisualMain() {
 	return (
-		<Contents name='mainCont'>
+		<Contents name='mainCont myScroll on'>
 					<article className='contentsHalf visualCont'>
 						<div className='visualImgBox'>
 							<div className='visualImg'></div>

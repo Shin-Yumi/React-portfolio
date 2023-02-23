@@ -1,8 +1,11 @@
 .contents {
 	position: relative;
 	width: 100%;
-	height: calc(100vh - 80px);
+	height: 100vh;
 	min-height: 600px;
+	&.on {
+		padding-top: 80px;
+	}
 	.inner {
 		width: 100%;
 		height: 100%;

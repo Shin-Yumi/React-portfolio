@@ -1,6 +1,6 @@
 function Contents(props) {
 	return (
-		<section className={`contents ${props.name} myScroll`}>
+		<section className={`contents ${props.name}`}>
 			<div className='inner'>
 				{props.children}
 			</div>
