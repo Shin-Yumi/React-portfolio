@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import Anim from '../assets/anime';
 
 function Btns({ setScrolled, setPos }) {
@@ -8,7 +8,7 @@ function Btns({ setScrolled, setPos }) {
 	const speed = useRef(500);
 
 	//세로위치값 갱신 함수
-	const getPos = () => {
+	const getPos = useCallback(() => {
 		pos.current = [];
 		const secs = btnRef.current.parentElement.querySelectorAll('.myScroll');
 
@@ -21,10 +21,10 @@ function Btns({ setScrolled, setPos }) {
 		}
 
 		setPos(pos.current);
-	};
+	},[setPos]);
 
 	//버튼 활성화 함수
-	const activation = () => {
+	const activation = useCallback(() => {
 		const btns = btnRef.current.children;
 		const secs = btnRef.current.parentElement.querySelectorAll('.myScroll');
 		const scroll = window.scrollY;
@@ -41,11 +41,11 @@ function Btns({ setScrolled, setPos }) {
 				secs[idx].classList.add('on');
 			}
 		});
-	};
+	},[setScrolled]);
 
 	//처음 컴포넌트 마운트시 한번만 이벤트 연결
 	useEffect(() => {
-		window.scrollTo({ top: -80, left: 0, behavior: 'smooth' });
+		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
 		getPos();
 		window.addEventListener('resize', getPos);
 		window.addEventListener('scroll', activation);
@@ -53,7 +53,7 @@ function Btns({ setScrolled, setPos }) {
 			window.removeEventListener('resize', getPos);
 			window.removeEventListener('scroll', activation);
 		};
-	}, []);
+	}, [getPos, activation]);
 
 	return (
 		<ul className='scroll_navi' ref={btnRef}>

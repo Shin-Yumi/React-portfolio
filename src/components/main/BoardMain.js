@@ -16,9 +16,9 @@ function BoardMain() {
 
 	const [Posts] = useState(getLocalData());
 
-	useEffect(()=> {
+	useEffect(() => {
 		localStorage.setItem('post', JSON.stringify(Posts));
-	},[])
+	}, [Posts]);
 	return (
 		<section className='boardCont myScroll'>
 			<div className='inner'>

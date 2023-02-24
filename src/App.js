@@ -1,9 +1,9 @@
 import { Route, Switch } from 'react-router-dom';
-
+import { useRef } from 'react';
 //common
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
- 
+import Menu from './components/common/Menu';
 //main
 import Main from './components/main/Main';
 
@@ -20,19 +20,21 @@ import Contact from './components/sub/Contact';
 import './scss/style.scss';
 
 function App() {
+	const menu = useRef(null);
+
 	return (
 		<>
-			<Header />
+			<Header menu={menu} />
 			<Route exact path='/' component={Main} />
 
 			<Switch>
 				<Route path='/about/organization' component={Organization} />
-				<Route path='/about/map' component={Map}/>
+				<Route path='/about/map' component={Map} />
 			</Switch>
 
 			<Switch>
 				<Route path='/gallery/youtube' component={Youtube} />
-				<Route path='/gallery/flickr' component={Flickr}/>
+				<Route path='/gallery/flickr' component={Flickr} />
 			</Switch>
 
 			<Route path='/board' component={Board} />
@@ -42,6 +44,7 @@ function App() {
 			<Route path='/contact' component={Contact} />
 
 			<Footer />
+			<Menu ref={menu} />
 		</>
 	);
 }
