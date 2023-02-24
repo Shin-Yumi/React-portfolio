@@ -9,6 +9,7 @@ const Menu = forwardRef((props, ref) => {
 
 	useImperativeHandle(ref, () => {
 		//부모의 토글버튼 클릭시 기존 Open state값이 계속 반전되야 하므로 !Open으로 설정
+		
 		return { setToggle: () => setOpen(!Open) };
 	});
 
