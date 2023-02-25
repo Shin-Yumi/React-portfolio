@@ -24,6 +24,7 @@
 			.formBox {
 				width: 100%;
 				position: relative;
+				margin-bottom: 20px;
 
 				&::after {
 					content: '';
@@ -43,7 +44,6 @@
 					background: transparent;
 					border: none;
 					border: 1px solid $borderColor;
-					margin-bottom: 20px;
 					&:focus {
 						outline: none;
 					}
@@ -59,7 +59,6 @@
 					background: transparent;
 					border: 1px solid $borderColor;
 					padding: 10px;
-					margin-bottom: 20px;
 					&:focus {
 						outline: none;
 					}
@@ -80,6 +79,11 @@
 						background: $hoverColor;
 						color: #fff;
 					}
+				}
+				p.err {
+					font: 11px/1 $koFont;
+					color: red;
+					margin-top: 5px;
 				}
 			}
 		}

@@ -15,7 +15,10 @@ function Join() {
 		pwd2: '',
 		name: '',
 		email: '',
+		gender: false,
+		favorite: false,
 		comments: '',
+		edu: '',
 	};
 
 	const [Val, setVal] = useState(initVal);

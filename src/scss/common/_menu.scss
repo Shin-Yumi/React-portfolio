@@ -63,12 +63,14 @@
 							color: #ecece3;
 						}
 						.notion-icon {
+							display: block;
 							width: 20px;
 							height: 20px;
 							background: url('../../../public/img/notion-icon.svg') no-repeat center;
 							background-size: 20px !important;
 						}
 						.tistory-icon {
+							display: block;
 							width: 20px;
 							height: 20px;
 							background: url('../../../public/img/tistory-icon.svg') no-repeat center;
