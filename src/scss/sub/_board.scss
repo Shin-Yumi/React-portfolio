@@ -124,9 +124,8 @@ board scss 작업
 					.boardTit {
 						width: 20%;
 						text-align: left;
-						font-size: 24px;
-						font-weight: bold;
-						font-family: $titleFont;
+						font-size: 20px;
+						font-family: $koFont;
 						float: left;
 						white-space: nowrap;
 						overflow: hidden;
@@ -135,8 +134,9 @@ board scss 작업
 					.boardTxt {
 						width: 70%;
 						text-align: left;
-						font-size: 20px;
+						font-size: 18px;
 						float: left;
+						font-family: $koFont;
 						white-space: nowrap;
 						overflow: hidden;
 						text-overflow: ellipsis;
@@ -333,12 +333,12 @@ $mobile : 576px;
 						}
 						.boardTit {
 							width: 100%;
-							font-size: 18px;
+							font-size: 16px;
 						}
 						.boardTxt {
 							width: 100%;
 							margin-top: 10px;
-							font-size: 16px;
+							font-size: 14px;
 						}
 						.btnSet {
 							width: 100%;
