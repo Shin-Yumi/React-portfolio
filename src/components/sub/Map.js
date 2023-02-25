@@ -18,7 +18,7 @@ function Map() {
 		{
 			title: 'DDP',
 			latlng: new kakao.maps.LatLng(37.5665256, 127.0092219),
-			imgSrc: process.env.PUBLIC_URL + '/img/marker-red.png',
+			imgSrc: process.env.PUBLIC_URL + '/img/marker-black.png',
 			imgSize: new kakao.maps.Size(25, 35),
 			imgPos: { offset: new kakao.maps.Point(12, 69) },
 			//button: Move(false)
@@ -26,21 +26,21 @@ function Map() {
 		{
 			title: '경복궁',
 			latlng: new kakao.maps.LatLng(37.579617, 126.977041),
-			imgSrc: process.env.PUBLIC_URL + '/img/marker-red.png',
+			imgSrc: process.env.PUBLIC_URL + '/img/marker-black.png',
 			imgSize: new kakao.maps.Size(25, 35),
 			imgPos: { offset: new kakao.maps.Point(12, 69) },
 		},
 		{
 			title: '남산',
 			latlng: new kakao.maps.LatLng(37.5511694, 126.9882266),
-			imgSrc: process.env.PUBLIC_URL + '/img/marker-red.png',
+			imgSrc: process.env.PUBLIC_URL + '/img/marker-black.png',
 			imgSize: new kakao.maps.Size(25, 35),
 			imgPos: { offset: new kakao.maps.Point(12, 69) },
 		},
 		{
 			title: '반포한강공원',
 			latlng: new kakao.maps.LatLng(37.5103556, 126.9960308),
-			imgSrc: process.env.PUBLIC_URL + '/img/marker-red.png',
+			imgSrc: process.env.PUBLIC_URL + '/img/marker-black.png',
 			imgSize: new kakao.maps.Size(25, 35),
 			imgPos: { offset: new kakao.maps.Point(12, 69) },
 		},
