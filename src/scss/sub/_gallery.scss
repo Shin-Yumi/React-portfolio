@@ -268,8 +268,6 @@
 			}
 		}
 	}
-	
-
 }
 
 @keyframes wave {
@@ -304,21 +302,6 @@
 }
 
 @media screen and (max-width: $tablet) {
-	.youtube {
-		figure.pop {
-			padding: 7vh;
-			iframe {
-				height: 80%;
-			}
-			.btnClose {
-				position: absolute;
-				top: 20px;
-				right: 20px;
-				color: #fff;
-				cursor: pointer;
-			}
-		}
-	}
 	#flickr {
 		.wrap {
 			.list {
@@ -332,7 +315,6 @@
 }
 @media screen and (max-width: $mobile) {
 	.youtube {
-		
 		#youtube {
 			flex-direction: column;
 			.youtubeCont {
@@ -368,6 +350,18 @@
 				margin-left: 1%;
 			}
 		}
+		.sortBtn {
+			width: 100%;
+			text-align: auto;
+			display: flex;
+			align-items: center;
+			gap: 2%;
+			button {
+				width: 49%;
+				height: 40px;
+				font-size: 14px;
+			}
+		}
 		.wrap {
 			.list {
 				> .item {
@@ -376,7 +370,4 @@
 			}
 		}
 	}
-}
-@media screen and (max-width: $sMobile) {
-
 }
