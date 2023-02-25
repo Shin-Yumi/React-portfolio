@@ -1,7 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 function BoardMain() {
+	const board = useRef(null);
+
+	const typing = () => {
+		const textBox = board.current.querySelector('.boardTextArea');
+		const boardTop = board.current.offsetTop - 80;
+		const scroll = window.scrollY;
+		const base = -window.innerHeight / 3;
+
+		window.addEventListener("scroll", () => {
+			if (scroll >= boardTop + base) textBox.classList.add("on");
+			else textBox.classList.remove("on");
+		});
+	};
 	const getLocalData = () => {
 		const dummys = [
 			{ title: 'Hello3', content: 'Here comes description in detail.' },
@@ -19,8 +32,13 @@ function BoardMain() {
 	useEffect(() => {
 		localStorage.setItem('post', JSON.stringify(Posts));
 	}, [Posts]);
+
+	useEffect(() => {
+		typing();
+	}, [typing])
+
 	return (
-		<section className='boardCont myScroll'>
+		<section className='boardCont myScroll' ref={board}>
 			<div className='inner'>
 				<div className='boardWrap'>
 					<div className='boardMo'>
