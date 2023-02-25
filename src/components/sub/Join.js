@@ -1,5 +1,5 @@
 import Layout from '../common/Layout';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function Join() {
@@ -20,7 +20,7 @@ function Join() {
 
 	const [Val, setVal] = useState(initVal);
 	const [Err, setErr] = useState({});
-	const Submit = useRef(true);
+	const [Submit, setSubmit] = useState(false);
 
 	//인증 체크함수
 	const check = (value) => {
@@ -102,11 +102,11 @@ function Join() {
 
 	useEffect(() => {
 		const len = Object.keys(Err).length;
-		if (len === 0 && Submit.current) {
+		if (len === 0 && Submit) {
 			alert('모든 인증을 통과했습니다.');
 			history.push('/');
 		}
-	}, [Err, history]);
+	}, [Err]);
 
 	return (
 		<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption}>
@@ -349,11 +349,7 @@ function Join() {
 												button
 											</label>
 											<div className='joinInput'>
-												<input
-													type='submit'
-													value='submit'
-													onClick={() => (Submit.current = true)}
-												/>
+												<input type='submit' value='submit' onClick={() => setSubmit(true)} />
 											</div>
 										</div>
 									</li>

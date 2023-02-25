@@ -1,5 +1,5 @@
 import Layout from '../common/Layout';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 
 function Contact() {
@@ -10,6 +10,26 @@ function Contact() {
 		'If you are interested in our portfolio, please email me! Vogue와의 협업을 원하시면 메일을 보내주세요!';
 
 	const form = useRef();
+	// const [Err, setErr] = useState({});
+	// const [Submit, setSubmit] = useState(false);
+	// const [values, setValues] = useState({
+  //   title: "",
+  //   email: "",
+  //   message: "",
+  // });
+
+	// const handleChange = (e) => {
+	// 	const { name, value } = e.target;
+	// 	setValues({ ...values, [name]: value });
+	// };
+
+	// useEffect(() => {
+  //   if (Object.keys(Err).length === 0) {
+  //     if (Submit) {
+  //       setSubmit(true);
+  //     }
+  //   }
+  // }, [errors]);
 
 	const sendEmail = (e) => {
 		e.preventDefault();
