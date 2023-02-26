@@ -84,7 +84,7 @@ function Contact() {
 								name='name'
 								id='contactName'
 								type='text'
-								placeholder='name'
+								placeholder='이름을 입력하세요'
 								onChange={handleChange}
 							/>
 							<p className='err'>{Err.name}</p>
@@ -95,7 +95,7 @@ function Contact() {
 								name='phone'
 								id='contactPhone'
 								type='text'
-								placeholder='Phone-number'
+								placeholder='핸드폰 번호를 입력하세요'
 								onChange={handleChange}
 							/>
 							<p className='err'>{Err.phone}</p>
@@ -106,7 +106,7 @@ function Contact() {
 								name='email'
 								id='contactEmail'
 								type='email'
-								placeholder='Email'
+								placeholder='Email을 입력하세요'
 								onChange={handleChange}
 							/>
 							<p className='err'>{Err.email}</p>
@@ -118,7 +118,7 @@ function Contact() {
 								id='contactMsg'
 								cols='5'
 								rows='5'
-								placeholder='Your Message'
+								placeholder='Message를 입력하세요'
 								onChange={handleChange}
 							></textarea>
 							<p className='err'>{Err.message}</p>
