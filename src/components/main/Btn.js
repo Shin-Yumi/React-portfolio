@@ -7,7 +7,6 @@ function Btns({ setScrolled, setPos }) {
 	const btnRef = useRef(null);
 	const speed = useRef(500);
 
-	//세로위치값 갱신 함수
 	const getPos = useCallback(() => {
 		pos.current = [];
 		const secs = btnRef.current.parentElement.querySelectorAll('.myScroll');
@@ -21,7 +20,7 @@ function Btns({ setScrolled, setPos }) {
 		}
 
 		setPos(pos.current);
-	},[setPos]);
+	}, [setPos]);
 
 	//버튼 활성화 함수
 	const activation = useCallback(() => {
@@ -29,8 +28,7 @@ function Btns({ setScrolled, setPos }) {
 		const secs = btnRef.current.parentElement.querySelectorAll('.myScroll');
 		const scroll = window.scrollY;
 		const base = -window.innerHeight / 3;
-		//부모컴포넌트로부터 전달받은 setScrolled함수로
-		//현재 내부적으로 만들어지고 있는 scroll거리값을 부모 Scrolled state에 옮겨담음
+
 		setScrolled(scroll);
 
 		pos.current.forEach((pos, idx) => {
@@ -41,9 +39,8 @@ function Btns({ setScrolled, setPos }) {
 				secs[idx].classList.add('on');
 			}
 		});
-	},[setScrolled]);
+	}, [setScrolled]);
 
-	//처음 컴포넌트 마운트시 한번만 이벤트 연결
 	useEffect(() => {
 		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
 		getPos();

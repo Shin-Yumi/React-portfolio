@@ -1,4 +1,5 @@
 import Contents from './Contents';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 function AboutMain() {
@@ -38,4 +39,4 @@ function AboutMain() {
 	);
 }
 
-export default AboutMain;
+export default memo(AboutMain);

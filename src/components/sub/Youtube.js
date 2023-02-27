@@ -82,7 +82,6 @@ function Gallery() {
 				</div>
 			</Layout>
 			<Modal ref={open}>
-				{/* Youtube컴포넌트 첨 마운트시 Modal컴포넌트 자체는 동작되기 때문에 첫번째 랜더링 싸이클일떄 Vids[Index]값이 비어있으므로 에러 따라서 Optional Chaining으로 해당 객체값이 비어있을때는 id값을 읽지않고 값이 담겨 있을떄에만 실행 */}
 				<iframe
 					title={Vids[Index]?.id}
 					src={`https://www.youtube.com/embed/${Vids[Index]?.snippet.resourceId.videoId}`}

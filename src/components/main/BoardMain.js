@@ -1,20 +1,20 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback, memo } from 'react';
 import { Link } from 'react-router-dom';
 
 function BoardMain() {
 	const board = useRef(null);
 
-	const typing = () => {
+	const typing = useCallback(() => {
 		const textBox = board.current.querySelector('.boardTextArea');
 		const boardTop = board.current.offsetTop - 80;
 		const scroll = window.scrollY;
 		const base = -window.innerHeight / 3;
 
-		window.addEventListener("scroll", () => {
-			if (scroll >= boardTop + base) textBox.classList.add("on");
-			else textBox.classList.remove("on");
+		window.addEventListener('scroll', () => {
+			if (scroll >= boardTop + base) textBox.classList.add('on');
+			else textBox.classList.remove('on');
 		});
-	};
+	}, []);
 	const getLocalData = () => {
 		const dummys = [
 			{ title: 'Hello3', content: 'Here comes description in detail.' },
@@ -35,7 +35,7 @@ function BoardMain() {
 
 	useEffect(() => {
 		typing();
-	}, [typing])
+	}, [typing]);
 
 	return (
 		<section className='boardCont myScroll' ref={board}>
@@ -90,51 +90,6 @@ function BoardMain() {
 								</div>
 							);
 						})}
-						{/* <div className='tab'>
-							<input type='radio' name='acc' id='acc1' />
-							<label htmlFor='acc1'>
-								<h2>01</h2>
-								<h3>How do I Apply?</h3>
-							</label>
-							<div className='tabContents'>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium nobis sint
-									animi pariatur, porro asperiores reprehenderit, saepe reiciendis similique, fugiat
-									cupiditate explicabo minima est deleniti? Mollitia id inventore sapiente
-									accusantium!
-								</p>
-							</div>
-						</div>
-						<div className='tab'>
-							<input type='radio' name='acc' id='acc2' />
-							<label htmlFor='acc2'>
-								<h2>02</h2>
-								<h3>How do I Apply?</h3>
-							</label>
-							<div className='tabContents'>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium nobis sint
-									animi pariatur, porro asperiores reprehenderit, saepe reiciendis similique, fugiat
-									cupiditate explicabo minima est deleniti? Mollitia id inventore sapiente
-									accusantium!
-								</p>
-							</div>
-						</div>
-						<div className='tab'>
-							<input type='radio' name='acc' id='acc3' />
-							<label htmlFor='acc3'>
-								<h2>03</h2>
-								<h3>How do I Apply?</h3>
-							</label>
-							<div className='tabContents'>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium nobis sint
-									animi pariatur, porro asperiores reprehenderit, saepe reiciendis similique, fugiat
-									cupiditate explicabo minima est deleniti? Mollitia id inventore sapiente
-									accusantium!
-								</p>
-							</div>
-						</div> */}
 					</div>
 				</div>
 			</div>
@@ -142,4 +97,4 @@ function BoardMain() {
 	);
 }
 
-export default BoardMain;
+export default memo(BoardMain);

@@ -73,14 +73,13 @@ function Join() {
 		setVal({ ...Val, [name]: value });
 	};
 
-	//라디오버튼 체크시 Val state 업데이트 함수
+
 	const handleRadio = (e) => {
 		const { name } = e.target;
 		const isChecked = e.target.checked;
 		setVal({ ...Val, [name]: isChecked });
 	};
 
-	//체크박스 체크시 Val state 업데이트 함수
 	const handleCheck = (e) => {
 		const { name } = e.target;
 		let isChecked = false;
@@ -91,7 +90,6 @@ function Join() {
 		setVal({ ...Val, [name]: isChecked });
 	};
 
-	//select요소 선택시 Val state 업데이트 함수
 	const handleSelect = (e) => {
 		const { name } = e.target;
 		const selected = e.target.value;
@@ -109,7 +107,7 @@ function Join() {
 			alert('모든 인증을 통과했습니다.');
 			history.push('/');
 		}
-	}, [Err]);
+	}, [Err,history]);
 
 	return (
 		<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption}>

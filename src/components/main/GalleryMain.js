@@ -1,5 +1,6 @@
 import Contents from './Contents';
 import { Link } from 'react-router-dom';
+import { memo } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper';
@@ -131,4 +132,4 @@ function GallMain() {
 	);
 }
 
-export default GallMain;
+export default memo(GallMain);

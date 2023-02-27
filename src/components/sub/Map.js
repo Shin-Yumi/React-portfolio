@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Layout from '../common/Layout';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useMemo } from 'react';
 
 function Map() {
 	const name = 'about';
@@ -10,11 +10,22 @@ function Map() {
 	const sub02 = 'map';
 	const expCaption =
 		'차별화 된 기획과 크리에이티브한 비주얼로 사람들에게 영감을 주는 패션 매거진의 대명사 보그 코리아의 위치를 확인하세요';
-	const container = useRef(null);
+
 	const { kakao } = window;
-	const mapTypeControl = new kakao.maps.MapTypeControl();
-	const zoomControl = new kakao.maps.ZoomControl();
-	const markerPoints = [
+	const [Location, setLocation] = useState(null);
+	const [Index, setIndex] = useState(0);
+	const [Traffic, setTraffic] = useState(false);
+	const [Road, setRoad] = useState(false);
+
+	const container = useRef(null);
+	const markerPoints = useRef(null);
+	const option = useRef(null);
+	const mapInstance = useRef(null);
+
+	const mapTypeControl = useMemo(() => new kakao.maps.MapTypeControl(), [kakao]);
+	const zoomControl = useMemo(() => new kakao.maps.ZoomControl(), [kakao]);
+
+	markerPoints.current = [
 		{
 			title: 'DDP',
 			latlng: new kakao.maps.LatLng(37.5665256, 127.0092219),
@@ -45,68 +56,67 @@ function Map() {
 			imgPos: { offset: new kakao.maps.Point(12, 69) },
 		},
 	];
-	const [Location, setLocation] = useState(null);
-	const [Index, setIndex] = useState(0);
-	const [Traffic, setTraffic] = useState(false);
-	const [Road, setRoad] = useState(false);
 
-	const options = {
-		center: markerPoints[Index].latlng,
+	option.current = {
+		center: markerPoints.current[Index].latlng,
 		level: 3,
 	};
 
 	useEffect(() => {
 		container.current.innerHtml = '';
-		const mapInstance = new kakao.maps.Map(container.current, options);
-		setLocation(mapInstance);
+		mapInstance.current = new kakao.maps.Map(container.current, option.current);
+		setLocation(mapInstance.current);
 
 		//마커포인트 변경
-		markerPoints.forEach((el) => {
+		markerPoints.current.forEach((el) => {
 			new kakao.maps.Marker({
-				map: mapInstance,
+				map: mapInstance.current,
 				position: el.latlng,
 				image: new kakao.maps.MarkerImage(el.imgSrc, el.imgSize, el.imgPos),
 			});
-			
 		});
 
 		//지도 중심좌표 부드럽게 이동
-		mapInstance.panTo(options.center);
+		mapInstance.current.panTo(option.current.center);
 
 		// 줌아웃, 컨트롤
-		mapInstance.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-		mapInstance.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+		mapInstance.current.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+		mapInstance.current.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 		const setCenter = () => {
-			mapInstance.setCenter(options.center);
+			mapInstance.current.setCenter(option.current.center);
 		};
 
-		mapInstance.setZoomable(false);
+		mapInstance.current.setZoomable(false);
 
 		//브라우저 리사이즈 될떄마다 마커 가운데 위치시키는 함수 호출
 		window.addEventListener('resize', setCenter);
 
-		
-
-		//해당 컴포넌트 unmount시 setCenter함수 이벤트 제거
 		return () => {
 			window.removeEventListener('resize', setCenter);
 		};
-	}, [Index]);
+	}, [Index, kakao, mapTypeControl, zoomControl]);
 
 	useEffect(() => {
 		Traffic
 			? Location?.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
 			: Location?.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
-	}, [Traffic]);
+	}, [Traffic, kakao, Location]);
 
 	useEffect(() => {
 		Road
 			? Location?.addOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW)
 			: Location?.removeOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW);
-	}, [Road]);
+	}, [Road, kakao, Location]);
 	return (
-		<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption} sub01={sub01} sub02={sub02}>
+		<Layout
+			name={name}
+			title={title}
+			subTitle={subTitle}
+			expCaption={expCaption}
+			sub01={sub01}
+			sub02={sub02}
+		>
 			<article id='location'>
 				<div id='map' ref={container}></div>
 				<div className='mapTxt'>
@@ -169,7 +179,7 @@ function Map() {
 							<div className='listBox'>
 								<h3 className='listTitle'>다른 명소 더 보기</h3>
 								<ul className='favLocation'>
-									{markerPoints.map((el, idx) => {
+									{markerPoints.current.map((el, idx) => {
 										return (
 											<li
 												key={idx}

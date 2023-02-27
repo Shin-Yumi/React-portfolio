@@ -34,7 +34,6 @@ function Flickr() {
 		const key = 'aa8b086c0a30b1699395af33dd844533';
 		const per_page = 30;
 
-		//api
 		let url = '';
 
 		if (opt.type === 'interest')
@@ -45,7 +44,6 @@ function Flickr() {
 			url = `${base}&method=${method_user}&api_key=${key}&per_page=${per_page}&user_id=${opt.user}`;
 
 		const result = await axios.get(url);
-		//flickr로 반환한 데이터 배열값이 0개일 대 (결과이미지가 없을 때) 기존 items state를 변경하지않고 이전 갤러리 홤녀을 다시 보이게 하기
 		if (result.data.photos.photo.length === 0) {
 			frame.current.classList.remove('on');
 			setLoading(true);
@@ -89,8 +87,6 @@ function Flickr() {
 
 	useEffect(() => {
 		getFlickr({ type: 'interest' });
-		//getFlickr({ type: 'search', tags: 'sea' });
-		//getFlickr({ type: 'user', user: '197649413@N03' });
 	}, []);
 	return (
 		<>
