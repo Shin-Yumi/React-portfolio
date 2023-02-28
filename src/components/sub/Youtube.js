@@ -1,8 +1,8 @@
 import Layout from '../common/Layout';
 import Modal from '../common/Modal';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 
 function Gallery() {
 	const name = 'Gallery';
@@ -13,20 +13,11 @@ function Gallery() {
 	const expCaption = 'Vogue의 새로운 video를 Youtube에서 만나보세요';
 	const frame = useRef(null);
 	const open = useRef(null);
-	const [Vids, setVids] = useState([]);
+	const Vids = useSelector((store) => store.youtubeReducer.youtube);
 	const [Index, setIndex] = useState(0);
 	const [Loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		const key = 'AIzaSyA6RtwwaDd7lctAx_sccqFQtFnSErCl-jc';
-		const playlistId = 'PLzCu2b6-wIU-bhiFEskx9kppoLyJS-l5G';
-		const num = 5;
-		const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=${key}&playlistId=${playlistId}&maxResults=${num}`;
-
-		axios.get(url).then((json) => {
-			setVids(json.data.items);
-		});
-
 		setTimeout(() => {
 			setLoading(false);
 			frame.current.classList.add('on');
