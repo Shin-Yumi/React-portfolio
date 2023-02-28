@@ -14,7 +14,7 @@ function BoardMain() {
 			if (scroll >= boardTop + base) textBox.classList.add('on');
 			else textBox.classList.remove('on');
 		});
-	}, [board]);
+	},[]);
 
 	const getLocalData = () => {
 		const dummys = [

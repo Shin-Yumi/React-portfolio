@@ -9,6 +9,7 @@
 
 import { takeLatest, put, call, fork, all } from 'redux-saga/effects';
 import { fetchYoutube } from './api';
+import { fetchFlickr } from './api';
 import * as types from './actionType';
 
 //1- 컴포넌트로 들어온 YOUTUBE_START라는 액션요청을 리듀서 함수를 통해서 전달 받으면 유튜브 호출함수를 실행해주는 함수
@@ -28,7 +29,19 @@ function* returnYoutube() {
 	}
 }
 
+function* callFlickr() {
+	yield takeLatest(types.FLICKR.start, returnFlickr);
+}
+function* returnFlickr(action) {
+	try {
+		const response = yield call(fetchFlickr, action.Opt);
+		yield put({ type: types.FLICKR.success, payload: response.data.photos.photo });
+	} catch (err) {
+		yield put({ type: types.FLICKR.fail, payload: err });
+	}
+}
+
 //3- 위의 함수들을 호출해주는 함수를 만든뒤 최종적으로 export
 export default function* rootSaga() {
-	yield all([fork(callYoutube)]);
+	yield all([fork(callYoutube), fork(callFlickr)]);
 }
