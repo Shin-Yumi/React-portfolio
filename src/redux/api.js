@@ -8,5 +8,3 @@ export const fetchYoutube = async () => {
 
 	return await axios.get(url);
 };
-
-//youtube api로부터 비동기 데이터를 요청해서 반환하는 순수함수 형태(DOM 제어, 리액트
