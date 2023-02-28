@@ -3,7 +3,7 @@ import Modal from '../common/Modal';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function Youtube() {
 	const name = 'Gallery';
@@ -12,30 +12,20 @@ function Youtube() {
 	const sub01 = 'youtube';
 	const sub02 = 'flickr';
 	const expCaption = 'Vogue의 새로운 video를 Youtube에서 만나보세요';
-	const dispatch = useDispatch();
 	const Vids = useSelector((store) => store.youtubeReducer.youtube);
 	console.log(Vids);
-	
+
 	const frame = useRef(null);
 	const open = useRef(null);
 	const [Index, setIndex] = useState(0);
 	const [Loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		const key = 'AIzaSyA6RtwwaDd7lctAx_sccqFQtFnSErCl-jc';
-		const playlistId = 'PLzCu2b6-wIU-bhiFEskx9kppoLyJS-l5G';
-		const num = 10;
-		const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=${key}&playlistId=${playlistId}&maxResults=${num}`;
-
-		axios.get(url).then((json) => {
-			dispatch({ type: 'SET_YOUTUBE', payload: json.data.items });
-		});
-
 		setTimeout(() => {
 			setLoading(false);
 			frame.current.classList.add('on');
 		}, 500);
-	}, [dispatch]);
+	}, []);
 
 	return (
 		<>

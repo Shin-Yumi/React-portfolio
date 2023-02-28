@@ -1,5 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
-import { useRef } from 'react';
+import { useRef, useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
 //common
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
@@ -20,7 +22,23 @@ import Contact from './components/sub/Contact';
 import './scss/style.scss';
 
 function App() {
+	const dispatch = useDispatch();
 	const menu = useRef(null);
+
+	const youtubeList = useCallback(async () => {
+		const key = 'AIzaSyA6RtwwaDd7lctAx_sccqFQtFnSErCl-jc';
+		const playlistId = 'PLzCu2b6-wIU-bhiFEskx9kppoLyJS-l5G';
+		const num = 10;
+		const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=${key}&playlistId=${playlistId}&maxResults=${num}`;
+
+		const result = await axios.get(url);
+
+		dispatch({ type: 'SET_YOUTUBE', payload: result.data.items });
+	}, [dispatch]);
+
+	useEffect(() => {
+		youtubeList();
+	}, [youtubeList]);
 
 	return (
 		<>

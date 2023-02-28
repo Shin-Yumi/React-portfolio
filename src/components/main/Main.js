@@ -13,7 +13,7 @@ function Main(props) {
 			<div className='wrap'>
 				<VisualMain />
 				<AboutMain Scrolled={Scrolled} Pos={Pos[1]} />
-				<GalleryMain />
+				<GalleryMain/>
 				<BoardMain />
 				<Btns setScrolled={setScrolled} setPos={setPos} />
 			</div>

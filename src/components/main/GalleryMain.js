@@ -1,6 +1,6 @@
 import Contents from './Contents';
 import { Link } from 'react-router-dom';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,6 +14,8 @@ import 'swiper/css/pagination';
 function GallMain() {
 	const { youtube } = useSelector((store) => store.youtubeReducer);
 	console.log(youtube);
+
+	useEffect(() => {}, [youtube]);
 	return (
 		<Contents name='galleryCont'>
 			<div className='galleryTextCont'>
@@ -67,7 +69,7 @@ function GallMain() {
 									</div>
 									<div className='galleryText'>
 										<p className='galleryNum'>0{idx + 1} /</p>
-										<p className='galleryInfo'>youtube0{idx +1}</p>
+										<p className='galleryInfo'>youtube0{idx + 1}</p>
 									</div>
 								</div>
 							</SwiperSlide>
