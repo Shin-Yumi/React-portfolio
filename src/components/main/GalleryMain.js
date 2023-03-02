@@ -1,6 +1,7 @@
 import Contents from './Contents';
 import { Link } from 'react-router-dom';
 import { memo } from 'react';
+import { useSelector } from 'react-redux';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper';
@@ -11,6 +12,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 function GallMain() {
+	const Vids = useSelector((store) => store.youtube.data);
+	console.log(Vids);
+	
 	return (
 		<Contents name='galleryCont'>
 			<div className='galleryTextCont'>
@@ -51,81 +55,26 @@ function GallMain() {
 					modules={[Autoplay, Navigation]}
 					className='gallerySlideCont mySwiper'
 				>
-					<SwiperSlide>
-							<div className='listCont'>
-								<h3 className='galleryTitle'>youtube title</h3>
-								<div className='galleryImg'>
-									<figure className='galleryFigure'>
-										<img src={process.env.PUBLIC_URL + '/img/dummy-yt01.jpg'} alt='' />
-									</figure>
-								</div>
-								<div className='galleryText'>
-									<p className='galleryNum'>01 /</p>
-									<p className='galleryInfo'>youtube01</p>
-								</div>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide>
-							<div className='listCont'>
-								<h3 className='galleryTitle'>youtube title</h3>
-								<div className='galleryImg'>
-									<figure className='galleryFigure'>
-										<img src={process.env.PUBLIC_URL + '/img/dummy-yt02.jpg'} alt='' />
-									</figure>
-								</div>
-								<div className='galleryText'>
-									<p className='galleryNum'>01 /</p>
-									<p className='galleryInfo'>youtube01</p>
-								</div>
-							</div>
-						</SwiperSlide>
-
-					{/* <div className='gallerySlide'>
-						<ul className='swiper-wrapper'>
-							<li className='swiper-slide'>
+					{Vids.map((vid, idx) => {
+						if (idx >= 4) return null;
+						const date = vid.snippet.publishedAt;
+						return (
+							<SwiperSlide key={vid.id}>
 								<div className='listCont'>
-									<h3 className='galleryTitle'>gallery title</h3>
+									<h3 className='galleryTitle'>{date.split('T')[0]}</h3>
 									<div className='galleryImg'>
 										<figure className='galleryFigure'>
-											<img src={process.env.PUBLIC_URL + '/img/dummy-gallery01.jpg'} alt='' />
+											<img src={vid.snippet.thumbnails.high.url} alt={vid.snippet.title} />
 										</figure>
 									</div>
 									<div className='galleryText'>
-										<p className='galleryNum'>01 /</p>
-										<p className='galleryInfo'>gallery01</p>
+										<p className='galleryNum'>0{idx + 1} /</p>
+										<p className='galleryInfo'>{vid.snippet.title}</p>
 									</div>
 								</div>
-							</li>
-							<li className='swiper-slide'>
-								<div className='listCont'>
-									<h3 className='galleryTitle'>gallery title</h3>
-									<div className='galleryImg'>
-										<figure className='galleryFigure'>
-											<img src={process.env.PUBLIC_URL + '/img/dummy-gallery02.jpg'} alt='' />
-										</figure>
-									</div>
-									<div className='galleryText'>
-										<p className='galleryNum'>02 /</p>
-										<p className='galleryInfo'>gallery02</p>
-									</div>
-								</div>
-							</li>
-							<li className='swiper-slide'>
-								<div className='listCont'>
-									<h3 className='galleryTitle'>gallery title</h3>
-									<div className='galleryImg'>
-										<figure className='galleryFigure'>
-											<img src={process.env.PUBLIC_URL + '/img/dummy-gallery03.jpg'} alt='' />
-										</figure>
-									</div>
-									<div className='galleryText'>
-										<p className='galleryNum'>03 /</p>
-										<p className='galleryInfo'>gallery03</p>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div> */}
+							</SwiperSlide>
+						);
+					})}
 				</Swiper>
 			</div>
 		</Contents>

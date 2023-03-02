@@ -15,12 +15,22 @@ import Flickr from './components/sub/Flickr';
 import Board from './components/sub/Board';
 import Join from './components/sub/Join';
 import Contact from './components/sub/Contact';
+import { fetchYoutube } from './redux/youtubeSlice';
+import { fetchFlickr } from './redux/flickrSlice';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 //sass
 import './scss/style.scss';
 
 function App() {
 	const menu = useRef(null);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchYoutube());
+		dispatch(fetchFlickr());
+	}, [dispatch]);
 
 	return (
 		<>

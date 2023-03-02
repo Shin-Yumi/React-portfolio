@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Layout from '../common/Layout';
 import Modal from '../common/Modal';
@@ -17,60 +17,43 @@ function Flickr() {
 	const frame = useRef(null);
 	const open = useRef(null);
 	const input = useRef(null);
-	const [Imgs, setImgs] = useState([]);
+	const Imgs = useSelector((store) => store.flickrReducer.flickr);
+	const [Opt, setOpt] = useState({ type: 'user', user: '164021883@N04' });
+	//const [Imgs, setImgs] = useState([]);
 	const [Index, setIndex] = useState(0);
 	const [Loading, setLoading] = useState(true);
 
-	const getFlickr = async (opt) => {
-		// api base url
-		const base = 'https://www.flickr.com/services/rest/?format=json&nojsoncallback=1';
+	// const getFlickr = async (opt) => {
+		
 
-		//api method
-		const method_interest = 'flickr.interestingness.getList';
-		const method_search = 'flickr.photos.search';
-		const method_user = 'flickr.people.getPhotos';
 
-		//api key
-		const key = 'aa8b086c0a30b1699395af33dd844533';
-		const per_page = 30;
+	// 	if (result.data.photos.photo.length === 0) {
+	// 		frame.current.classList.remove('on');
+	// 		setLoading(true);
+	// 		return alert('해당 검색어의 결과 이미지가 없습니다.');
+	// 	}
+	// 	setImgs(result.data.photos.photo);
 
-		let url = '';
-
-		if (opt.type === 'interest')
-			url = `${base}&api_key=${key}&method=${method_interest}&per_page=${per_page}`;
-		if (opt.type === 'search')
-			url = `${base}&api_key=${key}&method=${method_search}&per_page=${per_page}&tags=${opt.tags}`;
-		if (opt.type === 'user')
-			url = `${base}&method=${method_user}&api_key=${key}&per_page=${per_page}&user_id=${opt.user}`;
-
-		const result = await axios.get(url);
-		if (result.data.photos.photo.length === 0) {
-			frame.current.classList.remove('on');
-			setLoading(true);
-			return alert('해당 검색어의 결과 이미지가 없습니다.');
-		}
-		setImgs(result.data.photos.photo);
-
-		setTimeout(() => {
-			setLoading(false);
-			frame.current.classList.add('on');
-		}, 500);
-	};
+	// 	setTimeout(() => {
+	// 		setLoading(false);
+	// 		frame.current.classList.add('on');
+	// 	}, 500);
+	// };
 
 	const showInterest = () => {
 		frame.current.classList.remove('on');
 		setLoading(true);
-		getFlickr({ type: 'interest' });
+		setOpt({ type: 'interest' });
 	};
 	const showMine = () => {
 		frame.current.classList.remove('on');
 		setLoading(true);
-		getFlickr({ type: 'user', user: '197649413@N03' });
+		setOpt({ type: 'user', user: '197649413@N03' });
 	};
 	const showUser = (e) => {
 		frame.current.classList.remove('on');
 		setLoading(true);
-		getFlickr({ type: 'user', user: e.target.innerText });
+		setOpt({ type: 'user', user: e.target.innerText });
 	};
 	const showSearch = () => {
 		const result = input.current.value.trim();
@@ -78,7 +61,7 @@ function Flickr() {
 		input.current.value = '';
 		frame.current.classList.remove('on');
 		setLoading(true);
-		getFlickr({ type: 'search', tags: result });
+		setOpt({ type: 'search', tags: result });
 	};
 
 	let handleKeyUp = (e) => {
@@ -86,8 +69,11 @@ function Flickr() {
 	};
 
 	useEffect(() => {
-		getFlickr({ type: 'interest' });
-	}, []);
+		setTimeout(() => {
+			frame.current.classList.add('on');
+			setLoading(false);
+		}, 500);
+	}, [Imgs]);
 	return (
 		<>
 			<Layout
