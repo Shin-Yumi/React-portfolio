@@ -25,7 +25,8 @@ export const fetchFlickr = createAsyncThunk('flickr/requestFlickr', async (opt) 
     url = `${base}&method=${method_user}&api_key=${key}&per_page=${per_page}&user_id=${opt.user}`;
 
 	const response = await axios.get(url);
-	return response.data.items;
+	
+	return response.data.photos.photo;
 });
 
 const flickrSlice = createSlice({

@@ -1,6 +1,7 @@
 import Contents from './Contents';
+import Modal from '../common/Modal';
 import { Link } from 'react-router-dom';
-import { memo } from 'react';
+import { memo, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,7 +15,11 @@ import 'swiper/css/pagination';
 function GallMain() {
 	const Vids = useSelector((store) => store.youtube.data);
 	console.log(Vids);
-	
+	const Imgs = useSelector((store) => store.flickr.data);
+	console.log(Imgs);
+	const open = useRef(null);
+	const [Index, setIndex] = useState(0);
+
 	return (
 		<Contents name='galleryCont'>
 			<div className='galleryTextCont'>
@@ -59,7 +64,13 @@ function GallMain() {
 						if (idx >= 4) return null;
 						const date = vid.snippet.publishedAt;
 						return (
-							<SwiperSlide key={vid.id}>
+							<SwiperSlide
+								key={vid.id}
+								onClick={() => {
+									setIndex(idx);
+									open.current.open();
+								}}
+							>
 								<div className='listCont'>
 									<h3 className='galleryTitle'>{date.split('T')[0]}</h3>
 									<div className='galleryImg'>
@@ -75,6 +86,12 @@ function GallMain() {
 							</SwiperSlide>
 						);
 					})}
+					<Modal ref={open}>
+						<iframe
+							title={Vids[Index]?.id}
+							src={`https://www.youtube.com/embed/${Vids[Index]?.snippet.resourceId.videoId}`}
+						></iframe>
+					</Modal>
 				</Swiper>
 			</div>
 		</Contents>

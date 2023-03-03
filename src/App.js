@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
-import { useRef } from 'react';
+
 //common
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
@@ -24,17 +24,16 @@ import { useDispatch } from 'react-redux';
 import './scss/style.scss';
 
 function App() {
-	const menu = useRef(null);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(fetchYoutube());
-		dispatch(fetchFlickr());
+		dispatch(fetchFlickr({ type: 'interest'}));
 	}, [dispatch]);
 
 	return (
 		<>
-			<Header menu={menu} />
+			<Header/>
 			<Route exact path='/' component={Main} />
 
 			<Switch>
@@ -54,7 +53,7 @@ function App() {
 			<Route path='/contact' component={Contact} />
 
 			<Footer />
-			<Menu ref={menu} />
+			<Menu />
 		</>
 	);
 }

@@ -1,31 +1,30 @@
-import { forwardRef, useImperativeHandle, useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { close } from '../../redux/menuSlice';
 
-const Menu = forwardRef((props, ref) => {
-	const [Open, setOpen] = useState(false);
-
-	useImperativeHandle(ref, () => {
-		return { setToggle: () => setOpen(!Open) };
-	});
+function Menu() {
+	const dispatch = useDispatch();
+	const menu = useSelector((store) => store.menu.open);
 
 	useEffect(() => {
 		window.addEventListener('resize', () => {
-			if (window.innerWidth >= 778) setOpen(false);
+			if (window.innerWidth >= 778) dispatch(close());
 		});
 	});
 
 	return (
 		<AnimatePresence>
-			{Open && (
+			{menu && (
 				<motion.nav
 					id='menuMo'
 					initial={{ x: -270, opacity: 0 }}
 					animate={{ x: 0, opacity: 1, transition: { duration: 0.3 } }}
 					exit={{ x: -270, opacity: 0 }}
-					onClick={() => setOpen(false)}
+					onClick={() => dispatch(close())}
 				>
 					<div className='inner'>
 						<div className='mobileMenu'>
@@ -94,6 +93,6 @@ const Menu = forwardRef((props, ref) => {
 			)}
 		</AnimatePresence>
 	);
-});
+}
 
 export default Menu;

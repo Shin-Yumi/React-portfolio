@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchFlickr } from '../../redux/flickrSlice';
 import { Link } from 'react-router-dom';
 import Layout from '../common/Layout';
 import Modal from '../common/Modal';
 import Masonry from 'react-masonry-component';
-
 
 function Flickr() {
 	const name = 'Gallery';
@@ -14,46 +14,30 @@ function Flickr() {
 	const sub02 = 'flickr';
 	const expCaption = 'Vogue의 새로운 화보와 잡지를 flickr에서 만나보세요';
 
+	const dispatch = useDispatch();
+	const init = useRef(true);
 	const frame = useRef(null);
 	const open = useRef(null);
 	const input = useRef(null);
-	const Imgs = useSelector((store) => store.flickrReducer.flickr);
-	const [Opt, setOpt] = useState({ type: 'user', user: '164021883@N04' });
-	//const [Imgs, setImgs] = useState([]);
+
+	const Imgs = useSelector((store) => store.flickr.data);
 	const [Index, setIndex] = useState(0);
 	const [Loading, setLoading] = useState(true);
-
-	// const getFlickr = async (opt) => {
-		
-
-
-	// 	if (result.data.photos.photo.length === 0) {
-	// 		frame.current.classList.remove('on');
-	// 		setLoading(true);
-	// 		return alert('해당 검색어의 결과 이미지가 없습니다.');
-	// 	}
-	// 	setImgs(result.data.photos.photo);
-
-	// 	setTimeout(() => {
-	// 		setLoading(false);
-	// 		frame.current.classList.add('on');
-	// 	}, 500);
-	// };
 
 	const showInterest = () => {
 		frame.current.classList.remove('on');
 		setLoading(true);
-		setOpt({ type: 'interest' });
+		dispatch(fetchFlickr({ type: 'interest' }));
 	};
 	const showMine = () => {
 		frame.current.classList.remove('on');
 		setLoading(true);
-		setOpt({ type: 'user', user: '197649413@N03' });
+		dispatch(fetchFlickr({ type: 'user', user: '197649413@N03' }));
 	};
 	const showUser = (e) => {
 		frame.current.classList.remove('on');
 		setLoading(true);
-		setOpt({ type: 'user', user: e.target.innerText });
+		dispatch(fetchFlickr({ type: 'user', user: e.target.innerText }));
 	};
 	const showSearch = () => {
 		const result = input.current.value.trim();
@@ -61,13 +45,22 @@ function Flickr() {
 		input.current.value = '';
 		frame.current.classList.remove('on');
 		setLoading(true);
-		setOpt({ type: 'search', tags: result });
+		dispatch(fetchFlickr({ type: 'search', tags: result }));
+		init.current = false;
 	};
 
 	let handleKeyUp = (e) => {
 		e.key === 'Enter' && showSearch();
 	};
 
+	useEffect(() => {
+		if (Imgs.length === 0 && !init.current) {
+			dispatch(fetchFlickr({ type: 'interest' }));
+			frame.current.classList.remove('on');
+			setLoading(true);
+			return alert('해당 검색어의 결과 이미지가 없습니다.');
+		}
+	}, [Imgs, dispatch]);
 	useEffect(() => {
 		setTimeout(() => {
 			frame.current.classList.add('on');

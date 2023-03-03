@@ -1,7 +1,9 @@
+import { useDispatch } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
-
+import { toggle } from '../../redux/menuSlice';
 
 function Header(props) {
+	const dispatch = useDispatch();
 	const active = { color: '#9DA592' };
 
 	return (
@@ -50,14 +52,13 @@ function Header(props) {
 						className='hamMenu'
 						onClick={(e) => {
 							e.preventDefault();
-							props.menu.current.setToggle();
+							dispatch(toggle());
 						}}
 					>
 						<span>메뉴호출</span>
 					</Link>
 				</div>
 			</header>
-			
 		</>
 	);
 }
