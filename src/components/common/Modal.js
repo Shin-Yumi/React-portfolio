@@ -25,7 +25,7 @@ const Modal = forwardRef((props, ref) => {
 					<span className='close' onClick={() => setOpen(false)}>
 						Close
 					</span>
-				</motion.aside>
+				</motion.aside> 
 			)}
 		</AnimatePresence>
 	);

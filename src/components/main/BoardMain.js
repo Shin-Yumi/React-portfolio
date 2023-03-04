@@ -1,20 +1,8 @@
-import { useState, useEffect, useRef, useCallback, memo } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
 import { Link } from 'react-router-dom';
 
 function BoardMain() {
 	const board = useRef(null);
-
-	const typing = useCallback(() => {
-		const textBox = board.current.querySelector('.boardTextArea');
-		const boardTop = board.current.offsetTop - 80;
-		const scroll = window.scrollY;
-		const base = -window.innerHeight / 3;
-
-		window.addEventListener('scroll', () => {
-			if (scroll >= boardTop + base) textBox.classList.add('on');
-			else textBox.classList.remove('on');
-		});
-	}, [board]);
 
 	const getLocalData = () => {
 		const dummys = [
@@ -35,8 +23,16 @@ function BoardMain() {
 	}, [Posts]);
 
 	useEffect(() => {
-		typing();
-	}, [typing]);
+		const textBox = board.current.querySelector('.boardTextArea');
+		const boardTop = board.current.offsetTop - 80;
+		const scroll = window.scrollY;
+		const base = -window.innerHeight / 3;
+
+		window.addEventListener('scroll', () => {
+			if (scroll >= boardTop + base) textBox.classList.add('on');
+			else textBox.classList.remove('on');
+		});
+	}, []);
 
 	return (
 		<section className='boardCont myScroll' ref={board}>
