@@ -42,15 +42,7 @@ function BoardMain() {
 						<h1 className='contentsTitle'>Board</h1>
 						<div className='boardMoBtn'>
 							<Link className='boarLink' to='/board'>
-								<span className='theArrow left'>
-									<span className='shaft'></span>
-								</span>
-								<span className='linkText'>
-									<span className='text'> view </span>
-									<span className='theArrow right'>
-										<span className='shaft'></span>
-									</span>
-								</span>
+								view
 							</Link>
 						</div>
 					</div>
