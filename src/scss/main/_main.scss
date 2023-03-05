@@ -789,6 +789,7 @@
 				}
 			}
 			.boardCont {
+				height: calc(100vh - 60px);
 				.inner {
 					.boardWrap {
 						.contentsTitle {
@@ -811,9 +812,6 @@
 					.visualImgBox {
 						width: 100%;
 						height: 100%;
-					}
-					.visualImg {
-						background-image: url(../../../public/img/mobile-main.jpeg);
 					}
 				}
 
