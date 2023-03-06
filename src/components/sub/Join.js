@@ -73,7 +73,6 @@ function Join() {
 		setVal({ ...Val, [name]: value });
 	};
 
-
 	const handleRadio = (e) => {
 		const { name } = e.target;
 		const isChecked = e.target.checked;
@@ -107,7 +106,7 @@ function Join() {
 			alert('모든 인증을 통과했습니다.');
 			history.push('/');
 		}
-	}, [Err,history]);
+	}, [Err, history]);
 
 	return (
 		<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption}>
@@ -120,18 +119,26 @@ function Join() {
 								<ul className='joinListWrap'>
 									<li className='joinList'>
 										<div className='joinBox'>
-											<label className='joinTitle' htmlFor='userid'>
-												User ID
-											</label>
-											<div className='joinInput'>
-												<input
-													type='text'
-													name='userid'
-													id='userid'
-													placeholder='아이디를 입력하세요.'
-													onChange={handleChange}
-												/>
-												<p className='err'>{Err.userid}</p>
+											<div className='joinConBox'>
+												<div className='joinTitle'>
+													<label htmlFor='userid'>
+														User ID
+													</label>
+												</div>
+												<div className='joinInput'></div>
+											</div>
+											<div className='joinConBox'>
+												<div className='joinTitle'></div>
+												<div className='joinInput'>
+													<input
+														type='text'
+														name='userid'
+														id='userid'
+														placeholder='아이디를 입력하세요.'
+														onChange={handleChange}
+													/>
+													<p className='err'>{Err.userid}</p>
+												</div>
 											</div>
 										</div>
 									</li>
@@ -350,7 +357,11 @@ function Join() {
 												button
 											</label>
 											<div className='joinInput'>
-											<input type='submit' value='submit' onClick={() => (Submit.current = true)} />
+												<input
+													type='submit'
+													value='submit'
+													onClick={() => (Submit.current = true)}
+												/>
 											</div>
 										</div>
 									</li>
