@@ -28,7 +28,7 @@ function App() {
 	useEffect(() => {
 		dispatch({ type: types.YOUTUBE.start });
 		//초기 데이터 호출시 내 갤러리 opt값을 전달하기 위해서 다음과 같이 액션객체 전달
-		dispatch({ type: types.FLICKR.start, Opt: { type: 'user', user: '164021883@N04' } });
+		dispatch({ type: types.FLICKR.start, Opt: { type: 'user', user: '197649413@N03' } });
 	}, [dispatch]);
 
 	return (

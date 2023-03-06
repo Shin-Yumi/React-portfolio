@@ -1,10 +1,10 @@
-import Contents from './Contents';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 function AboutMain() {
 	return (
-		<Contents name='aboutCont'>
+		<section className={`contents aboutCont myScroll`}>
+			<div className='inner'>
 			<article className='contentsHalf aboutImgFull'>
 				<div className='aboutImg'>
 					<figure className='aboutFigure'>
@@ -35,7 +35,8 @@ function AboutMain() {
 					</div>
 				</div>
 			</article>
-		</Contents>
+			</div>
+		</section>
 	);
 }
 
