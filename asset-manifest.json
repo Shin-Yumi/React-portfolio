@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/React-portfolio/static/css/main.b6c43d6f.css",
-    "main.js": "/React-portfolio/static/js/main.8c1ad3f9.js",
-    "static/media/contact.jpg": "/React-portfolio/static/media/contact.67d6b2cb08f0b24e33f9.jpg",
-    "static/media/board-image.jpg": "/React-portfolio/static/media/board-image.711a38c8440c7dcf97b6.jpg",
-    "static/media/main.jpg": "/React-portfolio/static/media/main.a236b3ac30e15150350c.jpg",
+    "main.css": "/React-portfolio/static/css/main.eb507852.css",
+    "main.js": "/React-portfolio/static/js/main.ca07189b.js",
+    "static/media/dummy-gallery01.jpg": "/React-portfolio/static/media/dummy-gallery01.81e079e3c03c99f3759f.jpg",
+    "static/media/board-image.jpg": "/React-portfolio/static/media/board-image.ee3a3fd76d6822362651.jpg",
+    "static/media/main-dummy.jpg": "/React-portfolio/static/media/main-dummy.c5826909edaf0da42ea6.jpg",
     "static/media/notion-icon.svg": "/React-portfolio/static/media/notion-icon.6ba19e9a29ec45af1d4e.svg",
     "index.html": "/React-portfolio/index.html",
     "static/media/tistory-icon.svg": "/React-portfolio/static/media/tistory-icon.4edbffa3d7b349d1d618.svg",
-    "main.b6c43d6f.css.map": "/React-portfolio/static/css/main.b6c43d6f.css.map",
-    "main.8c1ad3f9.js.map": "/React-portfolio/static/js/main.8c1ad3f9.js.map"
+    "main.eb507852.css.map": "/React-portfolio/static/css/main.eb507852.css.map",
+    "main.ca07189b.js.map": "/React-portfolio/static/js/main.ca07189b.js.map"
   },
   "entrypoints": [
-    "static/css/main.b6c43d6f.css",
-    "static/js/main.8c1ad3f9.js"
+    "static/css/main.eb507852.css",
+    "static/js/main.ca07189b.js"
   ]
 }
