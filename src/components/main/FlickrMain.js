@@ -35,11 +35,17 @@ function FlickrMain() {
 							</div>
 						);
 					})}
+					<Modal ref={open}>
+						<img
+							src={`https://live.staticflickr.com/${Items[Index]?.server}/${Items[Index]?.id}_${Items[Index]?.secret}_b.jpg`}
+							alt={Items[Index]?.title}
+						/>
+					</Modal>
 				</article>
 				<article className='contentsHalf flickrText'>
 					<div className='flickrTextBox'>
 						<h1 className='contentsTitle'>Flickr</h1>
-            <p className='contentsText'>2023 READY-TO-WEAR</p>
+						<p className='contentsText'>2023 READY-TO-WEAR</p>
 					</div>
 				</article>
 			</div>

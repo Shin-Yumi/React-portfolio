@@ -13,7 +13,7 @@ function Organization() {
 
 	const [Members, setMembers] = useState([]);
 
-	useEffect(() => { 
+	useEffect(() => {
 		axios.get(`${process.env.PUBLIC_URL}/DB/member.json`).then((json) => {
 			setMembers(json.data.members);
 		});
@@ -35,18 +35,23 @@ function Organization() {
 			<article id='organization' className='aboutCont'>
 				<div className='inner'>
 					<div className='aboutSectionCont'>
-						<ul className='organizationWarp'>
+						<ul className='organizationWrap'>
 							{Members.map((el, index) => {
 								return (
 									<li key={index} className='organizationList'>
 										<div className='organizationBox'>
-											<h2 className='organizationTitle'>{el.position}</h2>
-											<div className='organizationImg'>
-												<img src={`${process.env.PUBLIC_URL}/img/${el.pic}`} alt={el.name} />
+											<div className='memberImgBox'>
+												<figure className='memberImg'>
+													<img src={`${process.env.PUBLIC_URL}/img/${el.pic}`} alt={el.name} />
+												</figure>
 											</div>
-											<p className='organizationJob'>
-												0{index + 1} / <span>{el.name}</span>
-											</p>
+											<div className='memberDescBox'>
+												<p className='memberPosition'>{el.position}</p>
+
+												<p className='memberName'>{el.name}</p>
+												<p className='memberTeam'>{el.department}</p>
+												<p className='memberRank'>{el.rank}</p>
+											</div>
 										</div>
 									</li>
 								);

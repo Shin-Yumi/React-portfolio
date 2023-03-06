@@ -1,33 +1,45 @@
 {
     "members": [
         {
-            "name": "Julia",
+            "name": "David",
+            "department" : "Management",
             "position": "President",
+            "rank": "CEO",
             "pic": "member01.jpg"
         },
         {
-            "name": "David",
+            "name": "Julia",
+            "department" : "Human Resources",
             "position": "Vice President",
+            "rank": "COO",
             "pic": "member02.jpg"
         },
         {
             "name": "Emily",
+            "department" : "Design",
             "position": "UI Designer",
+            "rank": "General Manager",
             "pic": "member03.jpg"
         },
         {
-            "name": "Paul",
+            "name": "Ann",
+            "department" : "S/W Technical",
             "position": "Front-end Engineer",
+            "rank": "Deputy General Manager",
             "pic": "member04.jpg"
         },
         {
-            "name": "Sara",
+            "name": "Paul",
+            "department" : "S/W Technical",
             "position": "Back-end Engineer",
+            "rank": "CTO",
             "pic": "member05.jpg"
         },
         {
             "name": "Michael",
+            "department" : "S/W Technical planning",
             "position": "Project Manager",
+            "rank": "Clerk",
             "pic": "member06.jpg"
         }
     ]

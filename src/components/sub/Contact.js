@@ -19,7 +19,7 @@ function Contact() {
 
 	const [values, setValues] = useState(initValue);
 	const [Err, setErr] = useState({});
-	const [Submit, setSubmit] = useState(false);
+	const Submit = useRef(false);
 	const [send, setSend] = useState(false);
 
 	const check = (value) => {
@@ -49,7 +49,7 @@ function Contact() {
 
 	useEffect(() => {
 		if (Object.keys(Err).length === 0) {
-			if (Submit) {
+			if (Submit.current) {
 				setSend(true);
 			}
 		}
@@ -68,8 +68,8 @@ function Contact() {
 					(error) => {
 						alert('전송을 실패했습니다.');
 					}
-				)
-				form.current.reset();
+				);
+			form.current.reset();
 		}
 	};
 	return (
@@ -128,7 +128,7 @@ function Contact() {
 								className='submit'
 								value='Send'
 								type='submit'
-								onClick={() => setSubmit(true)}
+								onClick={() => (Submit.current = true)}
 							/>
 						</div>
 					</form>

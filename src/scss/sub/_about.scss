@@ -1,131 +1,55 @@
 #organization {
 	width: 100%;
+	margin-bottom: -80px;
 	.inner {
-		.aboutSectionTitle {
-			text-transform: uppercase;
-			font-size: 20px;
-			font-weight: 400;
-			padding-bottom: 30px;
-			span {
-				font-family: $koFont;
-				font-size: 16px;
-				color: $textColor;
-			}
-		}
+		margin-left: -30px;
+		margin-right: -30px;
 		.aboutSectionCont {
 			width: 100%;
-			.organizationWarp {
+			.organizationWrap {
 				width: 100%;
-				display: flex;
-				align-items: center;
-				flex-wrap: wrap;
+				border-top: 1px solid $borderColor;
 				.organizationList {
-					position: relative;
-					width: calc(100% / 3);
-					height: 600px;
-					padding: 30px;
-					border: 1px solid $borderColor;
-					border-bottom: none;
-					margin-left: -1px;
-					min-height: 500px;
+					border-bottom: 1px solid $borderColor;
 					.organizationBox {
 						display: flex;
-						flex-direction: column;
-						justify-content: space-between;
-						width: 100%;
-						height: 100%;
-						.organizationTitle {
-							@include sectionSubTitle($subFz: 18px, $subLetterS: 3px);
-							text-transform: uppercase;
-							margin-bottom: 10px;
-						}
-						.organizationImg {
-							width: 100%;
-							height: 80%;
-							display: flex;
-							align-items: center;
-							justify-content: center;
-							margin-bottom: 10px;
-							img {
-								width: 60%;
-								height: 60%;
-								object-fit: cover;
-								filter: grayscale(0.7);
-								transition: 0.5s;
-							}
-							&:hover {
+						align-items: flex-end;
+						.memberImgBox {
+							width: 30%;
+							height: 100%;
+							padding: 30px;
+							border-right: 1px solid $borderColor;
+							.memberImg {
+								width: 100%;
+								height: 100%;
+
 								img {
-									filter: grayscale(0.4);
-									transform: scale(1.1);
+									width: 100%;
+									height: 100%;
+									max-height: 500px;
+									object-fit: cover;
+									filter: grayscale(1);
 								}
 							}
 						}
-						.organizationJob {
-							position: relative;
-							@include sectionText($captionFz: 16px);
-							&::after {
-								content: '';
-								display: block;
-								clear: both;
+						.memberDescBox {
+							width: 70%;
+							padding: 30px;
+							.memberPosition {
+								@include sectionSubTitle($subLetterS: 1px, $fontWeight: 400);
+								text-transform: uppercase;
+								margin-bottom: 20px;
 							}
-							span {
-								float: right;
-							}
-						}
-					}
-					&:nth-of-type(1) .organizationBox .organizationImg {
-						background: rgba(161, 154, 151, 0.6);
-					}
-					&:nth-of-type(2) .organizationBox .organizationImg {
-						background: rgba(164, 161, 152, 0.6);
-					}
-					&:nth-of-type(3) .organizationBox .organizationImg {
-						background: rgba(155, 161, 151, 0.6);
-					}
-					&:nth-of-type(4) .organizationBox .organizationImg {
-						background: hsl(160, 5%, 64%, 0.6);
-					}
-					&:nth-of-type(5) .organizationBox .organizationImg {
-						background: hsl(207, 6%, 61%, 0.6);
-					}
-					&:nth-of-type(6) .organizationBox .organizationImg {
-						background: hsla(245, 6%, 61%, 0.6);
-					}
-
-					&::after {
-						position: absolute;
-						bottom: 0;
-						left: 10%;
-						content: '';
-						width: 80%;
-						height: 1px;
-						background: $borderColor;
-					}
-					&:nth-last-child(-n + 3) {
-						border-top: none;
-					}
-					&:nth-of-type(1),
-					&:nth-of-type(4) {
-						border-left: none;
-					}
-					&:nth-of-type(3),
-					&:nth-of-type(6) {
-						border-right: none;
-					}
-					&.intro {
-						.organizationBox {
-							position: relative;
-							.organizationTitle {
-								@include sectionTitle($fz: 40px, $fontWeight: bold);
-								margin-bottom: 40px;
-							}
-							.organizationSub {
-								@include sectionSubTitle($subFz: 24px, $fontWeight: 400);
-							}
-							.organizationCaption {
-								@include sectionText;
+							.memberName,
+							.memberTeam,
+							.memberRank {
+								@include sectionSubTitle($subFontColor: $borderColor, $subFz: 20px);
+								margin-bottom: 4px;
 							}
 						}
+					}
+					&:last-child {
+						border-bottom: 0;
 					}
 				}
 			}
@@ -329,24 +253,26 @@
 					.inner {
 						.sectionCont {
 							#organization {
-								width: 100%;
 								.inner {
-									.aboutSectionTitle {
-										text-transform: uppercase;
-										font-size: 20px;
-										font-weight: 400;
-										padding-bottom: 30px;
-										span {
-											font-family: $koFont;
-											font-size: 16px;
-											color: $textColor;
-										}
-									}
 									.aboutSectionCont {
-										.organizationWarp {
+										.organizationWrap {
 											.organizationList {
-												height: 400px;
-												min-height: 300px;
+												.organizationBox {
+													.memberDescBox {
+														width: 70%;
+														padding: 30px;
+														.memberPosition {
+															@include sectionSubTitle($subFz: 18px, $subLetterS: 1px, $fontWeight: 400);
+															margin-bottom: 14px;
+														}
+														.memberName,
+														.memberTeam,
+														.memberRank {
+															@include sectionSubTitle($subFontColor: $borderColor, $subFz: 16px);
+															margin-bottom: 4px;
+														}
+													}
+												}
 											}
 										}
 									}
@@ -378,29 +304,25 @@
 					.inner {
 						.sectionCont {
 							#organization {
-								> .inner {
+								.inner {
 									.aboutSectionCont {
-										.organizationWarp {
+										.organizationWrap {
 											.organizationList {
-												width: 50%;
-												height: 500px;
-
-												&:nth-last-child(-n + 4) {
-													border-top: none;
-												}
-												&:nth-of-type(1),
-												&:nth-of-type(4) {
-													border-left: 1px solid $borderColor;
-												}
-												&:nth-of-type(3),
-												&:nth-of-type(6) {
-													border-left: 1px solid $borderColor;
-												}
-												&:nth-of-type(odd) {
-													border-left: none;
-												}
-												&:nth-of-type(even) {
-													border-right: none;
+												.organizationBox {
+													.memberDescBox {
+														width: 70%;
+														padding: 30px;
+														.memberPosition {
+															@include sectionSubTitle($subFz: 16px, $subLetterS: 1px, $fontWeight: 400);
+															margin-bottom: 12px;
+														}
+														.memberName,
+														.memberTeam,
+														.memberRank {
+															@include sectionSubTitle($subFontColor: $borderColor, $subFz: 14px);
+															margin-bottom: 4px;
+														}
+													}
 												}
 											}
 										}
@@ -453,19 +375,26 @@
 					.inner {
 						.sectionCont {
 							#organization {
-								> .inner {
+								margin-bottom: -50px;
+								.inner {
 									.aboutSectionCont {
-										.organizationWarp {
+										.organizationWrap {
 											.organizationList {
-												height: 400px;
-												&.intro {
-													.organizationBox {
-														.organizationTitle {
-															@include sectionTitle($fz: 30px, $fontWeight: bold);
-															margin-bottom: 30px;
+												.organizationBox {
+													.memberImgBox {
+														padding: 20px;
+													}
+													.memberDescBox {
+														padding: 20px;
+														.memberPosition {
+															@include sectionSubTitle($subFz: 14px, $subLetterS: 1px, $fontWeight: 400);
+															margin-bottom: 10px;
 														}
-														.organizationSub {
-															@include sectionSubTitle($subFz: 20px, $fontWeight: 400);
+														.memberName,
+														.memberTeam,
+														.memberRank {
+															@include sectionSubTitle($subFontColor: $borderColor, $subFz: 12px);
+															margin-bottom: 4px;
 														}
 													}
 												}
@@ -519,43 +448,31 @@
 					.inner {
 						.sectionCont {
 							#organization {
-								> .inner {
+								.inner {
 									.aboutSectionCont {
-										.organizationWarp {
+										.organizationWrap {
 											.organizationList {
-												width: 100%;
-												height: 500px;
-												border-left: none;
-												border-right: none;
-												padding: 20px;
-												//margin-top: -1px;
-												margin-left: 0;
-												&::after {
-													display: none;
-												}
-												&.intro {
-													.organizationBox {
-														.organizationTitle {
-															@include sectionTitle($fz: 40px, $fontWeight: bold);
-															margin-bottom: 30px;
+												.organizationBox {
+													flex-direction: column;
+													.memberImgBox {
+														width: 100%;
+														padding: 30px;
+														border-right: 0;
+													}
+													.memberDescBox {
+														width: 100%;
+														padding: 0 30px 30px;
+														.memberPosition {
+															@include sectionSubTitle($subFz: 18px, $subLetterS: 1px, $fontWeight: 400);
+															margin-bottom: 10px;
 														}
-														.organizationSub {
-															@include sectionSubTitle($subFz: 24px, $fontWeight: 400);
-														}
-														.organizationCaption {
-															@include sectionText($captionFz: 16px);
+														.memberName,
+														.memberTeam,
+														.memberRank {
+															@include sectionSubTitle($subFontColor: $borderColor, $subFz: 14px);
+															margin-bottom: 2px;
 														}
 													}
-												}
-												&:nth-last-child(-n + 4) {
-													border-top: 1px solid $borderColor;
-												}
-												&:nth-of-type(4) {
-													border-left: none;
-												}
-												&:nth-of-type(6) {
-													border-left: none;
-													border-bottom: 1px solid $borderColor;
 												}
 											}
 										}
