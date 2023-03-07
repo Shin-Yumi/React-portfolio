@@ -112,263 +112,532 @@ function Join() {
 		<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption}>
 			<article className='joinCont'>
 				<div className='inner'>
-					<form action='result.html' method='get' id='member' onSubmit={handleSubmit}>
-						<fieldset>
-							<legend className='hidden'>회원 가입 폼 입력 양식</legend>
-							<div className='joinWrap'>
-								<ul className='joinListWrap'>
-									<li className='joinList'>
-										<div className='joinBox'>
-											<div className='joinConBox'>
-												<div className='joinTitle'>
-													<label htmlFor='userid'>
-														User ID
-													</label>
-												</div>
-												<div className='joinInput'></div>
-											</div>
-											<div className='joinConBox'>
+					<div className='textBox'>
+						{/* <div className='rotateTxt'>
+							<p>create magic together</p>
+						</div> */}
+					</div>
+					<div className='inputBox'>
+						<div className='joinLabelBox'>
+							<ul className='labelLists'>
+								<li className='labelList'>
+									<div className='labelListLb'>
+										<div className='joinTitle'>
+											<p className='titleTxt'>The person</p>
+										</div>
+										<div className='joinInput person'></div>
+									</div>
+								</li>
+								<li className='labelList'>
+									<div className='labelListLb'>
+										<div className='joinTitle'>
+											<p className='titleTxt'>Education</p>
+										</div>
+										<div className='joinInput edu'></div>
+									</div>
+								</li>
+								<li className='labelList'>
+									<div className='labelListLb'>
+										<div className='joinTitle'>
+											<p className='titleTxt'>Gender</p>
+										</div>
+										<div className='joinInput gender'></div>
+									</div>
+								</li>
+								<li className='labelList'>
+									<div className='labelListLb'>
+										<div className='joinTitle'>
+											<p className='titleTxt'>Favorite</p>
+										</div>
+										<div className='joinInput favorite'></div>
+									</div>
+								</li>
+								<li className='labelList'>
+									<div className='labelListLb'>
+										<div className='joinTitle'>
+											<p className='titleTxt'>Comment</p>
+										</div>
+										<div className='joinInput comment'></div>
+									</div>
+								</li>
+								<li className='labelList'>
+									<div className='labelListLb'>
+										<div className='joinTitle'>
+											<p className='titleTxt'></p>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div className='joinInputBox'>
+							<form action='result.html' method='get' id='member' onSubmit={handleSubmit}>
+								<fieldset>
+									<legend className='hidden'>회원 가입 폼 입력 양식</legend>
+									<ul className='inputLists'>
+										<li className='inputList'>
+											<div className='inputListBox'>
 												<div className='joinTitle'></div>
+												<div className='joinInput'>
+													<div className='input idBox'>
+														<input
+															type='text'
+															name='userid'
+															id='userid'
+															placeholder='아이디를 입력하세요.'
+															onChange={handleChange}
+														/>
+														<span className='err'>{Err.userid}</span>
+													</div>
+													<div className='input pwBox'>
+														<input
+															type='password'
+															name='pwd1'
+															id='pwd1'
+															placeholder='비밀번호를 입력하세요.'
+															onChange={handleChange}
+														/>
+														<span className='err'>{Err.pwd1}</span>
+													</div>
+													<div className='input pw2Box'>
+														<input
+															type='password'
+															name='pwd2'
+															id='pwd2'
+															placeholder='비밀번호를 한번 더 입력하세요.'
+															onChange={handleChange}
+														/>
+														<span className='err'>{Err.pwd2}</span>
+													</div>
+													<div className='input nameBox'>
+														<input
+															type='text'
+															name='name'
+															id='name'
+															placeholder='이름을 입력하세요'
+															onChange={handleChange}
+														/>
+														<span className='err'>{Err.name}</span>
+													</div>
+													<div className='input emailBox'>
+														<input
+															type='text'
+															name='email'
+															id='email'
+															placeholder='이메일을 입력하세요.'
+															onChange={handleChange}
+														/>
+														<span className='err'>{Err.email}</span>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li className='inputList'>
+											<div className='inputListBox'>
+												<div className='joinTitle'></div>
+												<div className='joinInput'>
+													<div className='eduBox'>
+														<select name='edu' id='edu' onChange={handleSelect}>
+															<option value=''>선택하세요</option>
+															<option value='elementary school'>초등학교 졸업</option>
+															<option value='middle school'>중학교 졸업</option>
+															<option value='high school'>고등학교 졸업</option>
+															<option value='college'>대학교 졸업</option>
+														</select>
+													</div>
+													<p className='err'>{Err.edu}</p>
+												</div>
+											</div>
+										</li>
+										<li className='inputList'>
+											<div className='inputListBox'>
+												<div className='joinTitle'></div>
+												<div className='joinInput'>
+													<div className='radioBox'>
+														<div className='joinRadio'>
+															<input
+																type='radio'
+																name='gender'
+																id='male'
+																value='male'
+																onChange={handleRadio}
+															/>
+															<label htmlFor='male'>Male</label>
+														</div>
+														<div className='joinRadio'>
+															<input
+																type='radio'
+																name='gender'
+																id='female'
+																value='female'
+																onChange={handleRadio}
+															/>
+															<label htmlFor='female'>Female</label>
+														</div>
+													</div>
+													<p className='err'>{Err.gender}</p>
+												</div>
+											</div>
+										</li>
+										<li className='inputList'>
+											<div className='inputListBox'>
+												<div className='joinTitle'></div>
+												<div className='joinInput'>
+													<div className='check'>
+														<div className='joinCheck'>
+															<label htmlFor='html'>
+																<input
+																	type='checkbox'
+																	name='favorite'
+																	id='html'
+																	value='html'
+																	onChange={handleCheck}
+																/>
+																<span className='checkIcon'></span>
+																<span className='checkTxt'>html</span>
+															</label>
+														</div>
+														<div className='joinCheck'>
+															<label htmlFor='css'>
+																<input
+																	type='checkbox'
+																	name='favorite'
+																	id='css'
+																	value='css'
+																	onChange={handleCheck}
+																/>
+																<span className='checkIcon'></span>
+																<span className='checkTxt'>Css</span>
+															</label>
+														</div>
+														<div className='joinCheck'>
+															<label htmlFor='javascript'>
+																<input
+																	type='checkbox'
+																	name='favorite'
+																	id='javascript'
+																	value='javascript'
+																	onChange={handleCheck}
+																/>
+																<span className='checkIcon'></span>
+																<span className='checkTxt'>Javascript</span>
+															</label>
+														</div>
+														<div className='joinCheck'>
+															<label htmlFor='react'>
+																<input
+																	type='checkbox'
+																	name='favorite'
+																	id='react'
+																	value='react'
+																	onChange={handleCheck}
+																/>
+																<span className='checkIcon'></span>
+																<span className='checkTxt'>React</span>
+															</label>
+														</div>
+														<div className='joinCheck'>
+															<label htmlFor='vue'>
+																<input
+																	type='checkbox'
+																	name='favorite'
+																	id='vue'
+																	value='vue'
+																	onChange={handleCheck}
+																/>
+																<span className='checkIcon'></span>
+																<span className='checkTxt'>Vue</span>
+															</label>
+														</div>
+														<p className='err'>{Err.favorite}</p>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li className='inputList'>
+											<div className='inputListBox'>
+												<div className='joinTitle'></div>
+												<div className='joinInput'>
+													<textarea
+														name='comments'
+														id='comments'
+														placeholder='남기는 말을 입력하세요'
+														onChange={handleChange}
+													></textarea>
+													<p className='err'>{Err.comments}</p>
+												</div>
+											</div>
+										</li>
+										<li className='inputList'>
+											<div className='inputListBox'>
+												<div className='joinTitle'>
+													<input
+														type='submit'
+														value='submit'
+														onClick={() => (Submit.current = true)}
+													/>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</fieldset>
+							</form>
+						</div>
+						{/* <form action='result.html' method='get' id='member' onSubmit={handleSubmit}>
+							<fieldset>
+								<legend className='hidden'>회원 가입 폼 입력 양식</legend>
+								<div className='joinWrap'>
+									<ul className='joinListWrap'>
+										<li className='joinList'>
+											<div className='joinBox'>
+												<div className='joinConBox'>
+													<div className='joinTitle'>
+														<label htmlFor='userid'>User ID</label>
+													</div>
+													<div className='joinInput'></div>
+												</div>
+												<div className='joinConBox'>
+													<div className='joinTitle'></div>
+													<div className='joinInput'>
+														<input
+															type='text'
+															name='userid'
+															id='userid'
+															placeholder='아이디를 입력하세요.'
+															onChange={handleChange}
+														/>
+														<p className='err'>{Err.userid}</p>
+													</div>
+												</div>
+											</div>
+										</li>
+
+										<li className='joinList'>
+											<div className='joinBox'>
+												<label className='joinTitle' htmlFor='pwd1'>
+													Password
+												</label>
+												<div className='joinInput'>
+													<input
+														type='password'
+														name='pwd1'
+														id='pwd1'
+														placeholder='비밀번호를 입력하세요.'
+														onChange={handleChange}
+													/>
+													<p className='err'>{Err.pwd1}</p>
+												</div>
+											</div>
+										</li>
+
+										<li className='joinList'>
+											<div className='joinBox'>
+												<label className='joinTitle' htmlFor='pwd2'>
+													RePassword
+												</label>
+												<div className='joinInput'>
+													<input
+														type='password'
+														name='pwd2'
+														id='pwd2'
+														placeholder='비밀번호를 입력하세요.'
+														onChange={handleChange}
+													/>
+													<p className='err'>{Err.pwd2}</p>
+												</div>
+											</div>
+										</li>
+
+										<li className='joinList'>
+											<div className='joinBox'>
+												<label className='joinTitle' htmlFor='name'>
+													Name
+												</label>
 												<div className='joinInput'>
 													<input
 														type='text'
-														name='userid'
-														id='userid'
-														placeholder='아이디를 입력하세요.'
+														name='name'
+														id='name'
+														placeholder='이름을 입력하세요'
 														onChange={handleChange}
 													/>
-													<p className='err'>{Err.userid}</p>
+													<p className='err'>{Err.name}</p>
 												</div>
 											</div>
-										</div>
-									</li>
+										</li>
 
-									<li className='joinList'>
-										<div className='joinBox'>
-											<label className='joinTitle' htmlFor='pwd1'>
-												Password
-											</label>
-											<div className='joinInput'>
-												<input
-													type='password'
-													name='pwd1'
-													id='pwd1'
-													placeholder='비밀번호를 입력하세요.'
-													onChange={handleChange}
-												/>
-												<p className='err'>{Err.pwd1}</p>
-											</div>
-										</div>
-									</li>
-
-									<li className='joinList'>
-										<div className='joinBox'>
-											<label className='joinTitle' htmlFor='pwd2'>
-												RePassword
-											</label>
-											<div className='joinInput'>
-												<input
-													type='password'
-													name='pwd2'
-													id='pwd2'
-													placeholder='비밀번호를 입력하세요.'
-													onChange={handleChange}
-												/>
-												<p className='err'>{Err.pwd2}</p>
-											</div>
-										</div>
-									</li>
-
-									<li className='joinList'>
-										<div className='joinBox'>
-											<label className='joinTitle' htmlFor='name'>
-												Name
-											</label>
-											<div className='joinInput'>
-												<input
-													type='text'
-													name='name'
-													id='name'
-													placeholder='이름을 입력하세요'
-													onChange={handleChange}
-												/>
-												<p className='err'>{Err.name}</p>
-											</div>
-										</div>
-									</li>
-
-									<li className='joinList'>
-										<div className='joinBox'>
-											<p className='joinTitle'>Education</p>
-											<div className='joinInput'>
-												<div className='eduBox'>
-													<select name='edu' id='edu' onChange={handleSelect}>
-														<option value=''>선택하세요</option>
-														<option value='elementary school'>초등학교 졸업</option>
-														<option value='middle school'>중학교 졸업</option>
-														<option value='high school'>고등학교 졸업</option>
-														<option value='college'>대학교 졸업</option>
-													</select>
-												</div>
-												<p className='err'>{Err.name}</p>
-											</div>
-										</div>
-									</li>
-
-									<li className='joinList'>
-										<div className='joinBox'>
-											<p className='joinTitle'>Gender</p>
-											<div className='joinInput'>
-												<div className='radioBox'>
-													<div className='joinRadio'>
-														<input
-															type='radio'
-															name='gender'
-															id='male'
-															value='male'
-															onChange={handleRadio}
-														/>
-														<label htmlFor='male'>Male</label>
+										<li className='joinList'>
+											<div className='joinBox'>
+												<p className='joinTitle'>Education</p>
+												<div className='joinInput'>
+													<div className='eduBox'>
+														<select name='edu' id='edu' onChange={handleSelect}>
+															<option value=''>선택하세요</option>
+															<option value='elementary school'>초등학교 졸업</option>
+															<option value='middle school'>중학교 졸업</option>
+															<option value='high school'>고등학교 졸업</option>
+															<option value='college'>대학교 졸업</option>
+														</select>
 													</div>
-													<div className='joinRadio'>
-														<input
-															type='radio'
-															name='gender'
-															id='female'
-															value='female'
-															onChange={handleRadio}
-														/>
-														<label htmlFor='female'>Female</label>
+													<p className='err'>{Err.name}</p>
+												</div>
+											</div>
+										</li>
+
+										<li className='joinList'>
+											<div className='joinBox'>
+												<p className='joinTitle'>Gender</p>
+												<div className='joinInput'>
+													<div className='radioBox'>
+														<div className='joinRadio'>
+															<input
+																type='radio'
+																name='gender'
+																id='male'
+																value='male'
+																onChange={handleRadio}
+															/>
+															<label htmlFor='male'>Male</label>
+														</div>
+														<div className='joinRadio'>
+															<input
+																type='radio'
+																name='gender'
+																id='female'
+																value='female'
+																onChange={handleRadio}
+															/>
+															<label htmlFor='female'>Female</label>
+														</div>
 													</div>
+													<p className='err'>{Err.gender}</p>
 												</div>
-												<p className='err'>{Err.gender}</p>
 											</div>
-										</div>
-									</li>
-									<li className='joinList'>
-										<div className='joinBox'>
-											<label className='joinTitle' htmlFor='email'>
-												Email
-											</label>
-											<div className='joinInput'>
-												<input
-													type='text'
-													name='email'
-													id='email'
-													placeholder='이메일을 입력하세요.'
-													onChange={handleChange}
-												/>
-												<p className='err'>{Err.email}</p>
+										</li>
+										<li className='joinList'>
+											<div className='joinBox'>
+												<label className='joinTitle' htmlFor='email'>
+													Email
+												</label>
+												<div className='joinInput'>
+													<input
+														type='text'
+														name='email'
+														id='email'
+														placeholder='이메일을 입력하세요.'
+														onChange={handleChange}
+													/>
+													<p className='err'>{Err.email}</p>
+												</div>
 											</div>
-										</div>
-									</li>
-									<li className='joinList'>
-										<div className='joinBox'>
-											<p className='joinTitle'>Favorite</p>
-											<div className='joinInput'>
-												<div className='joinCheck'>
-													<label htmlFor='html'>
-														<input
-															type='checkbox'
-															name='favorite'
-															id='html'
-															value='html'
-															onChange={handleCheck}
-														/>
-														<span className='checkIcon'></span>
-														<span className='checkTxt'>html</span>
-													</label>
+										</li>
+										<li className='joinList'>
+											<div className='joinBox'>
+												<p className='joinTitle'>Favorite</p>
+												<div className='joinInput'>
+													<div className='joinCheck'>
+														<label htmlFor='html'>
+															<input
+																type='checkbox'
+																name='favorite'
+																id='html'
+																value='html'
+																onChange={handleCheck}
+															/>
+															<span className='checkIcon'></span>
+															<span className='checkTxt'>html</span>
+														</label>
+													</div>
+													<div className='joinCheck'>
+														<label htmlFor='css'>
+															<input
+																type='checkbox'
+																name='favorite'
+																id='css'
+																value='css'
+																onChange={handleCheck}
+															/>
+															<span className='checkIcon'></span>
+															<span className='checkTxt'>Css</span>
+														</label>
+													</div>
+													<div className='joinCheck'>
+														<label htmlFor='javascript'>
+															<input
+																type='checkbox'
+																name='favorite'
+																id='javascript'
+																value='javascript'
+																onChange={handleCheck}
+															/>
+															<span className='checkIcon'></span>
+															<span className='checkTxt'>Javascript</span>
+														</label>
+													</div>
+													<div className='joinCheck'>
+														<label htmlFor='react'>
+															<input
+																type='checkbox'
+																name='favorite'
+																id='react'
+																value='react'
+																onChange={handleCheck}
+															/>
+															<span className='checkIcon'></span>
+															<span className='checkTxt'>React</span>
+														</label>
+													</div>
+													<div className='joinCheck'>
+														<label htmlFor='vue'>
+															<input
+																type='checkbox'
+																name='favorite'
+																id='vue'
+																value='vue'
+																onChange={handleCheck}
+															/>
+															<span className='checkIcon'></span>
+															<span className='checkTxt'>Vue</span>
+														</label>
+													</div>
+													<p className='err'>{Err.favorite}</p>
 												</div>
-												<div className='joinCheck'>
-													<label htmlFor='css'>
-														<input
-															type='checkbox'
-															name='favorite'
-															id='css'
-															value='css'
-															onChange={handleCheck}
-														/>
-														<span className='checkIcon'></span>
-														<span className='checkTxt'>Css</span>
-													</label>
-												</div>
-												<div className='joinCheck'>
-													<label htmlFor='javascript'>
-														<input
-															type='checkbox'
-															name='favorite'
-															id='javascript'
-															value='javascript'
-															onChange={handleCheck}
-														/>
-														<span className='checkIcon'></span>
-														<span className='checkTxt'>Javascript</span>
-													</label>
-												</div>
-												<div className='joinCheck'>
-													<label htmlFor='react'>
-														<input
-															type='checkbox'
-															name='favorite'
-															id='react'
-															value='react'
-															onChange={handleCheck}
-														/>
-														<span className='checkIcon'></span>
-														<span className='checkTxt'>React</span>
-													</label>
-												</div>
-												<div className='joinCheck'>
-													<label htmlFor='vue'>
-														<input
-															type='checkbox'
-															name='favorite'
-															id='vue'
-															value='vue'
-															onChange={handleCheck}
-														/>
-														<span className='checkIcon'></span>
-														<span className='checkTxt'>Vue</span>
-													</label>
-												</div>
-												<p className='err'>{Err.favorite}</p>
 											</div>
-										</div>
-									</li>
-									<li className='joinList'>
-										<div className='joinBox'>
-											<label className='joinTitle' htmlFor='comments'>
-												Comments
-											</label>
-											<div className='joinInput'>
-												<textarea
-													name='comments'
-													id='comments'
-													placeholder='남기는 말을 입력하세요'
-													onChange={handleChange}
-												></textarea>
-												<p className='err'>{Err.comments}</p>
+										</li>
+										<li className='joinList'>
+											<div className='joinBox'>
+												<label className='joinTitle' htmlFor='comments'>
+													Comments
+												</label>
+												<div className='joinInput'>
+													<textarea
+														name='comments'
+														id='comments'
+														placeholder='남기는 말을 입력하세요'
+														onChange={handleChange}
+													></textarea>
+													<p className='err'>{Err.comments}</p>
+												</div>
 											</div>
-										</div>
-									</li>
-									<li className='joinList'>
-										<div className='joinBox'>
-											<label className='joinTitle' htmlFor='submit'>
-												button
-											</label>
-											<div className='joinInput'>
-												<input
-													type='submit'
-													value='submit'
-													onClick={() => (Submit.current = true)}
-												/>
+										</li>
+										<li className='joinList'>
+											<div className='joinBox'>
+												<label className='joinTitle' htmlFor='submit'>
+													button
+												</label>
+												<div className='joinInput'>
+													<input
+														type='submit'
+														value='submit'
+														onClick={() => (Submit.current = true)}
+													/>
+												</div>
 											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</fieldset>
-					</form>
+										</li>
+									</ul>
+								</div>
+							</fieldset>
+						</form> */}
+					</div>
 				</div>
 			</article>
 		</Layout>

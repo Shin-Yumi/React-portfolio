@@ -54,7 +54,7 @@ function YoutubeMain() {
 								slidesPerView: 3,
 							},
 						}}
-						modules={Autoplay}
+						modules={[Autoplay]}
 						className='gallerySlideCont mySwiper'
 					>
 						{Vids.map((vid, idx) => {
