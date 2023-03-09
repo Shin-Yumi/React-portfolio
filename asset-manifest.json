@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/React-portfolio/static/css/main.1b4daf74.css",
-    "main.js": "/React-portfolio/static/js/main.07e0f77d.js",
+    "main.css": "/React-portfolio/static/css/main.3ba2988a.css",
+    "main.js": "/React-portfolio/static/js/main.d036535c.js",
     "static/media/dummy-gallery01.jpg": "/React-portfolio/static/media/dummy-gallery01.81e079e3c03c99f3759f.jpg",
     "static/media/board-image.jpg": "/React-portfolio/static/media/board-image.ee3a3fd76d6822362651.jpg",
     "static/media/main-dummy.jpg": "/React-portfolio/static/media/main-dummy.c5826909edaf0da42ea6.jpg",
     "static/media/notion-icon.svg": "/React-portfolio/static/media/notion-icon.6ba19e9a29ec45af1d4e.svg",
     "index.html": "/React-portfolio/index.html",
     "static/media/tistory-icon.svg": "/React-portfolio/static/media/tistory-icon.4edbffa3d7b349d1d618.svg",
-    "main.1b4daf74.css.map": "/React-portfolio/static/css/main.1b4daf74.css.map",
-    "main.07e0f77d.js.map": "/React-portfolio/static/js/main.07e0f77d.js.map"
+    "main.3ba2988a.css.map": "/React-portfolio/static/css/main.3ba2988a.css.map",
+    "main.d036535c.js.map": "/React-portfolio/static/js/main.d036535c.js.map"
   },
   "entrypoints": [
-    "static/css/main.1b4daf74.css",
-    "static/js/main.07e0f77d.js"
+    "static/css/main.3ba2988a.css",
+    "static/js/main.d036535c.js"
   ]
 }
