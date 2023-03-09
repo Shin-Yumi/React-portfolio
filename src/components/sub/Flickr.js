@@ -22,7 +22,7 @@ function Flickr() {
 	const [Index, setIndex] = useState(0);
 	const [Loading, setLoading] = useState(true);
 
-	const [Opt, setOpt] = useState({ type: 'user', user: '164021883@N04' });
+	const [Opt, setOpt] = useState({ type: 'user', user: '197649413@N03' });
 
 	const showInterest = () => {
 		frame.current.classList.remove('on');
@@ -33,7 +33,7 @@ function Flickr() {
 	const showMine = () => {
 		frame.current.classList.remove('on');
 		setLoading(true);
-		setOpt({ type: 'user', user: '164021883@N04' });
+		setOpt({ type: 'user', user: '197649413@N03' });
 	};
 
 	const showUser = (e) => {
