@@ -285,332 +285,99 @@
 						&:nth-of-type(odd) {
 							border-right: 1px solid $borderColor;
 						}
-						&:nth-of-type(3),&:nth-of-type(4) {
+						&:nth-of-type(3),
+						&:nth-of-type(4) {
 							border-top: 1px solid $borderColor;
 						}
 					}
-					
 				}
 				.flickrText {
 					.flickrTextBox {
 						padding: 30px;
 						.contentsText {
-							@include sectionSubTitle($subFz: 20px, $fontWeight:400);
+							@include sectionSubTitle($subFz: 20px, $fontWeight: 400);
 							margin-top: 10px;
 						}
 					}
 				}
 			}
 		}
-		// boardCont 영역
 		.boardCont {
-			position: relative;
 			.inner {
 				width: 100%;
 				height: 100%;
-				margin: 0 auto;
-				border: 1px solid #777;
-				border-top: none;
-				padding: 30px;
-				overflow: hidden;
-				flex-direction: column;
-				&::after {
-					@include line($wid: 0);
-				}
-				.boardWrap {
-					width: 100%;
-					.boardMo {
-						display: flex;
-						align-items: center;
-						justify-content: space-between;
-						margin-bottom: 40px;
-					}
-					.contentsTitle {
-						@include sectionTitle;
-					}
-					.boardMoBtn {
-						display: none;
-						.boarLink {
+				.boardTitleCont {
+					height: 100%;
+					.bContWrap {
+						height: 100%;
+
+						.bTitleWrap {
 							position: relative;
-							display: inline-block;
-							color: $borderColor;
-							font-size: 14px;
-							text-decoration: none;
-							padding-right: 30px;
-							font-family: $enFont;
-							transition: 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
-
-							&:hover {
-								transition: 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
-								&:after {
-									transition: 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
-									transform: translateX(15px);
-									opacity: 0;
-								}
-								&:before {
-									transition: 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
-									transform: translateX(0);
-									opacity: 1;
-								}
-							}
-							&:before,
-							&:after {
-								content: '\27F6';
+							height: 50%;
+							padding: 30px;
+							border-bottom: 1px solid $borderColor;
+							.bBox {
 								position: absolute;
-								right: 0;
-								top: -10%;
-							}
-
-							&:before {
-								transform: translateX(-15px);
-								opacity: 0;
-							}
-							&:after {
-								transform: none;
+								bottom: 30px;
+								left: 30px;
 							}
 						}
-					}
-
-					.boarLink {
-						position: relative;
-						display: inline-block;
-						font-size: 16px;
-						font-weight: normal;
-						color: $borderColor;
-						transition: all 0.2s;
-						display: none;
-						.theArrow {
-							width: 1px;
-							transition: all 0.2s;
-							&.left {
+						.bTextWrap {
+							position: relative;
+							height: 50%;
+							.boardDescWrap {
 								position: absolute;
-								top: 50%;
+								bottom: 0;
 								left: 0;
-								.shaft {
-									width: 0;
-									background-color: $borderColor;
-
-									&::before,
-									&::after {
-										width: 0;
-										background-color: $borderColor;
-									}
-
-									&::before {
-										transform: rotate(0);
-									}
-
-									&::after {
-										transform: rotate(0);
-									}
+								padding: 30px;
+								.contentsSubTitle {
+									@include sectionSubTitle($subFz: 20px,$fontWeight:300);
+									margin-bottom: 20px;
 								}
-							}
-							&.right {
-								.shaft {
-									width: 1px;
-									transition-delay: 0.2s;
-									&::before,
-									&::after {
-										width: 8px;
-										transition-delay: 0.3s;
-										transition: all 0.5s;
-									}
-
-									&::before {
-										transform: rotate(40deg);
-									}
-
-									&::after {
-										transform: rotate(-40deg);
-									}
+								.boardDesc {
+									font-size: 14px;
+									font-weight: 300;
 								}
-							}
-							.shaft {
-								background-color: $borderColor;
-								display: block;
-								height: 1px;
-								position: relative;
-								transition: all 0.2s;
-								transition-delay: 0;
-								will-change: transform;
-								&:before,
-								&:after {
-									background-color: $borderColor;
-									content: '';
-									display: block;
-									height: 1px;
-									position: absolute;
-									top: 0;
-									right: 0;
-									transition: all 0.2s;
-									transition-delay: 0;
-								}
-								&:before {
-									transform-origin: top right;
-								}
-								&:after {
-									transform-origin: bottom right;
-								}
-							}
-						}
-						.linkText {
-							display: flex;
-							align-items: center;
-							transition: all 0.2s;
-
-							.text {
-								width: 60px;
-								margin-right: 50px;
-							}
-							.theArrow {
-								position: relative;
 							}
 						}
 					}
-
-					.boardBox {
-						position: relative;
+				}
+				.boardListCont {
+					height: 100%;
+					.boardLists {
 						width: 100%;
+						height: 100%;
 						display: flex;
-						align-items: center;
-						margin-bottom: 20px;
-						.boardTextArea {
-							width: 70%;
-							height: 200px;
-							background: #333;
-							padding: 20px;
-							margin-right: 50px;
-							p {
-								color: #ecece3;
-								font-size: 18px;
-								margin: 5px 0 0 5px;
-								white-space: nowrap;
-								overflow: hidden;
-								width: 100%;
-								opacity: 0;
-								transition: 0.5s;
-								a {
-									color: #ecece3;
-									text-decoration: none;
-								}
-							}
-							&.on {
-								p {
-									opacity: 1;
-									animation: type 3s steps(60, end);
-									&:nth-child(2) {
-										animation: type2 4s steps(60, end);
-									}
-									&:nth-child(3) {
-										animation: type3 8s steps(60, end);
-									}
-									&:nth-child(4) {
-										animation: type4 12s steps(60, end);
-									}
-									span {
-										animation: blink 1s infinite;
-									}
-								}
-							}
-						}
-						.boardBtn {
-							width: 150px;
-							height: 150px;
-							border-radius: 50%;
-							border: 1px solid #777;
-							background: #d9d9ce;
-							cursor: pointer;
-							.boardBtnText {
+						flex-wrap: wrap;
+						.boardList {
+							width: 50%;
+							height: 50%;
+							.boardBox {
 								display: flex;
 								align-items: center;
 								justify-content: center;
+								flex-direction: column;
 								width: 100%;
 								height: 100%;
-								font-size: 16px;
-								color: #333;
-							}
-							&:hover {
-								background: $hoverColor;
-							}
-						}
-					}
-				}
-				.boardInfo {
-					display: flex;
-					align-items: flex-start;
-					justify-content: center;
-					width: 100%;
-					padding-left: 150px;
-					h2 {
-						@include sectionSubTitle;
-						margin-right: 50px;
-					}
-					.sectionAccodion {
-						width: 100%;
-						max-width: 100%;
-						display: flex;
-						flex-direction: column;
-						.tab {
-							position: relative;
-							margin-top: 20px;
-							overflow: hidden;
-							input[type='radio'] {
-								appearance: none;
-
-								&:checked + label::after {
-									transform: rotate(-45deg);
+								padding: 30px;
+								.bListTitle {
+									@include sectionText($captionFz: 20px, $captionFontColor: $textColor);
+									margin-bottom: 10px;
 								}
-
-								&:checked ~ .tabContents {
-									max-height: 80vh;
-								}
-								&:checked ~ label h3 {
-									padding: 2px 10px;
-									border-radius: 2px;
+								.bListText {
+									@include sectionText;
 								}
 							}
-							label {
-								display: flex;
-								align-items: center;
-								cursor: pointer;
-								&::after {
-									content: '-';
-									position: absolute;
-									right: 0;
-									font-size: 30px;
-									font-weight: 300;
-									transition: 1s;
-									color: #777;
-								}
-
-								h2 {
-									color: $textColor;
-									font-size: 20px;
-									font-weight: 400;
-									border-radius: 5px;
-									margin-right: 10px;
-									font-family: $enFont;
-								}
-								h3 {
-									z-index: 10;
-									font-size: 20px;
-									font-weight: 400;
-									font-family: $enFont;
-								}
+							&:nth-of-type(odd) {
+								border-right: 1px solid $borderColor;
 							}
-							.tabContents {
-								border-top: 1px solid #777;
-								max-height: 0;
-								transition: 1s;
-								p {
-									position: relative;
-									padding: 15px 0;
-									color: #333;
-									z-index: 10;
-								}
+							&:nth-last-child(-n + 2) {
+								border-top: 1px solid $borderColor;
 							}
-							&:nth-of-type(1) {
-								margin-top: 0;
+							img {
+								width: 100%;
+								height: 100%;
+								object-fit: cover;
 							}
 						}
 					}
@@ -676,16 +443,6 @@
 					}
 				}
 			}
-			.boardCont {
-				height: calc(100vh - 60px);
-				.inner {
-					.boardWrap {
-						.contentsTitle {
-							@include sectionTitle($fz: 40px);
-						}
-					}
-				}
-			}
 		}
 	}
 }
@@ -719,24 +476,6 @@
 										}
 									}
 								}
-							}
-						}
-					}
-				}
-			}
-			.boardCont {
-				height: 600px;
-				.inner {
-					.boardWrap {
-						.boardBox {
-							.boardTextArea {
-								p {
-									font-size: 16px;
-								}
-							}
-							.boardBtn {
-								width: 120px;
-								height: 120px;
 							}
 						}
 					}
@@ -836,15 +575,6 @@
 					}
 				}
 			}
-			.boardCont {
-				.inner {
-					.boardWrap {
-						.contentsTitle {
-							@include sectionTitle($fz: 30px);
-						}
-					}
-				}
-			}
 		}
 	}
 }
@@ -937,51 +667,6 @@
 					}
 				}
 			}
-			//boardCont 영역
-			.boardCont {
-				.inner {
-					width: 100%;
-					padding: 20px;
-					.boardWrap {
-						.boardMo {
-							margin-bottom: 20px;
-						}
-						.boardMoBtn {
-							display: block;
-						}
-						.boardBox {
-							align-items: flex-end;
-							flex-direction: column;
-							margin-bottom: 20px;
-							.boardTextArea {
-								width: 100%;
-								height: 150px;
-								margin-right: 0;
-								margin-bottom: 10px;
-							}
-							.boardBtn {
-								display: none;
-							}
-						}
-					}
-					.boardInfo {
-						padding-left: 0;
-						.sectionAccodion {
-							margin: 0;
-							.tab {
-								label {
-									h2 {
-										font-size: 16px;
-									}
-									h3 {
-										font-size: 16px;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
 		}
 	}
 }
@@ -1035,101 +720,6 @@
 					}
 				}
 			}
-			//boardCont 영역
-			.boardCont {
-				.inner {
-					width: 100%;
-					padding: 20px;
-					.boardWrap {
-						.boardMo {
-							margin-bottom: 20px;
-						}
-						.boarLink {
-							display: block;
-						}
-						.boardBox {
-							align-items: flex-end;
-							flex-direction: column;
-							margin-bottom: 20px;
-							.boardTextArea {
-								width: 100%;
-								height: 150px;
-								margin-right: 0;
-								margin-bottom: 10px;
-							}
-							.boardBtn {
-								display: none;
-							}
-						}
-					}
-					.boardInfo {
-						padding-left: 0;
-						.sectionAccodion {
-							margin: 0;
-							.tab {
-								label {
-									h2 {
-										font-size: 16px;
-									}
-									h3 {
-										font-size: 16px;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
 		}
-	}
-}
-
-//animation
-//
-@keyframes type {
-	0% {
-		width: 0;
-	}
-}
-
-@keyframes type2 {
-	0% {
-		width: 0;
-	}
-	50% {
-		width: 0;
-	}
-	100% {
-		width: 100;
-	}
-}
-
-@keyframes type3 {
-	0% {
-		width: 0;
-	}
-	50% {
-		width: 0;
-	}
-	100% {
-		width: 100;
-	}
-}
-
-@keyframes type4 {
-	0% {
-		width: 0;
-	}
-	50% {
-		width: 0;
-	}
-	100% {
-		width: 100;
-	}
-}
-
-@keyframes blink {
-	to {
-		opacity: 0;
 	}
 }
