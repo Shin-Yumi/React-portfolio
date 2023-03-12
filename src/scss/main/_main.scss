@@ -1,6 +1,6 @@
 #main {
 	width: 100%;
-	overflow-x: hidden;
+	//overflow-x: hidden;
 	background: #ecece3;
 
 	.wrap {
@@ -145,7 +145,7 @@
 						@include sectionTitle($fz: 40px);
 					}
 					.contentsText {
-						@include sectionText($captionFz: 14px);
+						@include sectionText($captionFz: 12px);
 						padding-left: 20px;
 						margin-top: 30px;
 					} // button css
@@ -259,7 +259,6 @@
 			}
 		}
 		.flickrCont {
-			//height: 600px;
 			.inner {
 				.flickrList {
 					display: flex;
@@ -294,9 +293,14 @@
 				.flickrText {
 					.flickrTextBox {
 						padding: 30px;
-						.contentsText {
-							@include sectionSubTitle($subFz: 20px, $fontWeight: 400);
+						.contentsSubTitle {
+							@include sectionSubTitle($subFz: 18px);
 							margin-top: 10px;
+						}
+
+						.contentsText {
+							margin-top: 20px;
+							@include sectionText($captionFz: 12px);
 						}
 					}
 				}
@@ -310,7 +314,6 @@
 					height: 100%;
 					.bContWrap {
 						height: 100%;
-
 						.bTitleWrap {
 							position: relative;
 							height: 50%;
@@ -320,6 +323,21 @@
 								position: absolute;
 								bottom: 30px;
 								left: 30px;
+
+								.boardDescWrap {
+									width: 100%;
+									padding-right: 30px;
+									display: none;
+									.contentsSubTitle {
+										@include sectionSubTitle($subFz: 16px, $fontWeight: 300);
+										margin-bottom: 10px;
+										margin-top: 20px;
+									}
+									.boardDesc {
+										font-size: 12px;
+										font-weight: 300;
+									}
+								}
 							}
 						}
 						.bTextWrap {
@@ -331,7 +349,7 @@
 								left: 0;
 								padding: 30px;
 								.contentsSubTitle {
-									@include sectionSubTitle($subFz: 20px,$fontWeight:300);
+									@include sectionSubTitle($subFz: 20px, $fontWeight: 300);
 									margin-bottom: 20px;
 								}
 								.boardDesc {
@@ -357,6 +375,7 @@
 								align-items: center;
 								justify-content: center;
 								flex-direction: column;
+								text-align: center;
 								width: 100%;
 								height: 100%;
 								padding: 30px;
@@ -443,6 +462,25 @@
 					}
 				}
 			}
+			.boardCont {
+				.inner {
+					.boardListCont {
+						.boardLists {
+							.boardList {
+								.boardBox {
+									.bListTitle {
+										@include sectionText($captionFz: 16px, $captionFontColor: $textColor);
+										margin-bottom: 10px;
+									}
+									.bListText {
+										@include sectionText($captionFz: 12px);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -451,7 +489,6 @@
 	#main {
 		.wrap {
 			.youtubeCont {
-				height: 550px;
 				.inner {
 					.galleryTextCont {
 						.contentsTitle {
@@ -527,47 +564,73 @@
 				}
 			}
 			.youtubeCont {
-				height: calc(100vh - 60px);
-
 				.inner {
-					flex-direction: column;
 					.galleryTextCont {
-						width: 100%;
-						height: 40%;
-						border-right: 0;
-						border-bottom: 1px solid $borderColor;
+						width: 30%;
 						.contentsTitle {
 							@include sectionTitle($fz: 30px);
 						}
-						.contentsText {
-							@include sectionText($captionFz: 12px);
-							padding-left: 0;
-							margin-top: 15px;
-						}
 					}
 					.galleryListCont {
-						width: 100%;
-						height: 60%;
+						width: 70%;
 						.gallerySlideCont {
 							.swiper-wrapper {
 								.swiper-slide {
 									.listCont {
-										.galleryImg {
-											height: 24%;
-										}
-
 										.galleryText {
 											.galleryTitle {
-												font-size: 16px;
-												margin-bottom: 15px;
+												font-size: 18px;
 											}
 											.galleryInfo {
-												font-size: 14px;
+												font-size: 16px;
 											}
 										}
 										.galleryDate {
 											font-size: 14px;
 										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.boardCont {
+				.inner {
+					flex-direction: column;
+					&::after {
+						@include line($wid: 0);
+					}
+					.boardTitleCont {
+						width: 100%;
+						height: 30%;
+						.bContWrap {
+							height: 100%;
+							.bTitleWrap {
+								height: 100%;
+								.bBox {
+									.boardDescWrap {
+										display: block;
+									}
+								}
+							}
+							.bTextWrap {
+								display: none;
+							}
+						}
+					}
+					.boardListCont {
+						width: 100%;
+						height: 70%;
+						.boardLists {
+							.boardList {
+								.boardBox {
+									.bListTitle {
+										@include sectionText($captionFz: 14px, $captionFontColor: $textColor);
+										margin-bottom: 10px;
+									}
+									.bListText {
+										@include sectionText($captionFz: 12px);
 									}
 								}
 							}
@@ -632,8 +695,12 @@
 			//galleryCont 영역
 			.youtubeCont {
 				.inner {
+					flex-direction: column;
 					.galleryTextCont {
-						height: 35%;
+						width: 100%;
+						height: 40%;
+						border-right: 0;
+						border-bottom: 1px solid $borderColor;
 						.contentsTitle {
 							@include sectionTitle($fz: 20px);
 						}
@@ -644,6 +711,7 @@
 						}
 					}
 					.galleryListCont {
+						width: 100%;
 						height: 65%;
 						.gallerySlideCont {
 							.swiper-wrapper {
@@ -654,10 +722,14 @@
 										}
 										.galleryText {
 											.galleryTitle {
+												font-size: 16px;
 												margin-bottom: 10px;
 											}
 											.galleryInfo {
 												font-size: 12px;
+											}
+											.galleryDate {
+												font-size: 14px;
 											}
 										}
 									}

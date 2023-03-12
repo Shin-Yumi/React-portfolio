@@ -21,7 +21,7 @@ function Organization() {
 
 	useEffect(() => {
 		console.log(Members);
-	}, [Members]);
+	}, [Members]); 
 
 	return (
 		<Layout

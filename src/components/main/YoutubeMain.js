@@ -24,8 +24,6 @@ function YoutubeMain() {
 					<div>
 						<h1 className='contentsTitle'>Youtube</h1>
 						<p className='contentsText'>
-							패셔너블한 셀럽 5인이 보여준 청키 스니커즈 활용법
-							<br />
 							새로운 청키 스니커즈가 등장하는 것처럼 이 신발의 활용법도 점점 다양해지고 있습니다.
 							켄달 제너, 두아 리파와 같이 옷을 잘 입는 셀럽들은 각기 다른 방식으로 이 신발을
 							소화하고 있죠. 셀럽들이 제안한 청키 스니커즈 활용법을 확인해봅시다
@@ -47,10 +45,10 @@ function YoutubeMain() {
 							disableOnInteraction: false,
 						}}
 						breakpoints={{
-							320: {
+							576: {
 								slidesPerView: 2,
 							},
-							576: {
+							992: {
 								slidesPerView: 3,
 							},
 						}}
@@ -58,7 +56,7 @@ function YoutubeMain() {
 						className='gallerySlideCont mySwiper'
 					>
 						{Vids.map((vid, idx) => {
-							if (idx >= 4) return null;
+							if (idx >= 7) return null;
 							const desc = vid.snippet.description;
 							const date = vid.snippet.publishedAt;
 							return (

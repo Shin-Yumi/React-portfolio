@@ -45,7 +45,8 @@ function FlickrMain() {
 				<article className='contentsHalf flickrText'>
 					<div className='flickrTextBox'>
 						<h1 className='contentsTitle'>Flickr</h1>
-						<p className='contentsText'>2023 READY-TO-WEAR</p>
+						<p className='contentsSubTitle'>2023 READY-TO-WEAR</p>
+						<p className='contentsText'>개관 100일이 조금 지난 지금 많은 사람들은 프랑스로 떠나는 해외여행의 아쉬움을 이곳에서 풀고 있는 듯하다. 소피텔 앰배서더 서울에서 이번 달 공개한 따끈한 영상을 통해 그들이 제안하는 모던 시크 가득한 프렌치 럭셔리 라이프스타일을 만나보자.</p>
 					</div>
 				</article>
 			</div>

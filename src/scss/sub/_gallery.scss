@@ -1,5 +1,4 @@
 .youtube {
-	margin-bottom: -80px;
 	//youtube scss
 	#youtube {
 		display: flex;
@@ -8,7 +7,7 @@
 		transition: 1s;
 		opacity: 0;
 		margin: 0 -30px;
-	
+
 		&.on {
 			opacity: 1;
 			transform: translateY(0);
@@ -23,8 +22,24 @@
 			&:nth-of-type(3n) {
 				border-right: 0;
 			}
+			&:hover {
+				.pic {
+					img {
+						filter: grayscale(0);
+					}
+				}
+				.con {
+					> h2 {
+						&::after {
+							width: 100px;
+							background-color: $hoverColor;
+						}
+					}
+				}
+			}
 			.pic {
-				width: 70%;
+				width: 250px;
+				height: 140px;
 				display: block;
 				margin-bottom: 20px;
 				img {
@@ -37,6 +52,18 @@
 			.con {
 				width: 70%;
 				> h2 {
+					position: relative;
+					transition: 0.5s;
+					&::after {
+						content: '';
+						position: absolute;
+						left: 0;
+						bottom: 0;
+						width: 0;
+						height: 1px;
+						background-color: $borderColor;
+						transition: 0.5s;
+					}
 					@include sectionTitle($fz: 20px);
 					margin-bottom: 20px;
 				}
@@ -52,8 +79,8 @@
 				position: absolute;
 				right: 20px;
 				bottom: 20px;
-				width: 80px;
-				height: 80px;
+				width: 60px;
+				height: 60px;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -61,10 +88,10 @@
 				border-radius: 50%;
 				i {
 					display: flex;
-					width: 30px;
-					height: 30px;
+					width: 25px;
+					height: 25px;
 					background: url('../../../public/img/arrow.png') no-repeat center;
-					background-size: 30px !important;
+					background-size: 25px !important;
 				}
 			}
 		}
@@ -110,6 +137,7 @@
 	}
 }
 #flickr {
+	margin-bottom: 80px;
 	.searchBox {
 		width: 100%;
 		font-size: 0;
@@ -307,6 +335,8 @@
 	.youtube {
 		#youtube {
 			.youtubeCont {
+				.pic {
+				}
 				.con {
 					> h2 {
 						@include sectionText($captionFz: 16px, $captionFontColor: $textColor);
@@ -321,8 +351,41 @@
 		}
 	}
 }
+@media screen and (max-width: $Ltablet) {
+	.youtube {
+		#youtube {
+			.youtubeCont {
+				.pic {
+					width: 220px;
+					height: 120px;
+				}
+			}
+		}
+	}
+	#flickr {
+		margin-bottom: 50px;
+	}
+}
 
 @media screen and (max-width: $tablet) {
+	.youtube {
+		#youtube {
+			.youtubeCont {
+				padding: 20px;
+				width: 50%;
+				&:nth-of-type(3n) {
+					border-right: 1px solid $borderColor;
+				}
+				&:nth-of-type(even) {
+					border-right: 0;
+				}
+				.pic {
+					width: 180px;
+					height: 100px;
+				}
+			}
+		}
+	}
 	#flickr {
 		.wrap {
 			.list {

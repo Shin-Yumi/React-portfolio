@@ -22,13 +22,13 @@
 		.contentsTitle {
 			@include sectionTitle;
 		}
-		
 	}
 }
 
 //반응형 1024px
 @media screen and (max-width: $sLaptop) {
 	.contents {
+		height: calc(100vh - 60px);
 		.inner {
 			width: 100%;
 			.contentsTitle {
@@ -46,6 +46,7 @@
 //반응형 778px
 @media screen and (max-width: $tablet) {
 	.contents {
+		height: calc(100vh - 60px);
 		.inner {
 			width: 100%;
 			.contentsTitle {

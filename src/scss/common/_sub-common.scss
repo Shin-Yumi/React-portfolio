@@ -68,7 +68,7 @@ sub section scss 작업
 				}
 			}
 			.subSection {
-				padding: 80px 0;
+				padding: 80px 0 0;
 				.sectionExp {
 					padding-bottom: 60px;
 					.expTitle {
@@ -195,7 +195,6 @@ sub section scss 작업
 					}
 				}
 				.subSection {
-					padding: 50px 0;
 					.sectionExp {
 						.expTitle {
 							@include sectionSubTitle($subFz: 16px, $subFontColor: #333, $fontWeight: 400);
