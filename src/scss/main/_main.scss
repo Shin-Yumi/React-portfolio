@@ -134,6 +134,7 @@
 					@include line($wid: 0);
 				}
 				.galleryTextCont {
+					position: relative;
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
@@ -146,11 +147,90 @@
 					}
 					.contentsText {
 						@include sectionText($captionFz: 12px);
-						padding-left: 20px;
+
 						margin-top: 30px;
-					} // button css
-					.contBtn {
+					}
+					.galleryBtn {
 						width: 100%;
+						margin-top: 20px;
+
+						a {
+							position: relative;
+							text-transform: uppercase;
+							@include sectionSubTitle($subFz: 16px, $subFontColor: $textColor);
+							padding-bottom: 4px;
+							&::after {
+								content: '';
+								position: absolute;
+								left: 0;
+								bottom: 0;
+								width: 0;
+								height: 1px;
+								background: $borderColor;
+								transition: 0.5s;
+							}
+							&:hover {
+								&::after {
+									width: 100%;
+								}
+							}
+							.arrow {
+								position: relative;
+								top: -6px;
+								display: inline-block;
+								width: 20px;
+								height: 1px;
+								background: $borderColor;
+								margin-left: 20px;
+							}
+
+							.arrow::after {
+								transform-origin: center right;
+								position: absolute;
+								left: 11px;
+								top: -0.5px;
+								content: '';
+								width: 7px;
+								height: 7px;
+								border-top: 1px solid #777777;
+								border-right: 1px solid #777777;
+								transform: rotate(45deg);
+							}
+						}
+					}
+					.controls {
+						display: flex;
+						font-size: 24px;
+						color: #fff;
+						a {
+							display: block;
+							width: 20px;
+							height: 20px;
+							i {
+								display: block;
+								width: 20px;
+								height: 20px;
+								background-size: 18px !important;
+								opacity: 0.4;
+								transform: scale(1);
+								transition: opacity 0.5s, transform 0.5s;
+							}
+							&.on {
+								i {
+									opacity: 1;
+									transform: scale(1.4);
+								}
+							}
+						}
+						a:first-child {
+							margin-right: 30px;
+						}
+						a.play > i {
+							background: url('../../../public/img/play.svg') no-repeat center;
+						}
+						a.pause > i {
+							background: url('../../../public/img/pause.svg') no-repeat center;
+						}
 					}
 				}
 				.galleryListCont {
@@ -163,6 +243,7 @@
 						display: flex;
 						overflow: hidden;
 						position: relative;
+
 						.swiper-wrapper {
 							width: 100%;
 							height: 100%;
@@ -186,7 +267,7 @@
 									}
 									.galleryImg {
 										width: 100%;
-										height: 34%;
+										height: 200px;
 										margin-bottom: 20px;
 
 										figure {
@@ -230,25 +311,37 @@
 								}
 							}
 						}
-						.swiper-button-next {
+						&:hover {
+							.swiper-button-prev,
+							.swiper-button-next {
+								opacity: 0.8;
+							}
+						}
+						.swiper-button-prev {
 							position: absolute;
-							top: 6%;
-							right: 20px;
-
-							left: auto;
+							top: 50%;
+							left: 0;
+							transform: translateY(-50%);
+							width: 40px;
+							height: 40px;
+							background-color: $textColor;
+							transition: 0.5s;
+							opacity: 0;
 							&::after {
 								font-size: 20px;
 								color: $borderColor;
 							}
 						}
-						.swiper-button-prev {
+						.swiper-button-next {
 							position: absolute;
-							top: 6%;
-
-							left: auto;
-							right: 100px;
-							left: auto;
-
+							top: 50%;
+							right: 0;
+							transform: translateY(-50%);
+							width: 40px;
+							height: 40px;
+							background-color: $textColor;
+							transition: 0.5s;
+							opacity: 0;
 							&::after {
 								font-size: 20px;
 								color: $borderColor;
@@ -261,12 +354,14 @@
 		.flickrCont {
 			.inner {
 				.flickrList {
+					position: relative;
 					display: flex;
 					align-items: center;
 					flex-wrap: wrap;
 					.flickrItem {
 						width: 50%;
 						height: 50%;
+
 						.itemBox {
 							width: 100%;
 							height: 100%;
@@ -280,6 +375,44 @@
 									filter: grayscale(0.8);
 								}
 							}
+							&:hover {
+								.hoverFlickr {
+									opacity: 1;
+									right: -490px;
+									transition: 0.5s;
+								}
+							}
+							.hoverFlickr {
+								opacity: 0;
+								position: absolute;
+								bottom: 30px;
+								right: -1000px;
+								width: 460px;
+								height: 300px;
+								background-color: rgba(217, 217, 206, 0.3);
+								transition: 0.5s;
+								.fDesc {
+									width: 100%;
+									height: 100%;
+									padding: 30px;
+									display: flex;
+									justify-content: center;
+									flex-direction: column;
+									.popTit {
+										position: relative;
+										@include sectionSubTitle;
+										margin-bottom: 20px;
+										border-bottom: 1px solid $borderColor;
+									}
+									.galleryOwner {
+										@include sectionSubTitle($subFz: 18px);
+										margin-bottom: 10px;
+									}
+									.galleryTitle {
+										@include sectionSubTitle($subFz: 18px);
+									}
+								}
+							}
 						}
 						&:nth-of-type(odd) {
 							border-right: 1px solid $borderColor;
@@ -291,16 +424,67 @@
 					}
 				}
 				.flickrText {
+					padding: 30px;
 					.flickrTextBox {
-						padding: 30px;
+						
 						.contentsSubTitle {
 							@include sectionSubTitle($subFz: 18px);
-							margin-top: 10px;
+							margin-top: 30px;
+						
 						}
 
 						.contentsText {
-							margin-top: 20px;
+							width: 50%;
+							margin-top: 10px;
 							@include sectionText($captionFz: 12px);
+						}
+					}
+					.galleryBtn {
+						padding-top: 20px;
+						width: 100%;
+
+						a {
+							position: relative;
+							text-transform: uppercase;
+							@include sectionSubTitle($subFz: 16px, $subFontColor: $textColor);
+							padding-bottom: 4px;
+							&::after {
+								content: '';
+								position: absolute;
+								left: 0;
+								bottom: 0;
+								width: 0;
+								height: 1px;
+								background: $borderColor;
+								transition: 0.5s;
+							}
+							&:hover {
+								&::after {
+									width: 100%;
+								}
+							}
+							.arrow {
+								position: relative;
+								top: -6px;
+								display: inline-block;
+								width: 20px;
+								height: 1px;
+								background: $borderColor;
+								margin-left: 20px;
+							}
+
+							.arrow::after {
+								transform-origin: center right;
+								position: absolute;
+								left: 11px;
+								top: -0.5px;
+								content: '';
+								width: 7px;
+								height: 7px;
+								border-top: 1px solid #777777;
+								border-right: 1px solid #777777;
+								transform: rotate(45deg);
+							}
 						}
 					}
 				}
@@ -370,15 +554,18 @@
 						.boardList {
 							width: 50%;
 							height: 50%;
+
 							.boardBox {
 								display: flex;
 								align-items: center;
 								justify-content: center;
 								flex-direction: column;
 								text-align: center;
+								padding: 30px;
 								width: 100%;
 								height: 100%;
-								padding: 30px;
+
+								overflow: hidden;
 								.bListTitle {
 									@include sectionText($captionFz: 20px, $captionFontColor: $textColor);
 									margin-bottom: 10px;
@@ -453,7 +640,52 @@
 								.swiper-slide {
 									.listCont {
 										.galleryImg {
-											height: 23%;
+											height: 120px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.flickrCont {
+				.inner {
+					.flickrList {
+						.flickrItem {
+							.itemBox {
+								&:hover {
+									.hoverFlickr {
+										opacity: 1;
+										right: -420px;
+										transition: 0.5s;
+									}
+								}
+								.hoverFlickr {
+									display: block;
+									position: absolute;
+									bottom: 30px;
+									width: 400px;
+									height: 250px;
+									background-color: rgba(217, 217, 206, 0.3);
+									transition: 0.5s;
+									.fDesc {
+										width: 100%;
+										height: 100%;
+										padding: 30px;
+										display: flex;
+										justify-content: center;
+										flex-direction: column;
+										.popTit {
+											@include sectionSubTitle($fontWeight: 400);
+											margin-bottom: 18px;
+										}
+										.galleryOwner {
+											@include sectionSubTitle($subFz: 16px);
+											margin-bottom: 10px;
+										}
+										.galleryTitle {
+											@include sectionSubTitle($subFz: 16px);
 										}
 									}
 								}
@@ -504,14 +736,37 @@
 											.galleryTitle {
 												font-size: 18px;
 											}
+
 											.galleryInfo {
 												font-size: 16px;
 											}
+										}
+										.galleryImg {
+											height: 180px;
 										}
 										.galleryDate {
 											font-size: 14px;
 										}
 									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.flickrCont {
+				.inner {
+					.flickrList {
+						.flickrItem {
+							.itemBox {
+								&:hover {
+									.hoverFlickr {
+										right: -330px;
+									}
+								}
+								.hoverFlickr {
+									width: 300px;
+									height: 200px;
 								}
 							}
 						}
@@ -570,23 +825,42 @@
 						.contentsTitle {
 							@include sectionTitle($fz: 30px);
 						}
+						.galleryBtn {
+							width: 100%;
+							margin-top: 20px;
+
+							a {
+								position: relative;
+								text-transform: uppercase;
+								@include sectionSubTitle($subFz: 14px, $subFontColor: $textColor);
+								padding-bottom: 4px;
+								.arrow {
+									margin-left: 10px;
+								}
+							}
+						}
+						.controls {
+							a {
+								width: 15px;
+								height: 15px;
+								i {
+									width: 15px;
+									height: 15px;
+									background-size: 13px !important;
+								}
+							}
+							a:first-child {
+								margin-right: 20px;
+							}
+						}
 					}
 					.galleryListCont {
-						width: 70%;
 						.gallerySlideCont {
 							.swiper-wrapper {
 								.swiper-slide {
 									.listCont {
-										.galleryText {
-											.galleryTitle {
-												font-size: 18px;
-											}
-											.galleryInfo {
-												font-size: 16px;
-											}
-										}
-										.galleryDate {
-											font-size: 14px;
+										.galleryImg {
+											height: 120px;
 										}
 									}
 								}
@@ -595,6 +869,47 @@
 					}
 				}
 			}
+			.flickrCont {
+				.inner {
+					.flickrList {
+						.flickrItem {
+							.itemBox {
+								&:hover {
+									.hoverFlickr {
+										right: -260px;
+									}
+								}
+								.hoverFlickr {
+									width: 240px;
+									height: 130px;
+									.fDesc {
+										.popTit {
+											@include sectionSubTitle($fontWeight: 400);
+											margin-bottom: 14px;
+										}
+										.galleryOwner {
+											@include sectionSubTitle($subFz: 12px);
+											margin-bottom: 10px;
+										}
+										.galleryTitle {
+											@include sectionSubTitle($subFz: 12px);
+										}
+									}
+								}
+							}
+						}
+					}
+					.flickrText {
+						.flickrTextBox {
+	
+							.contentsText {
+								width: 70%;
+							}
+						}
+					}
+				}
+			}
+
 			.boardCont {
 				.inner {
 					flex-direction: column;
@@ -709,6 +1024,21 @@
 							margin-top: 10px;
 							margin-bottom: 20px;
 						}
+						.controls {
+							justify-content: flex-end;
+							a {
+								width: 12px;
+								height: 12px;
+								i {
+									width: 12px;
+									height: 12px;
+									background-size: 10px !important;
+								}
+							}
+							a:first-child {
+								margin-right: 16px;
+							}
+						}
 					}
 					.galleryListCont {
 						width: 100%;
@@ -735,6 +1065,56 @@
 									}
 								}
 							}
+						}
+					}
+				}
+			}
+			.flickrCont {
+				.inner {
+					.flickrList {
+						.flickrItem {
+							.itemBox {
+								&:hover {
+									.hoverFlickr {
+										right: 30px;
+									}
+								}
+								.hoverFlickr {
+									bottom: -300px;
+									right: 0;
+									width: 90%;
+									height: 130px;
+									.fDesc {
+										.popTit {
+											@include sectionSubTitle($fontWeight: 400);
+											margin-bottom: 14px;
+										}
+										.galleryOwner {
+											@include sectionSubTitle($subFz: 12px);
+											margin-bottom: 10px;
+										}
+										.galleryTitle {
+											@include sectionSubTitle($subFz: 12px);
+										}
+									}
+								}
+							}
+						}
+					}
+					.flickrText {
+						position: relative;
+						.flickrTextBox {
+	
+							.contentsText {
+								width: 100%;
+							}
+						}
+						.galleryBtn {
+							position: absolute;
+							top: 30px;
+							right: 30px;
+							padding-top: 0;
+							width: auto;
 						}
 					}
 				}
@@ -786,6 +1166,22 @@
 											font-size: 12px;
 										}
 									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.flickrCont {
+				.inner {
+					.flickrList {
+						.flickrItem {
+							.itemBox {
+								.hoverFlickr {
+									top: 350px;
+									bottom: auto;
+									width: 280px;
+									height: 280px;
 								}
 							}
 						}

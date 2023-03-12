@@ -11,7 +11,6 @@ join scss 작업
 		display: flex;
 		border-top: 1px solid $borderColor;
 		margin: 0 -30px;
-		margin-bottom: -80px;
 		.textBox {
 			position: relative;
 			width: 40%;
@@ -269,7 +268,6 @@ join scss 작업
 @media screen and (max-width: $tablet) {
 	.joinCont {
 		> .inner {
-			margin-bottom: -50px;
 			.textBox {
 				display: none;
 			}

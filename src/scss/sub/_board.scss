@@ -292,10 +292,12 @@ $mobile : 576px;
 			height: auto;
 			.boardImg {
 				width: 100%;
+				height: 300px;
 			}
 			.inputBox {
 				width: 100%;
 				.btnSet {
+					width: 60%;
 					text-align: right;
 					button {
 						width: 49%;
@@ -309,26 +311,49 @@ $mobile : 576px;
 		.boardListWrap {
 			.boardLists {
 				.boardList {
-					width: calc(100% / 3);
+					width: calc(100% / 2);
 					&:nth-of-type(4n) {
 						border-right: 1px solid $borderColor;
 					}
 					&:nth-of-type(3n) {
+						border-right: 1px solid $borderColor;
+					}
+					&:nth-of-type(2n) {
 						border-right: 0;
 					}
 					.bListBox {
-						display: flex;
-						justify-content: space-between;
-						flex-direction: column;
-						min-height: 250px;
+						min-height: 200px;
 						.boxText {
-							text-align: center;
 							.boardTit {
-								@include sectionText($captionFz: 18px, $captionFontColor: $textColor);
-								margin-bottom: 20px;
+								@include sectionText($captionFz: 16px, $captionFontColor: $textColor);
+								margin-bottom: 18px;
 							}
 							.boardTxt {
-								@include sectionText($captionFz: 14px, $captionFontColor: $borderColor);
+								@include sectionText($captionFz: 12px, $captionFontColor: $borderColor);
+							}
+						}
+						.btnSet {
+							display: flex;
+							align-items: center;
+							justify-content: flex-end;
+							gap: 12px;
+							button {
+								position: relative;
+								border: none;
+								background: transparent;
+								cursor: pointer;
+								font-size: 12px;
+							}
+						}
+						.listBox {
+							textarea {
+								height: 120px;
+							}
+							.enableBtnBox {
+								gap: 10px;
+								button {
+									font-size: 12px;
+								}
 							}
 						}
 					}
@@ -339,63 +364,67 @@ $mobile : 576px;
 }
 
 @media screen and (max-width: $mobile) {
+}
+@media screen and (max-width: $sMobile) {
 	.boardSectionCont {
-		table {
-			tr {
-				td {
-					.boardList {
-						flex-direction: column;
-						.enableBox {
-							input,
-							textarea {
-								width: 100%;
-							}
-							.enableBtnBox {
-								button {
-									width: 49%;
-								}
-								button + button {
-									margin-left: 2%;
-								}
-							}
-						}
-						.boardTit {
-							width: 100%;
-							font-size: 16px;
-						}
-						.boardTxt {
-							width: 100%;
-							margin-top: 10px;
-							font-size: 14px;
-						}
-						.btnSet {
-							width: 100%;
-							margin-top: 10px;
-							justify-content: flex-start;
-							font-size: 14px;
-						}
+		.boardCreate {
+			flex-wrap: wrap;
+			height: auto;
+			.boardImg {
+				width: 100%;
+				height: 300px;
+			}
+			.inputBox {
+				width: 100%;
+				.btnSet {
+					width: 60%;
+					text-align: right;
+					button {
+						width: 49%;
+					}
+					button + button {
+						margin-left: 2%;
 					}
 				}
 			}
 		}
-	}
-}
-@media screen and (max-width: $sMobile) {
-	.boardSectionCont {
-		table {
-			tr {
-				td {
-					padding: 20px 0;
-				}
-			}
-		}
-		.pagination {
-			.numbers {
-				padding: 0 10px;
-				a {
-					width: 18px;
-					font-size: 14px;
-					margin: 0 4px;
+		.boardListWrap {
+			.boardLists {
+				.boardList {
+					width: 100%;
+					border-right: 0;
+					&:nth-of-type(3n) {
+						border-right: 0;
+					}
+					.bListBox {
+						min-height: 300px;
+						.boxText {
+							.boardTit {
+								@include sectionText($captionFz: 18px, $captionFontColor: $textColor);
+								margin-bottom: 18px;
+							}
+							.boardTxt {
+								@include sectionText($captionFz: 14px, $captionFontColor: $borderColor);
+							}
+						}
+						.btnSet {
+							gap: 20px;
+							button {
+								font-size: 16px;
+							}
+						}
+						.listBox {
+							textarea {
+								height: 200px;
+							}
+							.enableBtnBox {
+								gap: 20px;
+								button {
+									font-size: 16px;
+								}
+							}
+						}
+					}
 				}
 			}
 		}

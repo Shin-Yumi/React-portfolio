@@ -62,7 +62,7 @@ function Gallery() {
 										<img src={el.snippet.thumbnails.high.url} alt={el.snippet.title} />
 									</Link>
 									<div className='con'>
-										<h2>{tit.length > 30 ? tit.substr(0, 30) + '...' : tit}</h2>
+										<h2>{tit.length > 20 ? tit.substr(0, 20) + '...' : tit}</h2>
 										<p>{desc.length > 120 ? desc.substr(0, 120) + '...' : desc}</p>
 										<span>{date.split('T')[0]}</span>
 									</div>
