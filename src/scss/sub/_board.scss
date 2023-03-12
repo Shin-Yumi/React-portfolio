@@ -4,19 +4,23 @@ board scss 작업
 2022.01.29 ~
 */
 .boardSectionCont {
+	margin: 0 -30px 80px;
+
 	.boardCreate {
-		border: 1px solid $borderColor;
+		border-top: 1px solid $borderColor;
+		border-bottom: 1px solid $borderColor;
+		height: 300px;
 		margin-bottom: 50px;
 		display: flex;
 		align-items: center;
 		.boardImg {
-			width: 50%;
-			height: 250px;
+			width: 60%;
+			height: 100%;
 			background: url(../../../public/img/board-image.jpg) no-repeat center/cover;
 			border-right: 1px solid $borderColor;
 		}
 		.inputBox {
-			width: 50%;
+			width: 40%;
 			padding: 20px;
 			margin: 0 auto;
 
@@ -31,7 +35,6 @@ board scss 작업
 				&:focus {
 					outline: 1px solid $hoverColor;
 				}
-				
 			}
 
 			.btnSet {
@@ -55,104 +58,71 @@ board scss 작업
 			}
 		}
 	}
+	.boardListWrap {
+		margin-bottom: 60px;
+		.boardLists {
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			border-top: 1px solid $borderColor;
 
-	table {
-		width: 100%;
-		margin-bottom: 50px;
-		tr {
-			border-top: 2px solid $borderColor;
-			border-bottom: 2px solid $borderColor;
-			td {
-				padding: 30px 0;
-				text-align: center;
-				padding-left: 10px;
-				.boardList {
-					color: $textColor;
-					text-align: center;
-					width: 100%;
-					height: 100%;
+			.boardList {
+				width: 25%;
+				border-right: 1px solid $borderColor;
+				border-bottom: 1px solid $borderColor;
+				padding: 60px 30px 30px;
+				&:nth-of-type(4n) {
+					border-right: 0;
+				}
+				.bListBox {
 					display: flex;
-					align-items: center;
-					&::after {
-						content: '';
-						clear: both;
-						display: block;
-					}
-					.enableBox {
-						width: 100%;
-						display: flex;
-						flex-direction: column;
-						align-items: center;
-						input,
-						textarea {
-							width: 60%;
-							padding: 8px 10px;
-							border: 1px solid $borderColor;
-							margin-bottom: 10px;
-							background: transparent;
-							resize: none;
-							&:focus {
-								outline: 1px solid $hoverColor;
-							}
+					justify-content: space-between;
+					flex-direction: column;
+					min-height: 300px;
+					.boxText {
+						text-align: center;
+						.boardTit {
+							@include sectionText($captionFz: 20px, $captionFontColor: $textColor);
+							margin-bottom: 20px;
 						}
-						textarea {
-							margin-bottom: 0;
+						.boardTxt {
+							@include sectionText;
 						}
-						.enableBtnBox {
-							width: 100%;
-							margin-top: 20px;
-							button {
-								width: 130px;
-								height: 30px;
-								display: inline-block;
-								background: $btnColor;
-								border: 1px solid $borderColor;
-								font-size: 12px;
-								color: $textColor;
-								cursor: pointer;
-								&:hover {
-									background: $hoverColor;
-									color: #fff;
-								}
-							}
-							button + button {
-								margin-left: 20px;
-							}
-						}
-					}
-
-					.boardTit {
-						width: 20%;
-						text-align: left;
-						font-size: 20px;
-						font-family: $koFont;
-						float: left;
-						white-space: nowrap;
-						overflow: hidden;
-						text-overflow: ellipsis;
-					}
-					.boardTxt {
-						width: 70%;
-						text-align: left;
-						font-size: 18px;
-						float: left;
-						font-family: $koFont;
-						white-space: nowrap;
-						overflow: hidden;
-						text-overflow: ellipsis;
 					}
 					.btnSet {
-						width: 10%;
 						display: flex;
 						align-items: center;
 						justify-content: flex-end;
 						gap: 20px;
-
 						button {
+							position: relative;
 							border: none;
 							background: transparent;
 							cursor: pointer;
-
+							&::after {
+								content: '';
+								position: absolute;
+								left: 0;
+								bottom: 0;
+								width: 0;
+								height: 1px;
+								background-color: $borderColor;
+								transition: 0.5s;
+							}
+							&:hover {
+								&:nth-of-type(1) {
+									&::after {
+										background-color: textColor;
+										width: 100%;
+									}
+								}
+								&:nth-of-type(2) {
+									&::after {
+										background-color: $hoverColor;
+										width: 100%;
+									}
+								}
+							}
 							&:nth-of-type(1) {
 								color: $textColor;
 							}
@@ -161,42 +131,72 @@ board scss 작업
 							}
 						}
 					}
-					// .boardArrow {
-					// 	position: relative;
-					// 	right: 10px;
-					// 	width: 20px;
-					// 	height: 20px;
-					// 	float: right;
-					// 	transform: rotate(135deg);
-					// 	&::after,
-					// 	&::before {
-					// 		position: absolute;
-					// 		content: '';
-					// 	}
-					// 	&::before {
-					// 		left: 0;
-					// 		top: 0;
-					// 		width: 50%;
-					// 		height: 50%;
-					// 		border: 2px solid $textColor;
-
-					// 		border-right: 0;
-					// 		border-bottom: 0;
-					// 	}
-					// 	&::after {
-					// 		left: 0;
-					// 		top: 0;
-					// 		width: calc(100% * 6);
-					// 		height: 2px;
-					// 		background: $textColor;
-					// 		transform-origin: 0 100%;
-					// 		transform: rotate(45deg);
-					// 	}
-					// }
+					.listBox {
+						input[type='text'],
+						textarea {
+							width: 100%;
+							padding: 8px 10px;
+							border: 1px solid $borderColor;
+							resize: none;
+							margin-bottom: 10px;
+							background: transparent;
+							color: $borderColor;
+							font-size: 12px;
+							&:focus {
+								outline: 1px solid $hoverColor;
+							}
+						}
+						textarea {
+							height: 200px;
+						}
+						.enableBtnBox {
+							display: flex;
+							align-items: center;
+							justify-content: flex-end;
+							gap: 20px;
+							button {
+								position: relative;
+								border: none;
+								background: transparent;
+								cursor: pointer;
+								&::after {
+									content: '';
+									position: absolute;
+									left: 0;
+									bottom: 0;
+									width: 0;
+									height: 1px;
+									background-color: $borderColor;
+									transition: 0.5s;
+								}
+								&:hover {
+									&:nth-of-type(1) {
+										&::after {
+											background-color: red;
+											width: 100%;
+										}
+									}
+									&:nth-of-type(2) {
+										&::after {
+											background-color: $hoverColor;
+											width: 100%;
+										}
+									}
+								}
+								&:nth-of-type(1) {
+									color: red;
+								}
+								&:nth-of-type(2) {
+									color: $hoverColor;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 	}
+
 	.pagination {
 		width: 100%;
 		display: flex;
@@ -254,12 +254,30 @@ $mobile : 576px;
 */
 @media screen and (max-width: $sLaptop) {
 	.boardSectionCont {
-		table {
-			tr {
-				td {
-					a {
-						.boardText {
-							font-size: 20px;
+		.boardListWrap {
+			.boardLists {
+				.boardList {
+					width: calc(100% / 3);
+					&:nth-of-type(4n) {
+						border-right: 1px solid $borderColor;
+					}
+					&:nth-of-type(3n) {
+						border-right: 0;
+					}
+					.bListBox {
+						display: flex;
+						justify-content: space-between;
+						flex-direction: column;
+						min-height: 250px;
+						.boxText {
+							text-align: center;
+							.boardTit {
+								@include sectionText($captionFz: 18px, $captionFontColor: $textColor);
+								margin-bottom: 20px;
+							}
+							.boardTxt {
+								@include sectionText($captionFz: 14px, $captionFontColor: $borderColor);
+							}
 						}
 					}
 				}
@@ -271,7 +289,7 @@ $mobile : 576px;
 	.boardSectionCont {
 		.boardCreate {
 			flex-wrap: wrap;
-
+			height: auto;
 			.boardImg {
 				width: 100%;
 			}
@@ -288,19 +306,29 @@ $mobile : 576px;
 				}
 			}
 		}
-		table {
-			tr {
-				td {
-					.boardList {
-						.boardTit {
-							font-size: 20px;
-						}
-						.boardTxt {
-							font-size: 18px;
-						}
-						.btnSet {
-							button {
-								font-size: 14px;
+		.boardListWrap {
+			.boardLists {
+				.boardList {
+					width: calc(100% / 3);
+					&:nth-of-type(4n) {
+						border-right: 1px solid $borderColor;
+					}
+					&:nth-of-type(3n) {
+						border-right: 0;
+					}
+					.bListBox {
+						display: flex;
+						justify-content: space-between;
+						flex-direction: column;
+						min-height: 250px;
+						.boxText {
+							text-align: center;
+							.boardTit {
+								@include sectionText($captionFz: 18px, $captionFontColor: $textColor);
+								margin-bottom: 20px;
+							}
+							.boardTxt {
+								@include sectionText($captionFz: 14px, $captionFontColor: $borderColor);
 							}
 						}
 					}

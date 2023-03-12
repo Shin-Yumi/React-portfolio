@@ -102,8 +102,62 @@ function Board() {
 						</div>
 					</div>
 				</div>
+				<div className='boardListWrap'>
+					<ul className='boardLists'>
+						{Posts.map((post, idx) => {
+							const title = post.title;
+							const content = post.content;
+							return (
+								<li className='boardList' key={idx}>
+									{post.enableUpdate ? (
+										<>
+											<div className='bListBox'>
+												<div className='listBox'>
+													<div className='enableBox'>
+														<input type='text' defaultValue={post.title} ref={inputEdit} />
 
-				<table>
+														<textarea
+															cols='30'
+															rows='4'
+															defaultValue={post.content}
+															ref={textareaEdit}
+														></textarea>
+														<div className='enableBtnBox'>
+															<button onClick={() => disableUpdate(idx)}>CANCEL</button>
+															<button onClick={() => updatePost(idx)}>UPDATE</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</>
+									) : (
+										<>
+											<div>
+												<div className='bListBox'>
+													<div className='boxText'>
+														<p className='boardTit'>
+															{title.length > 20 ? title.substr(0, 20) + '...' : title}
+														</p>
+														<p className='boardTxt'>
+															{content.length > 100 ? content.substr(0, 100) + '...' : content}
+														</p>
+													</div>
+
+													<div className='btnSet'>
+														<button onClick={() => enableUpdate(idx)}>EDIT</button>
+														<button onClick={() => deletePost(idx)}>DELETE</button>
+													</div>
+												</div>
+											</div>
+										</>
+									)}
+								</li>
+							);
+						})}
+					</ul>
+				</div>
+
+				{/* <table>
 					<caption className='hidden'>회원 자유 게시판</caption>
 					<thead className='hidden'>
 						<tr>
@@ -143,7 +197,6 @@ function Board() {
 													<p className='boardTit'>{post.title}</p>
 													<p className='boardTxt'>{post.content}</p>
 													<div className='btnSet'>
-
 														<button onClick={() => enableUpdate(idx)}>EDIT</button>
 														<button onClick={() => deletePost(idx)}>DELETE</button>
 													</div>
@@ -155,7 +208,7 @@ function Board() {
 							);
 						})}
 					</tbody>
-				</table>
+				</table> */}
 				<div className='pagination'>
 					<Link to='/' className='prev'></Link>
 
