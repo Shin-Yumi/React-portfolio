@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import Layout from '../common/Layout';
 import { useState, useEffect, useRef } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import { faTrash, faUpload, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 function Board() {
 	const name = 'Board';
 	const title = 'Board';
 	const subTitle = '자유게시판';
-	const expCaption =
-		'미풍양속을 해치지 않는 범위 내에서 Vogue에 대한 의견을 자유롭게 작성해주세요.';
+	const expCaption = '미풍양속을 해치지 않는 범위 내에서 Vogue에 대한 의견을 자유롭게 작성해주세요.';
 
 	const getLocalData = () => {
 		const data = localStorage.getItem('post');
@@ -116,15 +118,14 @@ function Board() {
 													<div className='enableBox'>
 														<input type='text' defaultValue={post.title} ref={inputEdit} />
 
-														<textarea
-															cols='30'
-															rows='4'
-															defaultValue={post.content}
-															ref={textareaEdit}
-														></textarea>
+														<textarea cols='30' rows='4' defaultValue={post.content} ref={textareaEdit}></textarea>
 														<div className='enableBtnBox'>
-															<button onClick={() => disableUpdate(idx)}>CANCEL</button>
-															<button onClick={() => updatePost(idx)}>UPDATE</button>
+															<button onClick={() => updatePost(idx)}>
+																<FontAwesomeIcon icon={faUpload} />
+															</button>
+															<button onClick={() => disableUpdate(idx)}>
+																<FontAwesomeIcon icon={faXmark} />
+															</button>
 														</div>
 													</div>
 												</div>
@@ -135,17 +136,17 @@ function Board() {
 											<div>
 												<div className='bListBox'>
 													<div className='boxText'>
-														<p className='boardTit'>
-															{title.length > 20 ? title.substr(0, 20) + '...' : title}
-														</p>
-														<p className='boardTxt'>
-															{content.length > 100 ? content.substr(0, 100) + '...' : content}
-														</p>
+														<p className='boardTit'>{title.length > 20 ? title.substr(0, 20) + '...' : title}</p>
+														<p className='boardTxt'>{content.length > 100 ? content.substr(0, 100) + '...' : content}</p>
 													</div>
 
 													<div className='btnSet'>
-														<button onClick={() => enableUpdate(idx)}>EDIT</button>
-														<button onClick={() => deletePost(idx)}>DELETE</button>
+														<button onClick={() => enableUpdate(idx)}>
+															<FontAwesomeIcon icon={faPenToSquare} />
+														</button>
+														<button onClick={() => deletePost(idx)}>
+															<FontAwesomeIcon icon={faTrash} />
+														</button>
 													</div>
 												</div>
 											</div>
