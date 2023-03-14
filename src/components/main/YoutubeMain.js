@@ -2,6 +2,8 @@ import Modal from '../common/Modal';
 import { Link } from 'react-router-dom';
 import { memo, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import useScrollFadeIn from '../common/Scroll';
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper';
@@ -25,13 +27,14 @@ function YoutubeMain() {
 			<div className='inner'>
 				<div className='galleryTextCont'>
 					<div>
-						<h1 className='contentsTitle'>Youtube</h1>
-						<p className='contentsText'>
-							새로운 청키 스니커즈가 등장하는 것처럼 이 신발의 활용법도 점점 다양해지고 있습니다.
-							켄달 제너, 두아 리파와 같이 옷을 잘 입는 셀럽들은 각기 다른 방식으로 이 신발을
-							소화하고 있죠. 셀럽들이 제안한 청키 스니커즈 활용법을 확인해봅시다
+						<h1 className='contentsTitle' {...useScrollFadeIn('up', 1, 0)}>
+							Youtube
+						</h1>
+						<p className='contentsText' {...useScrollFadeIn('up', 1, 0)}>
+							새로운 청키 스니커즈가 등장하는 것처럼 이 신발의 활용법도 점점 다양해지고 있습니다. 켄달 제너, 두아 리파와 같이 옷을
+							잘 입는 셀럽들은 각기 다른 방식으로 이 신발을 소화하고 있죠. 셀럽들이 제안한 청키 스니커즈 활용법을 확인해봅시다
 						</p>
-						<div className='galleryBtn'>
+						<div className='galleryBtn' {...useScrollFadeIn('up', 1, 0)}>
 							<Link to='/gallery/youtube' className='btnText'>
 								view Youtube
 								<span className='arrow'></span>
@@ -117,9 +120,7 @@ function YoutubeMain() {
 										</div>
 										<div className='galleryText'>
 											<p className='galleryTitle'>{vid.snippet.title}</p>
-											<p className='galleryInfo'>
-												{desc.length > 120 ? desc.substr(0, 120) + '...' : desc}
-											</p>
+											<p className='galleryInfo'>{desc.length > 120 ? desc.substr(0, 120) + '...' : desc}</p>
 										</div>
 										<div className='galleryDate'>
 											<p>{date.split('T')[0]}</p>

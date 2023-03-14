@@ -1,5 +1,6 @@
 import { useState, useEffect, memo } from 'react';
 import {} from 'react-router-dom';
+import useScrollFadeIn from '../common/Scroll';
 
 function BoardMain() {
 	const getLocalData = () => {
@@ -44,10 +45,15 @@ function BoardMain() {
 					<div className='bContWrap'>
 						<div className='bTitleWrap'>
 							<div className='bBox'>
-								<h1 className='contentsTitle'>Board</h1>
+								<h1 className='contentsTitle' {...useScrollFadeIn('up', 1, 0)}>
+									Board
+								</h1>
 								<div className='boardDescWrap moBlock'>
-									<p className='contentsSubTitle'> Write your comments for vogue</p>
-									<p className='boardDesc'>
+									<p className='contentsSubTitle' {...useScrollFadeIn('up', 1, 0)}>
+										{' '}
+										Write your comments for vogue
+									</p>
+									<p className='boardDesc' {...useScrollFadeIn('up', 1, 0)}>
 										Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe exercitationem, harum ex laudantium quas nisi
 										quae voluptatum repudiandae at quisquam maiores vero itaque sapiente ut sint fugit, molestiae fugiat? Dolorem.
 									</p>
@@ -56,8 +62,11 @@ function BoardMain() {
 						</div>
 						<div className='bTextWrap'>
 							<div className='boardDescWrap'>
-								<p className='contentsSubTitle'> Write your comments for vogue</p>
-								<p className='boardDesc'>
+								<p className='contentsSubTitle' {...useScrollFadeIn('up', 1, 0)}>
+									{' '}
+									Write your comments for vogue
+								</p>
+								<p className='boardDesc' {...useScrollFadeIn('up', 1, 0)}>
 									Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe exercitationem, harum ex laudantium quas nisi
 									quae voluptatum repudiandae at quisquam maiores vero itaque sapiente ut sint fugit, molestiae fugiat? Dolorem.
 								</p>

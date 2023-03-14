@@ -18,6 +18,7 @@
     "interval-call": "^0.4.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-intersection-observer": "^9.4.3",
     "react-isotope": "^1.0.7",
     "react-masonry-component": "^6.3.0",
     "react-redux": "^8.0.5",
