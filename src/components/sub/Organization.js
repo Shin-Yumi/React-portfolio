@@ -19,10 +19,6 @@ function Organization() {
 		});
 	}, []);
 
-	useEffect(() => {
-		console.log(Members);
-	}, [Members]);
-
 	return (
 		<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption} sub01={sub01} sub02={sub02}>
 			<article id='organization' className='aboutCont'>
@@ -38,15 +34,20 @@ function Organization() {
 													<img src={`${process.env.PUBLIC_URL}/img/${el.pic}`} alt={el.name} />
 												</figure>
 											</div>
-											<div className='memberDescBox'>
-												<p className='memberPosition'>{el.position}</p>
+											<div className='memberDesc'>
+												<div className='memberDescBox'>
+													<p className='memberPosition'>{el.position}</p>
 
-												<p className='memberName'>{el.name}</p>
-												<p className='memberTeam'>{el.department}</p>
-												<p className='memberRank'>{el.rank}</p>
-											</div>
-											<div className='memberWiseSaying'>
-												<p className='memberWise'>{el.wise}</p>
+													<p className='memberName'>{el.name}</p>
+													<p className='memberTeam'>{el.department}</p>
+													<p className='memberRank'>{el.rank}</p>
+												</div>
+												<div className='memberWiseSaying'>
+													<div className='mWiseSayingBox'>
+														<h3>Motto</h3>
+														<p className='memberWise'>{el.wise}</p>
+													</div>
+												</div>
 											</div>
 										</div>
 									</li>

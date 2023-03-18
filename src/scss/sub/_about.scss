@@ -10,6 +10,7 @@
 				border-top: 1px solid $borderColor;
 				.organizationList {
 					width: 100%;
+					height: 500px;
 					border-bottom: 1px solid $borderColor;
 					.organizationBox {
 						width: 100%;
@@ -33,29 +34,46 @@
 								}
 							}
 						}
-						.memberDescBox {
-							width: calc(100% - 700px);
+						.memberDesc {
+							display: flex;
+							width: calc(100% - 400px);
 							height: 100%;
-							padding: 30px;
-							.memberPosition {
-								@include sectionSubTitle($subLetterS: 1px, $fontWeight: 400);
-								text-transform: uppercase;
-								margin-bottom: 20px;
+							.memberDescBox {
+								width: calc(100% - 300px);
+								height: 100%;
+								padding: 30px;
+								display: flex;
+								flex-direction: column;
+								justify-content: flex-end;
+								.memberPosition {
+									@include sectionSubTitle($subLetterS: 1px, $fontWeight: 400);
+									text-transform: uppercase;
+									margin-bottom: 20px;
+								}
+								.memberName,
+								.memberTeam,
+								.memberRank {
+									@include sectionSubTitle($subFontColor: $borderColor, $subFz: 20px);
+									margin-bottom: 4px;
+								}
 							}
-							.memberName,
-							.memberTeam,
-							.memberRank {
-								@include sectionSubTitle($subFontColor: $borderColor, $subFz: 20px);
-								margin-bottom: 4px;
-							}
-						}
-						.memberWiseSaying {
-							width: 300px;
-							height: 100%;
-							border-left: 1px solid $borderColor;
-							padding: 30px;
-							.memberWise {
-								@include sectionSubTitle($subFontColor: $borderColor, $subFz: 20px);
+							.memberWiseSaying {
+								width: 300px;
+								height: 100%;
+								padding: 30px 0;
+								.mWiseSayingBox {
+									height: 100%;
+									padding: 0 30px;
+									border-left: 1px solid $borderColor;
+									> h3 {
+										@include sectionTitle($fz: 50px, $fontColor: $hoverColor);
+										opacity: 0.2;
+									}
+									.memberWise {
+										margin-top: 30px;
+										@include sectionSubTitle($subFontColor: $borderColor, $subFz: 18px);
+									}
+								}
 							}
 						}
 					}
@@ -270,18 +288,32 @@
 										.organizationWrap {
 											.organizationList {
 												.organizationBox {
-													.memberDescBox {
-														width: 70%;
-														padding: 30px;
-														.memberPosition {
-															@include sectionSubTitle($subFz: 18px, $subLetterS: 1px, $fontWeight: 400);
-															margin-bottom: 14px;
+													.memberDesc {
+														.memberDescBox {
+															width: calc(100% - 200px);
+															.memberPosition {
+																@include sectionSubTitle($subFz: 18px, $subLetterS: 1px, $fontWeight: 400);
+																margin-bottom: 14px;
+															}
+															.memberName,
+															.memberTeam,
+															.memberRank {
+																@include sectionSubTitle($subFontColor: $borderColor, $subFz: 16px);
+																margin-bottom: 4px;
+															}
 														}
-														.memberName,
-														.memberTeam,
-														.memberRank {
-															@include sectionSubTitle($subFontColor: $borderColor, $subFz: 16px);
-															margin-bottom: 4px;
+														.memberWiseSaying {
+															width: 200px;
+															.mWiseSayingBox {
+																> h3 {
+																	@include sectionTitle($fz: 30px, $fontColor: $hoverColor);
+																	opacity: 0.2;
+																}
+																.memberWise {
+																	margin-top: 15px;
+																	@include sectionSubTitle($subFontColor: $borderColor, $subFz: 14px);
+																}
+															}
 														}
 													}
 												}
@@ -321,18 +353,31 @@
 										.organizationWrap {
 											.organizationList {
 												.organizationBox {
-													.memberDescBox {
-														width: 70%;
-														padding: 30px;
-														.memberPosition {
-															@include sectionSubTitle($subFz: 16px, $subLetterS: 1px, $fontWeight: 400);
-															margin-bottom: 12px;
+													.memberDesc {
+														.memberDescBox {
+															width: calc(100% - 150px);
+															.memberPosition {
+																@include sectionSubTitle($subFz: 16px, $subLetterS: 1px, $fontWeight: 400);
+																margin-bottom: 12px;
+															}
+															.memberName,
+															.memberTeam,
+															.memberRank {
+																@include sectionSubTitle($subFontColor: $borderColor, $subFz: 14px);
+																margin-bottom: 4px;
+															}
 														}
-														.memberName,
-														.memberTeam,
-														.memberRank {
-															@include sectionSubTitle($subFontColor: $borderColor, $subFz: 14px);
-															margin-bottom: 4px;
+														.memberWiseSaying {
+															width: 150px;
+															.mWiseSayingBox {
+																> h3 {
+																	@include sectionTitle($fz: 22px, $fontColor: $hoverColor);
+																	opacity: 0.2;
+																}
+																.memberWise {
+																	@include sectionSubTitle($subFontColor: $borderColor, $subFz: 10px);
+																}
+															}
 														}
 													}
 												}
@@ -395,17 +440,40 @@
 													.memberImgBox {
 														padding: 20px;
 													}
-													.memberDescBox {
-														padding: 20px;
-														.memberPosition {
-															@include sectionSubTitle($subFz: 14px, $subLetterS: 1px, $fontWeight: 400);
-															margin-bottom: 10px;
+													.memberDesc {
+														width: 100%;
+														flex-direction: column;
+														.memberDescBox {
+															width: 100%;
+															height: 80%;
+															.memberPosition {
+																@include sectionSubTitle($subFz: 14px, $subLetterS: 1px, $fontWeight: 400);
+																margin-bottom: 10px;
+															}
+															.memberName,
+															.memberTeam,
+															.memberRank {
+																@include sectionSubTitle($subFontColor: $borderColor, $subFz: 12px);
+																margin-bottom: 4px;
+															}
 														}
-														.memberName,
-														.memberTeam,
-														.memberRank {
-															@include sectionSubTitle($subFontColor: $borderColor, $subFz: 12px);
-															margin-bottom: 4px;
+														.memberWiseSaying {
+															width: 100%;
+															height: 20%;
+															padding: 0;
+															.mWiseSayingBox {
+																padding: 15px 30px;
+																height: 100%;
+																border-left: 0;
+																border-top: 1px solid $borderColor;
+																> h3 {
+																	@include sectionTitle($fz: 22px, $fontColor: $hoverColor);
+																	opacity: 0.2;
+																}
+																.memberWise {
+																	@include sectionSubTitle($subFontColor: $borderColor, $subFz: 10px);
+																}
+															}
 														}
 													}
 												}
@@ -464,25 +532,32 @@
 									.aboutSectionCont {
 										.organizationWrap {
 											.organizationList {
+												height: calc(100vh - 60px);
 												.organizationBox {
+													width: 100%;
 													flex-direction: column;
 													.memberImgBox {
 														width: 100%;
 														padding: 30px;
 														border-right: 0;
 													}
-													.memberDescBox {
-														width: 100%;
-														padding: 0 30px 30px;
-														.memberPosition {
-															@include sectionSubTitle($subFz: 18px, $subLetterS: 1px, $fontWeight: 400);
-															margin-bottom: 10px;
+													.memberDesc {
+														.memberDescBox {
+															width: 100%;
+															padding: 0 30px 30px;
+															.memberPosition {
+																@include sectionSubTitle($subFz: 18px, $subLetterS: 1px, $fontWeight: 400);
+																margin-bottom: 10px;
+															}
+															.memberName,
+															.memberTeam,
+															.memberRank {
+																@include sectionSubTitle($subFontColor: $borderColor, $subFz: 14px);
+																margin-bottom: 2px;
+															}
 														}
-														.memberName,
-														.memberTeam,
-														.memberRank {
-															@include sectionSubTitle($subFontColor: $borderColor, $subFz: 14px);
-															margin-bottom: 2px;
+														.memberWiseSaying {
+															display: none;
 														}
 													}
 												}
