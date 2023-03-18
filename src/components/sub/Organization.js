@@ -21,17 +21,10 @@ function Organization() {
 
 	useEffect(() => {
 		console.log(Members);
-	}, [Members]); 
+	}, [Members]);
 
 	return (
-		<Layout
-			name={name}
-			title={title}
-			subTitle={subTitle}
-			expCaption={expCaption}
-			sub01={sub01}
-			sub02={sub02}
-		>
+		<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption} sub01={sub01} sub02={sub02}>
 			<article id='organization' className='aboutCont'>
 				<div className='inner'>
 					<div className='aboutSectionCont'>
@@ -51,6 +44,9 @@ function Organization() {
 												<p className='memberName'>{el.name}</p>
 												<p className='memberTeam'>{el.department}</p>
 												<p className='memberRank'>{el.rank}</p>
+											</div>
+											<div className='memberWiseSaying'>
+												<p className='memberWise'>{el.wise}</p>
 											</div>
 										</div>
 									</li>

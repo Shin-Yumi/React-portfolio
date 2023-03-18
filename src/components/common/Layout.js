@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import useScrollFadeIn from '../common/Scroll';
+import useScrollFadeIn from '../assets/Scroll';
 
 function Layout(props) {
 	return (

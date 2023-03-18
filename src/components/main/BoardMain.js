@@ -1,6 +1,6 @@
 import { useState, useEffect, memo } from 'react';
 import {} from 'react-router-dom';
-import useScrollFadeIn from '../common/Scroll';
+import useScrollFadeIn from '../assets/Scroll';
 
 function BoardMain() {
 	const getLocalData = () => {

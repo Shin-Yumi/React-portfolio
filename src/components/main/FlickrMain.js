@@ -2,7 +2,7 @@ import Modal from '../common/Modal';
 import { Link } from 'react-router-dom';
 import { memo, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import useScrollFadeIn from '../common/Scroll';
+import useScrollFadeIn from '../assets/Scroll';
 
 function FlickrMain() {
 	const open = useRef(null);

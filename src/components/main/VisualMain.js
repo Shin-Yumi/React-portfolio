@@ -1,4 +1,4 @@
-import useScrollFadeIn from '../common/Scroll';
+import useScrollFadeIn from '../assets/Scroll';
 function VisualMain() {
 	return (
 		<section className={`contents mainCont myScroll`}>
