@@ -2,45 +2,51 @@
     "members": [
         {
             "name": "David",
-            "department" : "Management",
+            "department": "Management",
             "position": "President",
             "rank": "CEO",
-            "pic": "member01.jpg"
+            "pic": "member01.jpg",
+            "wise": "There is no use whatever trying to help people who do not help themselves. You cannot push anyone up a ladder unless he be willing to climb himself. -Andrew Carnegie"
         },
         {
             "name": "Julia",
-            "department" : "Human Resources",
+            "department": "Human Resources",
             "position": "Vice President",
             "rank": "COO",
-            "pic": "member02.jpg"
+            "pic": "member02.jpg",
+            "wise": "Successful people do what unsuccessful people are not willing to do. Don’t wish it were easier; wish you were better. -Jim Rohn"
         },
         {
             "name": "Emily",
-            "department" : "Design",
+            "department": "Design",
             "position": "UI Designer",
             "rank": "General Manager",
-            "pic": "member03.jpg"
+            "pic": "member03.jpg",
+            "wise": "I owe my success to having listened respectfully to the very best advice, and then going away and doing the exact opposite. – G. K. Chesterton"
         },
         {
             "name": "Ann",
-            "department" : "S/W Technical",
+            "department": "S/W Technical",
             "position": "Front-end Engineer",
             "rank": "Deputy General Manager",
-            "pic": "member04.jpg"
+            "pic": "member04.jpg",
+            "wise": "Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time. – Thomas Edison"
         },
         {
             "name": "Paul",
-            "department" : "S/W Technical",
+            "department": "S/W Technical",
             "position": "Back-end Engineer",
             "rank": "CTO",
-            "pic": "member05.jpg"
+            "pic": "member05.jpg",
+            "wise": "Money is like gasoline during a road trip. You do not want to run out of gas on your trip, but you ‘re not doing a tour of gas stations. – Tim O’Reilly"
         },
         {
             "name": "Michael",
-            "department" : "S/W Technical planning",
+            "department": "S/W Technical planning",
             "position": "Project Manager",
             "rank": "Clerk",
-            "pic": "member06.jpg"
+            "pic": "member06.jpg",
+            "wise": "Some people dream of success, while other people get up every morning and make it happen. – Wayne Huizenga"
         }
     ]
 }
