@@ -9,7 +9,8 @@ function AboutMain() {
 				<article className='contentsHalf aboutImgFull'>
 					<div className='aboutImg'>
 						<figure className='aboutFigure'>
-							<img src={process.env.PUBLIC_URL + '/img/about02.jpg'} alt='' />
+							<video src={process.env.PUBLIC_URL + '/img/vogue.mp4'} loop autoPlay muted>
+							</video>
 						</figure>
 					</div>
 				</article>

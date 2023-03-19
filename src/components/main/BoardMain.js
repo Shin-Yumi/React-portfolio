@@ -81,7 +81,7 @@ function BoardMain() {
 							const title = post.title;
 							const content = post.content;
 							return (
-								<li className='boardList' key={idx}>
+								<li className='boardList' key={idx} {...useScrollFadeIn}>
 									<div className='boardBox'>
 										<p className='bListTitle'>{title.length > 20 ? title.substr(0, 20) + '...' : title}</p>
 										<p className='bListText'>{content.length > 100 ? content.substr(0, 100) + '...' : content}</p>
