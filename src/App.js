@@ -6,6 +6,8 @@ import * as types from './redux/actionType';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import Menu from './components/common/Menu';
+import TopButton from './components/common/TopBtn';
+
 //main
 import Main from './components/main/Main';
 
@@ -21,6 +23,7 @@ import Contact from './components/sub/Contact';
 //sass
 import './scss/style.scss';
 
+
 function App() {
 	const menu = useRef(null);
 	const dispatch = useDispatch();
@@ -33,8 +36,10 @@ function App() {
 
 	return (
 		<>
-			<Header menu={menu} />
-			<Route exact path='/' component={Main} />
+			<Switch>
+				<Route exact path='/' render={() => <Main menu={menu} />} />
+				<Route path='/' render={() => <Header type={'sub'} menu={menu} />}></Route>
+			</Switch>
 
 			<Switch>
 				<Route path='/about/organization' component={Organization} />
@@ -54,6 +59,7 @@ function App() {
 
 			<Footer />
 			<Menu ref={menu} />
+			<TopButton />
 		</>
 	);
 }

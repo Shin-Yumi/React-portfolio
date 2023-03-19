@@ -1,0 +1,23 @@
+.scroll__container{
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 1;
+}
+#top{
+  position: relative;
+  border: 1px solid $borderColor;
+  width: 70px;
+  height: 40px;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: $borderColor;
+  font-size: 14px;
+}
+#top:hover{
+  background-color: $hoverColor;
+  opacity: .7;
+  //border: 0;
+  color :#fff;
+}

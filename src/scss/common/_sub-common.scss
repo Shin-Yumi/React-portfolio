@@ -11,7 +11,6 @@ sub section scss 작업
 	.wrap {
 		position: relative;
 		width: 100%;
-		padding-top: 80px;
 		// contents 영역
 		.subContents {
 			width: 100%;
@@ -103,7 +102,6 @@ sub section scss 작업
 @media screen and (max-width: $sLaptop) {
 	.subPage {
 		.wrap {
-			padding-top: 60px;
 			#header {
 				height: 60px;
 				line-height: 60px;
@@ -134,7 +132,6 @@ sub section scss 작업
 @media screen and (max-width: $Ltablet) {
 	.subPage {
 		.wrap {
-			padding-top: 60px;
 			.subContents {
 				border: 1px solid $borderColor;
 				border-top: none;
@@ -168,7 +165,6 @@ sub section scss 작업
 @media screen and (max-width: $tablet) {
 	.subPage {
 		.wrap {
-			padding-top: 60px;
 			.subContents {
 				padding: 0 30px;
 				border: 1px solid $borderColor;

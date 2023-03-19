@@ -7,7 +7,7 @@ function Header(props) {
 
 	return (
 		<>
-			<header id='header'>
+			<header id='header' className={props.type}>
 				<div className='inner'>
 					<div className='logo'>
 						<h1 className='headerLogo'>
