@@ -129,13 +129,13 @@ function YoutubeMain() {
 							);
 						})}
 					</Swiper>
-					<Modal ref={open}>
-						<iframe
-							title={Vids[Index]?.id}
-							src={`https://www.youtube.com/embed/${Vids[Index]?.snippet.resourceId.videoId}`}
-						></iframe>
-					</Modal>
 				</div>
+				<Modal ref={open}>
+					<iframe
+						title={Vids[Index]?.id}
+						src={`https://www.youtube.com/embed/${Vids[Index]?.snippet.resourceId.videoId}`}
+					></iframe>
+				</Modal>
 			</div>
 		</section>
 	);
