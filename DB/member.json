@@ -6,7 +6,8 @@
             "position": "President",
             "rank": "CEO",
             "pic": "member01.jpg",
-            "wise": "There is no use whatever trying to help people who do not help themselves. You cannot push anyone up a ladder unless he be willing to climb himself. -Andrew Carnegie"
+            "wise": "There is no use whatever trying to help people who do not help themselves. You cannot push anyone up a ladder unless he be willing to climb himself.",
+            "author" : "Andrew Carnegie"
         },
         {
             "name": "Julia",
@@ -14,7 +15,8 @@
             "position": "Vice President",
             "rank": "COO",
             "pic": "member02.jpg",
-            "wise": "Successful people do what unsuccessful people are not willing to do. Don’t wish it were easier; wish you were better. -Jim Rohn"
+            "wise": "Successful people do what unsuccessful people are not willing to do. Don’t wish it were easier; wish you were better.",
+            "author" : "Jim Rohn"
         },
         {
             "name": "Emily",
@@ -22,7 +24,8 @@
             "position": "UI Designer",
             "rank": "General Manager",
             "pic": "member03.jpg",
-            "wise": "I owe my success to having listened respectfully to the very best advice, and then going away and doing the exact opposite. – G. K. Chesterton"
+            "wise": "I owe my success to having listened respectfully to the very best advice, and then going away and doing the exact opposite.",
+            "author" : " G. K. Chesterton"
         },
         {
             "name": "Ann",
@@ -30,7 +33,8 @@
             "position": "Front-end Engineer",
             "rank": "Deputy General Manager",
             "pic": "member04.jpg",
-            "wise": "Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time. – Thomas Edison"
+            "wise": "Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time. ",
+            "author" : "Thomas Edison"
         },
         {
             "name": "Paul",
@@ -38,7 +42,8 @@
             "position": "Back-end Engineer",
             "rank": "CTO",
             "pic": "member05.jpg",
-            "wise": "Money is like gasoline during a road trip. You do not want to run out of gas on your trip, but you ‘re not doing a tour of gas stations. – Tim O’Reilly"
+            "wise": "Money is like gasoline during a road trip. You do not want to run out of gas on your trip, but you ‘re not doing a tour of gas stations. ",
+            "author" : "Tim O’Reilly"
         },
         {
             "name": "Michael",
@@ -46,7 +51,8 @@
             "position": "Project Manager",
             "rank": "Clerk",
             "pic": "member06.jpg",
-            "wise": "Some people dream of success, while other people get up every morning and make it happen. – Wayne Huizenga"
+            "wise": "Some people dream of success, while other people get up every morning and make it happen. ",
+            "author" : "Wayne Huizenga"
         }
     ]
 }
