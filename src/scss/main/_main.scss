@@ -403,7 +403,7 @@
 								right: -100%;
 								width: 100%;
 								height: 100%;
-								background-color: rgba(0, 0, 0, 0.7);
+								background-color: rgba(255, 255, 255, 0.5);
 								transition: 0.5s;
 								.fDesc {
 									width: 100%;
@@ -418,11 +418,11 @@
 										border-bottom: 1px solid $borderColor;
 									}
 									.galleryOwner {
-										@include sectionSubTitle($subFz: 18px, $subFontColor:$borderColor);
+										@include sectionSubTitle($subFz: 18px, $subFontColor:$textColor);
 										margin-bottom: 10px;
 									}
 									.galleryTitle {
-										@include sectionSubTitle($subFz: 18px,$subFontColor:$borderColor);
+										@include sectionSubTitle($subFz: 18px,$subFontColor:$textColor);
 									}
 								}
 							}
@@ -518,11 +518,14 @@
 								position: absolute;
 								bottom: 30px;
 								left: 30px;
-
+								.contentsTitle {
+									border: none;
+								}
 								.boardDescWrap {
 									width: 100%;
 									padding-right: 30px;
 									display: none;
+									
 									.contentsSubTitle {
 										@include sectionSubTitle($subFz: 16px, $fontWeight: 300);
 										margin-bottom: 10px;
