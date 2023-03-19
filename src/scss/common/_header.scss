@@ -195,6 +195,10 @@
 			}
 		}
 	}
+	&.main {
+		border: 1px solid $borderColor;
+		background-color: $backgroundColor;
+	}
 	&.sub {
 		position: relative;
 		.inner {

@@ -12,7 +12,11 @@ function Btns({ setScrolled, setPos }) {
 		const secs = btnRef.current.parentElement.querySelectorAll('.myScroll');
 
 		for (const sec of secs) {
-			pos.current.push(sec.offsetTop);
+			if (matchMedia('screen and (min-width: 1024px)').matches) {
+				pos.current.push(sec.offsetTop - 79);
+			} else {
+				pos.current.push(sec.offsetTop - 59);
+			}
 		}
 
 		setPos(pos.current);

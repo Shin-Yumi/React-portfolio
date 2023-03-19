@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as types from './redux/actionType';
 //common
@@ -22,11 +22,13 @@ import Contact from './components/sub/Contact';
 
 //sass
 import './scss/style.scss';
+import Cookie from './components/common/CookiePopUp';
 
 
 function App() {
 	const menu = useRef(null);
 	const dispatch = useDispatch();
+	const [openCookie, setOpenCookie] = useState(true);
 
 	useEffect(() => {
 		dispatch({ type: types.YOUTUBE.start });
@@ -60,6 +62,7 @@ function App() {
 			<Footer />
 			<Menu ref={menu} />
 			<TopButton />
+			{openCookie && <Cookie closeModal={() => setOpenCookie(false)} />}
 		</>
 	);
 }
