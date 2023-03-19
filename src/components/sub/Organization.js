@@ -46,6 +46,7 @@ function Organization() {
 													<div className='mWiseSayingBox'>
 														<h3>Motto</h3>
 														<p className='memberWise'>{el.wise}</p>
+														<p className='wiseAuthor'>- {el.author}</p>
 													</div>
 												</div>
 											</div>
