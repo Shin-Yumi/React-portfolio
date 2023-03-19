@@ -11,7 +11,7 @@ import { Navigation, Autoplay } from 'swiper';
 // Import Swiper styles
 
 import 'swiper/css';
-import 'swiper/css/navigation'; 
+import 'swiper/css/navigation';
 
 function YoutubeMain() {
 	const open = useRef(null);
@@ -27,10 +27,8 @@ function YoutubeMain() {
 		<section className={`contents youtubeCont myScroll`}>
 			<div className='inner'>
 				<div className='galleryTextCont'>
-					<div>
-						<h1 className='contentsTitle' {...useScrollFadeIn('up', 1, 0)}>
-							Youtube
-						</h1>
+					<div {...useScrollFadeIn('up', 1, 0)}>
+						<h1 className='contentsTitle'>Youtube</h1>
 						<p className='contentsText' {...useScrollFadeIn('up', 1, 0)}>
 							새로운 청키 스니커즈가 등장하는 것처럼 이 신발의 활용법도 점점 다양해지고 있습니다. 켄달 제너, 두아 리파와 같이 옷을
 							잘 입는 셀럽들은 각기 다른 방식으로 이 신발을 소화하고 있죠. 셀럽들이 제안한 청키 스니커즈 활용법을 확인해봅시다
@@ -74,7 +72,7 @@ function YoutubeMain() {
 						</Link>
 					</nav>
 				</div>
-				<div className='galleryListCont'>
+				<div className='galleryListCont' {...useScrollFadeIn('up', 1, 0)}>
 					<Swiper
 						slidesPerView={2}
 						loop={'auto'}

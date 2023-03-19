@@ -4,28 +4,33 @@ import useScrollFadeIn from '../assets/Scroll';
 
 function AboutMain() {
 	return (
-		<section className={`contents aboutCont myScroll`}>
+		<section className='contents aboutCont myScroll'>
 			<div className='inner'>
 				<article className='contentsHalf aboutImgFull'>
 					<div className='aboutImg'>
 						<figure className='aboutFigure'>
-							<video src={process.env.PUBLIC_URL + '/img/vogue.mp4'} loop autoPlay muted>
-							</video>
+							<video
+								src={process.env.PUBLIC_URL + '/img/vogue.mp4'}
+								loop
+								autoPlay
+								muted
+								{...useScrollFadeIn('left', 1, 0)}
+							></video>
 						</figure>
 					</div>
 				</article>
 				<article className='contentsHalf aboutDescription'>
-					<div className='aboutTextBox'>
-						<h1 className='contentsTitle' {...useScrollFadeIn('up', 1, 0)}>
+					<div className='aboutTextBox' {...useScrollFadeIn('left', 1, 0)}>
+						<h1 className='contentsTitle' {...useScrollFadeIn('up', 1, 1)}>
 							ABOUT
 						</h1>
 						<div className='aboutDescBox'>
 							<div className='subTitle'>
-								<h2 className='aboutSubTitle' {...useScrollFadeIn('up', 1, 0)}>
+								<h2 className='aboutSubTitle' {...useScrollFadeIn('up', 1, 1)}>
 									about company
 								</h2>
-								<hr className='contentsLine' {...useScrollFadeIn('up', 1, 0)} />
-								<span className='subTitleDesc' {...useScrollFadeIn('up', 1, 0)}>
+								<hr className='contentsLine' {...useScrollFadeIn('up', 1, 1)} />
+								<span className='subTitleDesc' {...useScrollFadeIn('up', 1, 1)}>
 									Organization & Map
 								</span>
 							</div>
