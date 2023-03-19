@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { HashRouter } from 'react-router-dom';
+import { HashRouter, useLocation } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+
+export default function ScrollToTop() {
+	const { pathname } = useLocation();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [pathname]);
+
+	return null;
+}
 
 ReactDOM.render(
 	<React.StrictMode>
 		<HashRouter>
 			<Provider store={store}>
+				<ScrollToTop />
 				<App />
 			</Provider>
 		</HashRouter>
