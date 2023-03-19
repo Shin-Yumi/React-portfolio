@@ -603,7 +603,15 @@
 		}
 	}
 }
-// 반응형
+// 애니메이션
+@keyframes rotating {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
 
 //반응형 1024px
 @media screen and (max-width: $sLaptop) {
@@ -665,41 +673,6 @@
 					.flickrList {
 						.flickrItem {
 							.itemBox {
-								&:hover {
-									.hoverFlickr {
-										opacity: 1;
-										right: -420px;
-										transition: 0.5s;
-									}
-								}
-								.hoverFlickr {
-									display: block;
-									position: absolute;
-									bottom: 30px;
-									width: 400px;
-									height: 250px;
-									background-color: rgba(217, 217, 206, 0.3);
-									transition: 0.5s;
-									.fDesc {
-										width: 100%;
-										height: 100%;
-										padding: 30px;
-										display: flex;
-										justify-content: center;
-										flex-direction: column;
-										.popTit {
-											@include sectionSubTitle($fontWeight: 400);
-											margin-bottom: 18px;
-										}
-										.galleryOwner {
-											@include sectionSubTitle($subFz: 16px);
-											margin-bottom: 10px;
-										}
-										.galleryTitle {
-											@include sectionSubTitle($subFz: 16px);
-										}
-									}
-								}
 							}
 						}
 					}
@@ -770,15 +743,6 @@
 					.flickrList {
 						.flickrItem {
 							.itemBox {
-								&:hover {
-									.hoverFlickr {
-										right: -330px;
-									}
-								}
-								.hoverFlickr {
-									width: 300px;
-									height: 200px;
-								}
 							}
 						}
 					}
@@ -885,28 +849,7 @@
 					.flickrList {
 						.flickrItem {
 							.itemBox {
-								&:hover {
-									.hoverFlickr {
-										right: -260px;
-									}
-								}
-								.hoverFlickr {
-									width: 240px;
-									height: 130px;
-									.fDesc {
-										.popTit {
-											@include sectionSubTitle($fontWeight: 400);
-											margin-bottom: 14px;
-										}
-										.galleryOwner {
-											@include sectionSubTitle($subFz: 12px);
-											margin-bottom: 10px;
-										}
-										.galleryTitle {
-											@include sectionSubTitle($subFz: 12px);
-										}
-									}
-								}
+
 							}
 						}
 					}
@@ -1082,37 +1025,15 @@
 			.flickrCont {
 				.inner {
 					.flickrList {
+						height: 70%;
 						.flickrItem {
 							.itemBox {
-								&:hover {
-									.hoverFlickr {
-										right: 30px;
-									}
-								}
-								.hoverFlickr {
-									bottom: -300px;
-									right: 0;
-									width: 90%;
-									height: 130px;
-									.fDesc {
-										.popTit {
-											@include sectionSubTitle($fontWeight: 400);
-											margin-bottom: 14px;
-										}
-										.galleryOwner {
-											@include sectionSubTitle($subFz: 12px);
-											margin-bottom: 10px;
-										}
-										.galleryTitle {
-											@include sectionSubTitle($subFz: 12px);
-										}
-									}
-								}
 							}
 						}
 					}
 					.flickrText {
 						position: relative;
+						height: 30%;
 						.flickrTextBox {
 							.contentsText {
 								width: 100%;

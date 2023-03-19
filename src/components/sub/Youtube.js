@@ -26,14 +26,7 @@ function Gallery() {
 
 	return (
 		<>
-			<Layout
-				name={name}
-				title={title}
-				subTitle={subTitle}
-				expCaption={expCaption}
-				sub01={sub01}
-				sub02={sub02}
-			>
+			<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption} sub01={sub01} sub02={sub02}>
 				<div className='youtube'>
 					{Loading && (
 						<div className='loading'>
@@ -66,17 +59,16 @@ function Gallery() {
 										<p>{desc.length > 120 ? desc.substr(0, 120) + '...' : desc}</p>
 										<span>{date.split('T')[0]}</span>
 									</div>
-									<Link
-										to='/'
+									<div
 										className='galleryBtn'
-										onClick={(e) => {
-											e.preventDefault();
+										onClick={() => {
 											open.current.open();
 											setIndex(index);
 										}}
 									>
 										<i className='arrow'></i>
-									</Link>
+										<img src={process.env.PUBLIC_URL + '/img/circle.svg'} alt="" />
+									</div>
 								</article>
 							);
 						})}
@@ -84,10 +76,7 @@ function Gallery() {
 				</div>
 			</Layout>
 			<Modal ref={open}>
-				<iframe
-					title={Vids[Index]?.id}
-					src={`https://www.youtube.com/embed/${Vids[Index]?.snippet.resourceId.videoId}`}
-				></iframe>
+				<iframe title={Vids[Index]?.id} src={`https://www.youtube.com/embed/${Vids[Index]?.snippet.resourceId.videoId}`}></iframe>
 			</Modal>
 		</>
 	);
