@@ -35,12 +35,7 @@ function Join() {
 		if (value.userid.length < 5) {
 			errs.userid = '아이디를 5글자 이상 입력하세요';
 		}
-		if (
-			value.pwd1.length < 5 ||
-			!eng.test(value.pwd1) ||
-			!num.test(value.pwd1) ||
-			!spc.test(value.pwd1)
-		) {
+		if (value.pwd1.length < 5 || !eng.test(value.pwd1) || !num.test(value.pwd1) || !spc.test(value.pwd1)) {
 			errs.pwd1 = '비밀번호는 5글자 이상, 영문, 숫자, 특수문자를 모두 포함하세요';
 		}
 		if (value.pwd1 !== value.pwd2 || !value.pwd2) {
@@ -112,11 +107,7 @@ function Join() {
 		<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption}>
 			<article className='joinCont'>
 				<div className='inner'>
-					<div className='textBox'>
-						{/* <div className='rotateTxt'>
-							<p>create magic together</p>
-						</div> */}
-					</div>
+					<div className='popBox'></div>
 					<div className='inputBox'>
 						<div className='joinForm'>
 							<form action='result.html' method='get' id='member' onSubmit={handleSubmit}>
@@ -131,6 +122,17 @@ function Join() {
 															<div className=''>
 																<p className='joinTit'>The Person</p>
 															</div>
+															<aside className='person'>
+																<div className='hoverBox'>
+																	<h1>The PERSON</h1>
+																	<p>
+																		Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aliquid, fugiat mollitia
+																		animi quidem illum distinctio et, neque ea provident commodi doloremque, consequatur inventore
+																		porro a laboriosam. Voluptas, earum placeat.
+																	</p>
+																</div>
+																<div className='triangle'></div>
+															</aside>
 														</div>
 														<div className='titBottom'></div>
 													</div>
@@ -225,6 +227,17 @@ function Join() {
 															<div className='joinTitle'>
 																<p className='joinTit'>Information</p>
 															</div>
+															<aside className='info'>
+															<div className='hoverBox'>
+																	<h1>The PERSON</h1>
+																	<p>
+																		Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aliquid, fugiat mollitia
+																		animi quidem illum distinctio et, neque ea provident commodi doloremque, consequatur inventore
+																		porro a laboriosam. Voluptas, earum placeat.
+																	</p>
+																</div>
+																<div className='triangle'></div>
+															</aside>
 														</div>
 														<div className='titBottom'></div>
 													</div>
@@ -253,23 +266,11 @@ function Join() {
 																</div>
 																<div className='radioBox'>
 																	<div className='joinRadio'>
-																		<input
-																			type='radio'
-																			name='gender'
-																			id='male'
-																			value='male'
-																			onChange={handleRadio}
-																		/>
+																		<input type='radio' name='gender' id='male' value='male' onChange={handleRadio} />
 																		<label htmlFor='male'>Male</label>
 																	</div>
 																	<div className='joinRadio'>
-																		<input
-																			type='radio'
-																			name='gender'
-																			id='female'
-																			value='female'
-																			onChange={handleRadio}
-																		/>
+																		<input type='radio' name='gender' id='female' value='female' onChange={handleRadio} />
 																		<label htmlFor='female'>Female</label>
 																	</div>
 																</div>
@@ -282,26 +283,14 @@ function Join() {
 																<div className='joinInput'>
 																	<div className='joinCheck'>
 																		<label htmlFor='html'>
-																			<input
-																				type='checkbox'
-																				name='favorite'
-																				id='html'
-																				value='html'
-																				onChange={handleCheck}
-																			/>
+																			<input type='checkbox' name='favorite' id='html' value='html' onChange={handleCheck} />
 																			<span className='checkIcon'></span>
 																			<span className='checkTxt'>html</span>
 																		</label>
 																	</div>
 																	<div className='joinCheck'>
 																		<label htmlFor='css'>
-																			<input
-																				type='checkbox'
-																				name='favorite'
-																				id='css'
-																				value='css'
-																				onChange={handleCheck}
-																			/>
+																			<input type='checkbox' name='favorite' id='css' value='css' onChange={handleCheck} />
 																			<span className='checkIcon'></span>
 																			<span className='checkTxt'>Css</span>
 																		</label>
@@ -321,26 +310,14 @@ function Join() {
 																	</div>
 																	<div className='joinCheck'>
 																		<label htmlFor='react'>
-																			<input
-																				type='checkbox'
-																				name='favorite'
-																				id='react'
-																				value='react'
-																				onChange={handleCheck}
-																			/>
+																			<input type='checkbox' name='favorite' id='react' value='react' onChange={handleCheck} />
 																			<span className='checkIcon'></span>
 																			<span className='checkTxt'>React</span>
 																		</label>
 																	</div>
 																	<div className='joinCheck'>
 																		<label htmlFor='vue'>
-																			<input
-																				type='checkbox'
-																				name='favorite'
-																				id='vue'
-																				value='vue'
-																				onChange={handleCheck}
-																			/>
+																			<input type='checkbox' name='favorite' id='vue' value='vue' onChange={handleCheck} />
 																			<span className='checkIcon'></span>
 																			<span className='checkTxt'>Vue</span>
 																		</label>
@@ -358,6 +335,17 @@ function Join() {
 															<div className=''>
 																<p className='joinTit'>Message</p>
 															</div>
+															<aside className='message'>
+															<div className='hoverBox'>
+																	<h1>The PERSON</h1>
+																	<p>
+																		Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aliquid, fugiat mollitia
+																		animi quidem illum distinctio et, neque ea provident commodi doloremque, consequatur inventore
+																		porro a laboriosam. Voluptas, earum placeat.
+																	</p>
+																</div>
+																<div className='triangle'></div>
+															</aside>
 														</div>
 														<div className='titBottom'></div>
 													</div>
@@ -395,11 +383,7 @@ function Join() {
 														<div className='conBottom'>
 															<div className='joinInput'>
 																<div className='submitBtn'>
-																	<input
-																		type='submit'
-																		value='submit'
-																		onClick={() => (Submit.current = true)}
-																	/>
+																	<input type='submit' value='submit' onClick={() => (Submit.current = true)} />
 																</div>
 															</div>
 														</div>

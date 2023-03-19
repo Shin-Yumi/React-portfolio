@@ -5,30 +5,15 @@ join scss 작업
 */
 .joinCont {
 	width: 100%;
-	height: 100%;
-
+	
 	> .inner {
 		display: flex;
 		border-top: 1px solid $borderColor;
 		margin: 0 -30px;
-		.textBox {
+		.popBox {
 			position: relative;
 			width: 40%;
 			border-right: 1px solid $borderColor;
-			.rotateTxt {
-				position: absolute;
-				top: 50%;
-				left: -400px;
-				width: 1384px;
-				height: 100px;
-				transform: scale(1, 1) translate(-200px, -50%) rotate(-90deg);
-				transform-origin: 50% 50%;
-				p {
-					text-transform: uppercase;
-					font-size: 114px;
-					letter-spacing: 3px;
-				}
-			}
 		}
 		.inputBox {
 			width: 60%;
@@ -45,7 +30,9 @@ join scss 작업
 								.titBox {
 									width: 40%;
 									border-right: 1px solid $borderColor;
+
 									.titTop {
+										position: relative;
 										width: 100%;
 										height: 100px;
 										display: flex;
@@ -53,12 +40,64 @@ join scss 작업
 										justify-content: flex-start;
 										padding-left: 10px;
 										border-bottom: 1px solid $borderColor;
+
 										&:last-child {
 											border-bottom: 0;
 										}
 										.joinTit {
 											font-size: 25px;
 											text-transform: uppercase;
+										}
+										aside {
+											position: relative;
+
+											opacity: 0;
+
+											.triangle {
+												position: absolute;
+												top: 20px;
+												right: -10px;
+												width: 20px;
+												height: 20px;
+												background-color: $backgroundColor;
+												border-top: 1px solid $borderColor;
+												border-right: 1px solid $borderColor;
+												transform: rotate(45deg);
+											}
+											.hoverBox {
+												position: absolute;
+												top: 0;
+												left: 0;
+												width: 100%;
+												height: 100%;
+
+												background: $backgroundColor;
+												border: 1px solid $borderColor;
+												padding: 30px;
+												> h1 {
+													@include sectionSubTitle($subFontColor: $textColor, $fontWeight: 400);
+													margin-bottom: 20px;
+												}
+												> p {
+													@include sectionText();
+												}
+											}
+										}
+										aside.person,
+										aside.info,
+										aside.message {
+											position: absolute;
+											top: 20px;
+											left: 0;
+										}
+										&:hover {
+											aside {
+												opacity: 1;
+												left: -420px;
+												transition: 0.5s;
+												width: 400px;
+												height: 500px;
+											}
 										}
 									}
 								}

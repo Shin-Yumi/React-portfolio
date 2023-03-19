@@ -4,10 +4,8 @@
 	box-sizing: border-box;
 }
 body {
+	width: 100%;
 	background-color: $backgroundColor;
-}
-#root {
-	overflow-x: hidden;
 }
 ul,
 li {
