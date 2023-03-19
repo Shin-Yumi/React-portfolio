@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper';
 
 // Import Swiper styles
+
 import 'swiper/css';
 import 'swiper/css/navigation'; 
 

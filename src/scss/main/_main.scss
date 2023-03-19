@@ -319,14 +319,16 @@
 						}
 						.swiper-button-prev {
 							position: absolute;
-							top: 50%;
+							top: 80%;
 							left: 0;
-							transform: translateY(-50%);
-							width: 40px;
-							height: 40px;
-							background-color: $textColor;
+							transform: translateY(-80%);
+							width: 50px;
+							height: 50px;
+							background-color: transparent;
+							border: 1px solid $borderColor;
 							transition: 0.5s;
-							opacity: 0;
+							opacity: 0.8;
+							margin-left: -1px;
 							&::after {
 								font-size: 20px;
 								color: $borderColor;
@@ -334,14 +336,16 @@
 						}
 						.swiper-button-next {
 							position: absolute;
-							top: 50%;
-							right: 0;
-							transform: translateY(-50%);
-							width: 40px;
-							height: 40px;
-							background-color: $textColor;
+							top: 80%;
+							left: 50px;
+							transform: translateY(-80%);
+							width: 50px;
+							height: 50px;
+							background-color: transparent;
+							border: 1px solid $borderColor;
 							transition: 0.5s;
-							opacity: 0;
+							opacity: 0.8;
+							margin-left: -2px;
 							&::after {
 								font-size: 20px;
 								color: $borderColor;
@@ -426,11 +430,9 @@
 				.flickrText {
 					padding: 30px;
 					.flickrTextBox {
-						
 						.contentsSubTitle {
 							@include sectionSubTitle($subFz: 18px);
 							margin-top: 30px;
-						
 						}
 
 						.contentsText {
@@ -901,7 +903,6 @@
 					}
 					.flickrText {
 						.flickrTextBox {
-	
 							.contentsText {
 								width: 70%;
 							}
@@ -1104,7 +1105,6 @@
 					.flickrText {
 						position: relative;
 						.flickrTextBox {
-	
 							.contentsText {
 								width: 100%;
 							}
