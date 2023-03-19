@@ -229,7 +229,7 @@ function Join() {
 															</div>
 															<aside className='info'>
 															<div className='hoverBox'>
-																	<h1>The PERSON</h1>
+																	<h1>Information</h1>
 																	<p>
 																		Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aliquid, fugiat mollitia
 																		animi quidem illum distinctio et, neque ea provident commodi doloremque, consequatur inventore
@@ -337,7 +337,7 @@ function Join() {
 															</div>
 															<aside className='message'>
 															<div className='hoverBox'>
-																	<h1>The PERSON</h1>
+																	<h1>Message</h1>
 																	<p>
 																		Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aliquid, fugiat mollitia
 																		animi quidem illum distinctio et, neque ea provident commodi doloremque, consequatur inventore

@@ -5,7 +5,7 @@ join scss 작업
 */
 .joinCont {
 	width: 100%;
-	
+
 	> .inner {
 		display: flex;
 		border-top: 1px solid $borderColor;
@@ -49,10 +49,10 @@ join scss 작업
 											text-transform: uppercase;
 										}
 										aside {
-											position: relative;
-
+											position: absolute;
+											top: 20px;
+											left: 0;
 											opacity: 0;
-
 											.triangle {
 												position: absolute;
 												top: 20px;
@@ -83,21 +83,25 @@ join scss 작업
 												}
 											}
 										}
-										aside.person,
-										aside.info,
-										aside.message {
-											position: absolute;
-											top: 20px;
-											left: 0;
-										}
 										&:hover {
 											aside {
 												opacity: 1;
 												left: -420px;
 												transition: 0.5s;
 												width: 400px;
-												height: 500px;
+												&.person {
+													height: 500px;
+												}
+												&.info {
+													top: 0;
+													height: 500px;
+												}
+												&.message {
+													top: 0;
+													height: 300px;
+												}
 											}
+											
 										}
 									}
 								}
@@ -304,10 +308,55 @@ join scss 작업
 	}
 }
 
+@media screen and (max-width: $sLaptop) {
+	.joinCont {
+		> .inner {
+			.inputBox {
+				width: 60%;
+				.joinForm {
+					.joinWrap {
+						.joinListWrap {
+							.joinList {
+								.joinBox {
+									.titBox {
+	
+										.titTop {
+											&:hover {
+												aside {
+													opacity: 1;
+													left: -270px;
+													transition: 0.5s;
+													width: 250px;
+													&.person {
+														height: 300px;
+													}
+													&.info {
+														top: 0;
+														height: 300px;
+													}
+													&.message {
+														top: 0;
+														height: 200px;
+													}
+												}
+												
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 @media screen and (max-width: $tablet) {
 	.joinCont {
 		> .inner {
-			.textBox {
+			.popBox {
 				display: none;
 			}
 			.inputBox {
