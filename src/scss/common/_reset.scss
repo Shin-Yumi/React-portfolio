@@ -2,12 +2,13 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	
 }
 body {
 	width: 100%;
-	background-color: $backgroundColor;
+	height: 100%;
 	overflow-x: hidden;
-	//overflow-x: hidden;
+	background-color: $backgroundColor;
 }
 ul,
 li {

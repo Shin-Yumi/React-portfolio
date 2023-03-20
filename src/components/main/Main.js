@@ -12,8 +12,8 @@ function Main(props) {
 	const [Pos, setPos] = useState([]);
 	return (
 		<main id='main'>
-			<div className='wrap'>
 			<Header type={'main'} menu={props.menu} />
+			<div className='wrap'>
 				<VisualMain />
 				<AboutMain Scrolled={Scrolled} Pos={Pos[1]} />
 				<YoutubeMain />
