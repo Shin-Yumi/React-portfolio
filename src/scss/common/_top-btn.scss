@@ -10,14 +10,14 @@
   width: 70px;
   height: 40px;
   outline: none;
-  background-color: transparent;
+  background-color: $borderColor;
+  opacity: .7;
   cursor: pointer;
-  color: $borderColor;
+  color: #fff;
   font-size: 14px;
 }
 #top:hover{
-  background-color: $hoverColor;
-  opacity: .7;
-  //border: 0;
-  color :#fff;
+  //background-color: $hoverColor;
+  opacity: 1;
+  
 }

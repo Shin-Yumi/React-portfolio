@@ -17,7 +17,7 @@ function AboutMain() {
 								{...useScrollFadeIn('left', 1, 0)}
 							></video>
 						</figure>
-					</div>
+					</div> 
 				</article>
 				<article className='contentsHalf aboutDescription'>
 					<div className='aboutTextBox' {...useScrollFadeIn('left', 1, 0)}>
