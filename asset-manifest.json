@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/React-portfolio/static/css/main.bf7c5f5d.css",
-    "main.js": "/React-portfolio/static/js/main.bed2e79e.js",
+    "main.css": "/React-portfolio/static/css/main.fb777cea.css",
+    "main.js": "/React-portfolio/static/js/main.8c816dc7.js",
     "static/media/dummy-gallery01.jpg": "/React-portfolio/static/media/dummy-gallery01.81e079e3c03c99f3759f.jpg",
     "static/media/board-image.jpg": "/React-portfolio/static/media/board-image.ee3a3fd76d6822362651.jpg",
     "static/media/main-dummy.jpg": "/React-portfolio/static/media/main-dummy.c5826909edaf0da42ea6.jpg",
@@ -10,11 +10,11 @@
     "static/media/tistory-icon.svg": "/React-portfolio/static/media/tistory-icon.4edbffa3d7b349d1d618.svg",
     "static/media/pause.svg": "/React-portfolio/static/media/pause.80c5db6be7b88a3a9a26.svg",
     "static/media/play.svg": "/React-portfolio/static/media/play.493a68fb01896b56433c.svg",
-    "main.bf7c5f5d.css.map": "/React-portfolio/static/css/main.bf7c5f5d.css.map",
-    "main.bed2e79e.js.map": "/React-portfolio/static/js/main.bed2e79e.js.map"
+    "main.fb777cea.css.map": "/React-portfolio/static/css/main.fb777cea.css.map",
+    "main.8c816dc7.js.map": "/React-portfolio/static/js/main.8c816dc7.js.map"
   },
   "entrypoints": [
-    "static/css/main.bf7c5f5d.css",
-    "static/js/main.bed2e79e.js"
+    "static/css/main.fb777cea.css",
+    "static/js/main.8c816dc7.js"
   ]
 }
