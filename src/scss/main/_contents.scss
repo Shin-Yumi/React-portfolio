@@ -1,7 +1,8 @@
 .contents {
 	position: relative;
+	overflow-x: hidden;
 	width: 100%;
-	height: calc((100vh - 80px));
+	height: calc(100vh - 80px);
 
 	.inner {
 		width: 100%;
@@ -17,7 +18,6 @@
 		.contentsHalf {
 			width: 50%;
 			height: 100%;
-			
 		}
 
 		.contentsTitle {
