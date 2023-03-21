@@ -101,7 +101,6 @@ join scss 작업
 													height: 300px;
 												}
 											}
-											
 										}
 									}
 								}
@@ -319,7 +318,6 @@ join scss 작업
 							.joinList {
 								.joinBox {
 									.titBox {
-	
 										.titTop {
 											&:hover {
 												aside {
@@ -339,7 +337,6 @@ join scss 작업
 														height: 200px;
 													}
 												}
-												
 											}
 										}
 									}
@@ -380,6 +377,11 @@ join scss 작업
 										width: 100%;
 										border-right: 0;
 										.titTop {
+											&:hover {
+												aside {
+													opacity: 0;
+												}
+											}
 											.joinTit {
 												font-size: 40px;
 											}
