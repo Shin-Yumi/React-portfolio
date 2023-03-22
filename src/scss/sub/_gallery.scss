@@ -465,13 +465,13 @@
 					padding: 60px 20px;
 					.pic {
 						margin-bottom: 60px;
-						transform: scale(1.8) translateX(20px);
+						transform: scale(1.6) translateX(0);
 					}
 					.con {
-						transform: translateX(30px);
+						transform: translateX(0);
 					}
 					.galleryBtn {
-						transform: scale(1.2);
+						transform: scale(1.1);
 					}
 				}
 				&:nth-of-type(3n) {

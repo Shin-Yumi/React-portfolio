@@ -49,8 +49,7 @@ function Header(props) {
 					<Link
 						ref={menu}
 						to='/'
-						className={menu.current.open === true ? 'hamMenu' : 'hamMenu'}
-						//className='hamMenu'
+						className='hamMenu'
 						onClick={(e) => {
 							e.preventDefault();
 							props.menu.current.setToggle();

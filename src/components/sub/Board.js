@@ -13,7 +13,6 @@ function Board() {
 
 	const getLocalData = () => {
 		const data = localStorage.getItem('post');
-
 		return JSON.parse(data);
 	};
 
@@ -158,58 +157,6 @@ function Board() {
 					</ul>
 				</div>
 
-				{/* <table>
-					<caption className='hidden'>회원 자유 게시판</caption>
-					<thead className='hidden'>
-						<tr>
-							<th scope='col'>번호</th>
-							<th scope='col'>게시글제목</th>
-						</tr>
-					</thead>
-					<tbody>
-						{Posts.map((post, idx) => {
-							return (
-								<tr key={idx}>
-									{post.enableUpdate ? (
-										<>
-											<td>
-												<div className='boardList'>
-													<div className='enableBox'>
-														<input type='text' defaultValue={post.title} ref={inputEdit} />
-
-														<textarea
-															cols='30'
-															rows='4'
-															defaultValue={post.content}
-															ref={textareaEdit}
-														></textarea>
-														<div className='enableBtnBox'>
-															<button onClick={() => disableUpdate(idx)}>CANCEL</button>
-															<button onClick={() => updatePost(idx)}>UPDATE</button>
-														</div>
-													</div>
-												</div>
-											</td>
-										</>
-									) : (
-										<>
-											<td>
-												<div className='boardList'>
-													<p className='boardTit'>{post.title}</p>
-													<p className='boardTxt'>{post.content}</p>
-													<div className='btnSet'>
-														<button onClick={() => enableUpdate(idx)}>EDIT</button>
-														<button onClick={() => deletePost(idx)}>DELETE</button>
-													</div>
-												</div>
-											</td>
-										</>
-									)}
-								</tr>
-							);
-						})}
-					</tbody>
-				</table> */}
 				<div className='pagination'>
 					<Link to='/' className='prev'></Link>
 

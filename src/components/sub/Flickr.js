@@ -22,7 +22,7 @@ function Flickr() {
 	const [Index, setIndex] = useState(0);
 	const [Loading, setLoading] = useState(true);
 
-	const [Opt, setOpt] = useState({ type: 'user', user: '197649413@N03' });
+	const [Opt, setOpt] = useState({ type: 'interest' });
 
 	const showInterest = () => {
 		frame.current.classList.remove('on');

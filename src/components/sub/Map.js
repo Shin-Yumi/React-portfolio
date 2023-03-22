@@ -32,7 +32,6 @@ function Map() {
 			imgSrc: process.env.PUBLIC_URL + '/img/marker-black.png',
 			imgSize: new kakao.maps.Size(25, 35),
 			imgPos: { offset: new kakao.maps.Point(12, 69) },
-			//button: Move(false)
 		},
 		{
 			title: '경복궁',

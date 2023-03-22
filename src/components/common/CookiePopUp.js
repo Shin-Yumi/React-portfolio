@@ -3,9 +3,9 @@ import styled from 'styled-components';
 const ModalContainer = styled.div`
 	position: fixed;
 	top: 100px;
-	right: 20px;
+	right: 10px;
 	z-index: 1000;
-	width: 320px;
+	width: 300px;
 	height: 250px;
 	padding: 30px;
 	background-color: #ecece3;
@@ -33,7 +33,7 @@ const ModalCloseWrapper = styled.div`
 
 	p {
 		font-family: 'S-CoreDream-3Light';
-		font-size: 16px;
+		font-size: 12px;
 		line-height: 1.3;
 		letter-spacing: -0.6px;
 		color: #777;
