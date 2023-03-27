@@ -328,7 +328,7 @@
 							background-color: $backgroundColor;
 							border: 1px solid $borderColor;
 							transition: 0.5s;
-							opacity: 1;
+							opacity: 0;
 							margin-bottom: -1px;
 							&::after {
 								font-size: 20px;
