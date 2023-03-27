@@ -19,12 +19,12 @@ export default function ScrollToTop() {
 ReactDOM.render(
 	<React.StrictMode>
 		<HashRouter>
-			<Provider store={store}>
-				<CookiesProvider>
+			<CookiesProvider>
+				<Provider store={store}>
 					<ScrollToTop />
 					<App />
-				</CookiesProvider>
-			</Provider>
+				</Provider>
+			</CookiesProvider>
 		</HashRouter>
 	</React.StrictMode>,
 	document.getElementById('root')
