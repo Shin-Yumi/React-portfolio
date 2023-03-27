@@ -35,9 +35,9 @@ function App() {
 
 	console.log(appCookies);
 
-	const getExpiredDate = () => {
+	const getExpiredDate = (day) => {
 		const date = new Date();
-		date.setDate(date.getDate());
+		date.setDate(date.getDate() + day);
 		return date;
 	};
 
@@ -51,11 +51,10 @@ function App() {
 	};
 
 	useEffect(() => {
-    if (appCookies["MODAL_EXPIRES"]) return;
-    console.log(appCookies["MODAL_EXPIRES"]);
-    setHasCookie(false);
-  }, [appCookies]);
-
+		if (appCookies['MODAL_EXPIRES']) return;
+		console.log(appCookies['MODAL_EXPIRES']);
+		setHasCookie(false);
+	}, [appCookies]);
 
 	useEffect(() => {
 		dispatch({ type: types.YOUTUBE.start });
@@ -89,7 +88,9 @@ function App() {
 			<Footer />
 			<Menu ref={menu} />
 			<TopButton />
-			{openCookie && !hasCookie && <Cookie closeModal={() => setOpenCookie(false)} closeModalUntilExpires={closeModalUntilExpires} />}
+			{openCookie && !hasCookie && (
+				<Cookie closeModal={() => setOpenCookie(false)} closeModalUntilExpires={closeModalUntilExpires} />
+			)}
 		</>
 	);
 }
