@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCookieBite } from '@fortawesome/free-solid-svg-icons';
 
 const ModalContainer = styled.div`
 	position: fixed;
@@ -17,12 +19,26 @@ const ModalContainer = styled.div`
 
 const ModalContent = styled.div`
 	width: 100%;
+	text-align: center;
+	svg {
+		width: 40px;
+		height: 40px;
+		color: #9da592;
+		
+	}
+	h1 {
+		margin-top: 10px;
+		font-size: 40px;
+		color: #333;
+	}
 	p {
+		margin-top: 10px;
 		font-family: 'S-CoreDream-3Light';
-		font-size: 16px;
+		font-size: 12px;
 		line-height: 1.3;
 		letter-spacing: -0.6px;
 		color: #777;
+		//text-align: left;
 	}
 `;
 
@@ -41,15 +57,16 @@ const ModalCloseWrapper = styled.div`
 	}
 `;
 
-function Cookie({ closeModal }) {
+function Cookie({ closeModal, closeModalUntilExpires }) {
 	return (
 		<ModalContainer>
 			<ModalContent>
-				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione labore sint impedit, optio mollitia quae soluta possimus
-				itaque obcaecati unde expedita laudantium ducimus distinctio quasi rerum molestiae velit, quibusdam cum.
+				<FontAwesomeIcon icon={faCookieBite} />
+				<h1>Cookie!</h1>
+				<p>we use cookies to make your experience on this website better!</p>
 			</ModalContent>
 			<ModalCloseWrapper>
-				<p>오늘 하루 더 이상 보지 않기</p>
+				<p onClick={closeModalUntilExpires}>오늘 하루 더 이상 보지 않기</p>
 				<p onClick={closeModal}>닫기</p>
 			</ModalCloseWrapper>
 		</ModalContainer>

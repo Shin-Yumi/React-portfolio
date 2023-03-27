@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { HashRouter, useLocation } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { CookiesProvider } from 'react-cookie';
 import store from './redux/store';
 
 export default function ScrollToTop() {
@@ -19,8 +20,10 @@ ReactDOM.render(
 	<React.StrictMode>
 		<HashRouter>
 			<Provider store={store}>
-				<ScrollToTop />
-				<App />
+				<CookiesProvider>
+					<ScrollToTop />
+					<App />
+				</CookiesProvider>
 			</Provider>
 		</HashRouter>
 	</React.StrictMode>,

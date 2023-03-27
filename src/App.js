@@ -2,6 +2,8 @@ import { Route, Switch } from 'react-router-dom';
 import { useRef, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as types from './redux/actionType';
+import { useCookies } from 'react-cookie';
+
 //common
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
@@ -24,11 +26,36 @@ import Contact from './components/sub/Contact';
 import './scss/style.scss';
 import Cookie from './components/common/CookiePopUp';
 
-
 function App() {
 	const menu = useRef(null);
 	const dispatch = useDispatch();
 	const [openCookie, setOpenCookie] = useState(true);
+	const [hasCookie, setHasCookie] = useState(true);
+	const [appCookies, setAppCookies] = useCookies();
+
+	console.log(appCookies);
+
+	const getExpiredDate = () => {
+		const date = new Date();
+		date.setDate(date.getDate());
+		return date;
+	};
+
+	const closeModalUntilExpires = () => {
+		if (!appCookies) return;
+
+		const expires = getExpiredDate(1);
+		setAppCookies('MODAL_EXPIRES', true, { path: '/', expires });
+
+		setOpenCookie(false);
+	};
+
+	useEffect(() => {
+    if (appCookies["MODAL_EXPIRES"]) return;
+    console.log(appCookies["MODAL_EXPIRES"]);
+    setHasCookie(false);
+  }, [appCookies]);
+
 
 	useEffect(() => {
 		dispatch({ type: types.YOUTUBE.start });
@@ -62,7 +89,7 @@ function App() {
 			<Footer />
 			<Menu ref={menu} />
 			<TopButton />
-			{openCookie && <Cookie closeModal={() => setOpenCookie(false)} />}
+			{openCookie && !hasCookie && <Cookie closeModal={() => setOpenCookie(false)} closeModalUntilExpires={closeModalUntilExpires} />}
 		</>
 	);
 }
