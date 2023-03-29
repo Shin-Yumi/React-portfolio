@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import AboutMain from './AboutMain';
 import VisualMain from './VisualMain';
-import GalleryMain from './GalleryMain';
+import YoutubeMain from './YoutubeMain';
+import FlickrMain from './FlickrMain';
 import BoardMain from './BoardMain';
 import Btns from './Btn';
 
@@ -13,7 +14,8 @@ function Main(props) {
 			<div className='wrap'>
 				<VisualMain />
 				<AboutMain Scrolled={Scrolled} Pos={Pos[1]} />
-				<GalleryMain />
+				<YoutubeMain />
+				<FlickrMain />
 				<BoardMain />
 				<Btns setScrolled={setScrolled} setPos={setPos} />
 			</div>

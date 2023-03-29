@@ -1,11 +1,12 @@
 #main {
 	width: 100%;
-	overflow-x: hidden;
+
 	background: #ecece3;
 
 	.wrap {
 		width: 100%;
 		padding-top: 80px;
+
 		//mainCont 영역
 		.mainCont {
 			width: 100%;
@@ -65,6 +66,7 @@
 		.aboutCont {
 			// visual 영역
 			.aboutImgFull {
+				overflow: hidden;
 				.aboutImg {
 					width: 100%;
 					height: 100%;
@@ -74,11 +76,11 @@
 						width: 100%;
 						height: 100%;
 
-						img {
+						video {
 							width: 100%;
 							height: 100%;
 							object-fit: cover;
-							filter: grayscale(1);
+							filter: invert(40%) sepia(0.2);
 						}
 					}
 				}
@@ -120,7 +122,9 @@
 			}
 		}
 		// galleryCont 영역
-		.galleryCont {
+		.youtubeCont {
+			//height: 600px;
+			overflow: hidden;
 			.inner {
 				width: 100%;
 				height: 100%;
@@ -133,101 +137,140 @@
 					@include line($wid: 0);
 				}
 				.galleryTextCont {
+					position: relative;
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
 					padding: 30px 20px;
-					width: 30%;
+					width: 25%;
 					height: 100%;
 					border-right: 1px solid #777;
-					.contentsText {
-						@include sectionText($captionFz: 14px);
-						padding-left: 20px;
-						margin-top: 30px;
-					} // button css
-					.contBtn {
-						width: 100%;
+					.contentsTitle {
+						@include sectionTitle($fz: 40px);
 					}
-				}
-				.galleryTabCont {
-					width: 70%;
-					height: 100%;
-					.galleryTabs {
+					.contentsText {
+						@include sectionText($captionFz: 12px);
+
+						margin-top: 30px;
+					}
+					.galleryBtn {
 						width: 100%;
-						height: 10%;
-						display: flex;
-						align-items: center;
-						border-bottom: 1px solid $borderColor;
-						.galleryTab {
-							width: 50%;
-							height: 100%;
-							display: flex;
-							align-items: center;
-							justify-content: center;
-							transition: 0.5s;
-							&:nth-of-type(1) {
-								border-right: 1px solid $borderColor;
-							}
-							a {
-								display: block;
-								font-size: 18px;
-								color: $textColor;
+						margin-top: 20px;
+
+						a {
+							position: relative;
+							text-transform: uppercase;
+							@include sectionSubTitle($subFz: 16px, $subFontColor: $textColor);
+							padding-bottom: 4px;
+							&::after {
+								content: '';
+								position: absolute;
+								left: 0;
+								bottom: 0;
+								width: 0;
+								height: 1px;
+								background: $borderColor;
+								transition: 0.5s;
 							}
 							&:hover {
-								background-color: $hoverColor;
-								a {
-									color: $backgroundColor;
+								&::after {
+									width: 100%;
 								}
+							}
+							.arrow {
+								position: relative;
+								top: -6px;
+								display: inline-block;
+								width: 20px;
+								height: 1px;
+								background: $borderColor;
+								margin-left: 20px;
+							}
+
+							.arrow::after {
+								transform-origin: center right;
+								position: absolute;
+								left: 11px;
+								top: -0.5px;
+								content: '';
+								width: 7px;
+								height: 7px;
+								border-top: 1px solid #777777;
+								border-right: 1px solid #777777;
+								transform: rotate(45deg);
+							}
+						}
+					}
+					.controls {
+						display: flex;
+						font-size: 24px;
+						color: #fff;
+						a {
+							display: block;
+							width: 20px;
+							height: 20px;
+							i {
+								display: block;
+								width: 20px;
+								height: 20px;
+								background-size: 18px !important;
+								opacity: 0.4;
+								transform: scale(1);
+								transition: opacity 0.5s, transform 0.5s;
 							}
 							&.on {
-								background-color: $hoverColor;
-								a {
-									color: $backgroundColor;
+								i {
+									opacity: 1;
+									transform: scale(1.4);
 								}
 							}
 						}
-					}
-					.tabCont {
-						width: 100%;
-						height: 100%;
-						transition: 1s;
-						opacity: 0;
-						display: none;
-						&.on {
-							display: block;
-							opacity: 1;
+						a:first-child {
+							margin-right: 30px;
+						}
+						a.play > i {
+							background: url('../../../public/img/play.svg') no-repeat center;
+						}
+						a.pause > i {
+							background: url('../../../public/img/pause.svg') no-repeat center;
 						}
 					}
+				}
+				.galleryListCont {
+					width: 75%;
+					height: 100%;
+
 					.gallerySlideCont {
 						width: 100%;
-						height: 90%;
+						height: 100%;
 						display: flex;
-						overflow: hidden;
-						position: relative;
+
 						.swiper-wrapper {
 							width: 100%;
 							height: 100%;
 							.swiper-slide {
-								width: 100%;
+								width: calc(100% / 3);
 								height: 100%;
+								border-right: 1px solid $borderColor;
 								.listCont {
+									position: relative;
 									width: 100%;
 									height: 100%;
-									padding: 0 20px 20px 20px;
-									display: flex;
-									flex-direction: column;
-									justify-content: center;
-									.galleryTitle {
-										font-size: 24px;
+									padding: 20px;
+									.galleryChannel {
+										font-size: 16px;
 										font-weight: 300;
-										color: #9da592;
-										margin-bottom: 10px;
+										color: $textColor;
+										margin-bottom: 20px;
 										text-transform: uppercase;
+										border-bottom: 1px solid $borderColor;
+										padding-bottom: 10px;
 									}
 									.galleryImg {
 										width: 100%;
-										height: 80%;
-										margin-bottom: 10px;
+										height: 200px;
+										margin-bottom: 20px;
+
 										figure {
 											width: 100%;
 											height: 100%;
@@ -241,268 +284,312 @@
 									}
 
 									.galleryText {
-										display: flex;
-										align-items: center;
-										justify-content: space-between;
-										.galleryNum {
-											width: 20%;
-											font-size: 16px;
-											color: #333;
-										}
-										.galleryInfo {
-											width: 80%;
+										border-top: 1px solid $borderColor;
+										padding-top: 20px;
+										.galleryTitle {
+											font-size: 20px;
+											font-family: $titleFont;
+											font-weight: bold;
 											white-space: nowrap;
 											overflow: hidden;
 											text-overflow: ellipsis;
-											text-align: right;
-											font-size: 16px;
-											color: #777;
+											margin-bottom: 20px;
 										}
+										.galleryInfo {
+											font-size: 18px;
+											font-weight: 300;
+											font-family: $enFont;
+										}
+									}
+									.galleryDate {
+										position: absolute;
+										right: 20px;
+										bottom: 20px;
+										font-size: 16px;
+										font-weight: 300;
+										font-family: $enFont;
 									}
 								}
 							}
 						}
+						&:hover {
+							.swiper-button-prev,
+							.swiper-button-next {
+								opacity: 0.8;
+							}
+						}
+						.swiper-button-prev,
 						.swiper-button-next {
 							position: absolute;
-							top: 6%;
-							right: 20px;
-
-							left: auto;
+							top: auto;
+							bottom: 0;
+							width: 50px;
+							height: 50px;
+							background-color: $backgroundColor;
+							border: 1px solid $borderColor;
+							transition: 0.5s;
+							opacity: 0;
+							margin-bottom: -1px;
 							&::after {
 								font-size: 20px;
 								color: $borderColor;
 							}
 						}
+
 						.swiper-button-prev {
-							position: absolute;
-							top: 6%;
+							left: 0;
+							margin-left: -1px;
+						}
+						.swiper-button-next {
+							left: 50px;
+							margin-left: -2px;
+						}
+					}
+				}
+			}
+		}
+		.flickrCont {
+			.inner {
+				.flickrList {
+					position: relative;
+					display: flex;
+					align-items: center;
+					flex-wrap: wrap;
+					.flickrItem {
+						width: 50%;
+						height: 50%;
 
-							left: auto;
-							right: 100px;
-							left: auto;
+						.itemBox {
+							position: relative;
+							width: 100%;
+							height: 100%;
+							overflow: hidden;
+							.galleryImg {
+								width: 100%;
+								overflow: hidden;
+								transition: 0.5s;
+								.thumb {
+									width: 100%;
+									height: 100%;
+									object-fit: cover;
+									filter: grayscale(0.8);
+									transform: scale(1);
+									transition: 0.5s;
+								}
+							}
+							&:hover {
+								overflow: hidden;
+								.thumb {
+									transform: scale(1.2);
+								}
+								.hoverFlickr {
+									opacity: 1;
+									right: 0;
+								}
+							}
+							.hoverFlickr {
+								opacity: 1;
+								position: absolute;
+								bottom: 0;
+								right: -100%;
+								width: 100%;
+								height: 100%;
+								background-color: rgba(255, 255, 255, 0.5);
+								transition: 0.5s;
+								.fDesc {
+									width: 100%;
+									height: 100%;
+									padding: 30px;
+									display: flex;
+									flex-direction: column;
+									.popTit {
+										position: relative;
+										@include sectionSubTitle($subFontColor: $borderColor);
+										margin-bottom: 20px;
+										border-bottom: 1px solid $borderColor;
+									}
+									.galleryOwner {
+										@include sectionSubTitle($subFz: 18px, $subFontColor: $textColor);
+										margin-bottom: 10px;
+									}
+									.galleryTitle {
+										@include sectionSubTitle($subFz: 18px, $subFontColor: $textColor);
+									}
+								}
+							}
+						}
+						&:nth-of-type(odd) {
+							border-right: 1px solid $borderColor;
+						}
+						&:nth-of-type(3),
+						&:nth-of-type(4) {
+							border-top: 1px solid $borderColor;
+						}
+					}
+				}
+				.flickrText {
+					padding: 30px;
+					.flickrTextBox {
+						.contentsSubTitle {
+							@include sectionSubTitle($subFz: 18px);
+							margin-top: 30px;
+						}
 
+						.contentsText {
+							width: 50%;
+							margin-top: 10px;
+							@include sectionText($captionFz: 12px);
+						}
+					}
+					.galleryBtn {
+						padding-top: 20px;
+						width: 100%;
+
+						a {
+							position: relative;
+							text-transform: uppercase;
+							@include sectionSubTitle($subFz: 16px, $subFontColor: $textColor);
+							padding-bottom: 4px;
 							&::after {
-								font-size: 20px;
-								color: $borderColor;
+								content: '';
+								position: absolute;
+								left: 0;
+								bottom: 0;
+								width: 0;
+								height: 1px;
+								background: $borderColor;
+								transition: 0.5s;
+							}
+							&:hover {
+								&::after {
+									width: 100%;
+								}
+							}
+							.arrow {
+								position: relative;
+								top: -6px;
+								display: inline-block;
+								width: 20px;
+								height: 1px;
+								background: $borderColor;
+								margin-left: 20px;
+							}
+
+							.arrow::after {
+								transform-origin: center right;
+								position: absolute;
+								left: 11px;
+								top: -0.5px;
+								content: '';
+								width: 7px;
+								height: 7px;
+								border-top: 1px solid #777777;
+								border-right: 1px solid #777777;
+								transform: rotate(45deg);
 							}
 						}
 					}
 				}
 			}
 		}
-		// boardCont 영역
 		.boardCont {
-			position: relative;
-			width: 100%;
-			height: calc(100vh - 80px);
-			min-height: 600px;
-
+			overflow: hidden;
 			.inner {
 				width: 100%;
 				height: 100%;
-				margin: 0 auto;
-				border: 1px solid #777;
-				border-top: none;
-				padding: 30px;
-				overflow: hidden;
-				.boardWrap {
-					width: 100%;
-					.boardMo {
-						display: flex;
-						align-items: center;
-						justify-content: space-between;
-						margin-bottom: 40px;
-					}
-					.contentsTitle {
-						@include sectionTitle;
-					}
-					.boardMoBtn {
-						display: none;
-						.boarLink {
+				.boardTitleCont {
+					height: 100%;
+					.bContWrap {
+						height: 100%;
+						.bTitleWrap {
 							position: relative;
-							display: inline-block;
-							color: $borderColor;
-							font-size: 14px;
-							text-decoration: none;
-							padding-right: 30px;
-							font-family: $enFont;
-							transition: 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
-
-							&:hover {
-								transition: 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
-								&:after {
-									transition: 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
-									transform: translateX(15px);
-									opacity: 0;
-								}
-								&:before {
-									transition: 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
-									transform: translateX(0);
-									opacity: 1;
-								}
-							}
-							&:before,
-							&:after {
-								content: '\27F6';
+							height: 50%;
+							padding: 30px;
+							border-bottom: 1px solid $borderColor;
+							.bBox {
 								position: absolute;
-								right: 0;
-								top: -10%;
-							}
-
-							&:before {
-								transform: translateX(-15px);
-								opacity: 0;
-							}
-							&:after {
-								transform: none;
-							}
-						}
-					}
-
-					.boardBox {
-						position: relative;
-						width: 100%;
-						display: flex;
-						align-items: center;
-						margin-bottom: 20px;
-						.boardTextArea {
-							width: 70%;
-							height: 200px;
-							background: #333;
-							padding: 20px;
-							margin-right: 50px;
-							p {
-								color: #ecece3;
-								font-size: 18px;
-								margin: 5px 0 0 5px;
-								white-space: nowrap;
-								overflow: hidden;
-								width: 100%;
-								opacity: 0;
-								transition: 0.5s;
-								a {
-									color: #ecece3;
-									text-decoration: none;
+								bottom: 30px;
+								left: 30px;
+								.contentsTitle {
+									border: none;
 								}
-							}
-							&.on {
-								p {
-									opacity: 1;
-									animation: type 3s steps(60, end);
-									&:nth-child(2) {
-										animation: type2 4s steps(60, end);
+								.boardDescWrap {
+									width: 100%;
+									padding-right: 30px;
+									display: none;
+
+									.contentsSubTitle {
+										@include sectionSubTitle($subFz: 16px, $fontWeight: 300);
+										margin-bottom: 10px;
+										margin-top: 20px;
 									}
-									&:nth-child(3) {
-										animation: type3 8s steps(60, end);
-									}
-									&:nth-child(4) {
-										animation: type4 12s steps(60, end);
-									}
-									span {
-										animation: blink 1s infinite;
+									.boardDesc {
+										font-size: 12px;
+										font-weight: 300;
 									}
 								}
 							}
 						}
-						.boardBtn {
-							width: 150px;
-							height: 150px;
-							border-radius: 50%;
-							border: 1px solid #777;
-							background: #d9d9ce;
-							cursor: pointer;
-							.boardBtnText {
-								display: flex;
-								align-items: center;
-								justify-content: center;
-								width: 100%;
-								height: 100%;
-								font-size: 16px;
-								color: #333;
-							}
-							&:hover {
-								background: $hoverColor;
+						.bTextWrap {
+							position: relative;
+							height: 50%;
+							.boardDescWrap {
+								position: absolute;
+								bottom: 0;
+								left: 0;
+								padding: 30px;
+								.contentsSubTitle {
+									@include sectionSubTitle($subFz: 20px, $fontWeight: 300);
+									margin-bottom: 20px;
+								}
+								.boardDesc {
+									font-size: 14px;
+									font-weight: 300;
+								}
 							}
 						}
 					}
 				}
-				.boardInfo {
-					display: flex;
-					align-items: flex-start;
-					justify-content: center;
-					width: 100%;
-					padding-left: 150px;
-					h2 {
-						@include sectionSubTitle;
-						margin-right: 50px;
-					}
-					.sectionAccodion {
+				.boardListCont {
+					height: 100%;
+					.boardLists {
 						width: 100%;
-						max-width: 100%;
+						height: 100%;
 						display: flex;
-						flex-direction: column;
-						.tab {
-							position: relative;
-							margin-top: 20px;
-							overflow: hidden;
-							input[type='radio'] {
-								appearance: none;
+						flex-wrap: wrap;
+						.boardList {
+							width: 50%;
+							height: 50%;
 
-								&:checked + label::after {
-									transform: rotate(-45deg);
-								}
-
-								&:checked ~ .tabContents {
-									max-height: 80vh;
-								}
-								&:checked ~ label h3 {
-									padding: 2px 10px;
-									border-radius: 2px;
-								}
-							}
-							label {
+							.boardBox {
 								display: flex;
 								align-items: center;
-								cursor: pointer;
-								&::after {
-									content: '-';
-									position: absolute;
-									right: 0;
-									font-size: 30px;
-									font-weight: 300;
-									transition: 1s;
-									color: #777;
-								}
+								justify-content: center;
+								flex-direction: column;
+								text-align: center;
+								padding: 30px;
+								width: 100%;
+								height: 100%;
 
-								h2 {
-									color: $textColor;
-									font-size: 20px;
-									font-weight: 400;
-									border-radius: 5px;
-									margin-right: 10px;
-									font-family: $koFont;
+								overflow: hidden;
+								.bListTitle {
+									@include sectionText($captionFz: 20px, $captionFontColor: $textColor);
+									margin-bottom: 10px;
 								}
-								h3 {
-									z-index: 10;
-									font-size: 20px;
-									font-weight: 400;
-									font-family: $koFont;
+								.bListText {
+									@include sectionText;
 								}
 							}
-							.tabContents {
-								border-top: 1px solid #777;
-								max-height: 0;
-								transition: 1s;
-								p {
-									font-family: $koFont;
-									position: relative;
-									padding: 15px 0;
-									color: #333;
-									z-index: 10;
-								}
+							&:nth-of-type(odd) {
+								border-right: 1px solid $borderColor;
 							}
-							&:nth-of-type(1) {
-								margin-top: 0;
+							&:nth-last-child(-n + 2) {
+								border-top: 1px solid $borderColor;
+							}
+							img {
+								width: 100%;
+								height: 100%;
+								object-fit: cover;
 							}
 						}
 					}
@@ -511,7 +598,15 @@
 		}
 	}
 }
-// 반응형
+// 애니메이션
+@keyframes rotating {
+	0% {
+		transform: rotate(360deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}
 
 //반응형 1024px
 @media screen and (max-width: $sLaptop) {
@@ -551,21 +646,48 @@
 					}
 				}
 			}
-			.galleryCont {
+			.youtubeCont {
 				.inner {
-					.galleryTabCont {
-						.contentsTitle {
-							@include sectionTitle($fz: 40px);
+					.galleryListCont {
+						.gallerySlideCont {
+							.swiper-wrapper {
+								.swiper-slide {
+									.listCont {
+										.galleryImg {
+											height: 120px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.flickrCont {
+				.inner {
+					.flickrList {
+						.flickrItem {
+							.itemBox {
+							}
 						}
 					}
 				}
 			}
 			.boardCont {
-				height: calc(100vh - 60px);
 				.inner {
-					.boardWrap {
-						.contentsTitle {
-							@include sectionTitle($fz: 40px);
+					.boardListCont {
+						.boardLists {
+							.boardList {
+								.boardBox {
+									.bListTitle {
+										@include sectionText($captionFz: 16px, $captionFontColor: $textColor);
+										margin-bottom: 10px;
+									}
+									.bListText {
+										@include sectionText($captionFz: 12px);
+									}
+								}
+							}
 						}
 					}
 				}
@@ -577,51 +699,45 @@
 @media screen and (max-width: $Ltablet) {
 	#main {
 		.wrap {
-			.galleryCont {
+			.youtubeCont {
 				.inner {
-					.galleryTabCont {
+					.galleryTextCont {
+						.contentsTitle {
+							@include sectionTitle($fz: 36px);
+						}
+					}
+					.galleryListCont {
 						.gallerySlideCont {
 							.swiper-wrapper {
 								.swiper-slide {
 									.listCont {
-										.galleryTitle {
-											font-size: 20px;
+										.galleryText {
+											.galleryTitle {
+												font-size: 18px;
+											}
+
+											.galleryInfo {
+												font-size: 16px;
+											}
 										}
 										.galleryImg {
-											height: 70%;
+											height: 180px;
+										}
+										.galleryDate {
+											font-size: 14px;
 										}
 									}
-								}
-							}
-							.swiper-button-next {
-								top: 10%;
-								&::after {
-									font-size: 18px;
-								}
-							}
-							.swiper-button-prev {
-								top: 10%;
-								&::after {
-									font-size: 18px;
 								}
 							}
 						}
 					}
 				}
 			}
-			.boardCont {
-				height: 600px;
+			.flickrCont {
 				.inner {
-					.boardWrap {
-						.boardBox {
-							.boardTextArea {
-								p {
-									font-size: 16px;
-								}
-							}
-							.boardBtn {
-								width: 120px;
-								height: 120px;
+					.flickrList {
+						.flickrItem {
+							.itemBox {
 							}
 						}
 					}
@@ -672,56 +788,125 @@
 					}
 				}
 			}
-			.galleryCont {
+			.youtubeCont {
 				.inner {
 					.galleryTextCont {
-						.contentsText {
-							@include sectionText($captionFz: 12px);
+						width: 30%;
+						.contentsTitle {
+							@include sectionTitle($fz: 30px);
+						}
+						.galleryBtn {
+							width: 100%;
+							margin-top: 20px;
+
+							a {
+								position: relative;
+								text-transform: uppercase;
+								@include sectionSubTitle($subFz: 14px, $subFontColor: $textColor);
+								padding-bottom: 4px;
+								.arrow {
+									margin-left: 10px;
+								}
+							}
+						}
+						.controls {
+							a {
+								width: 15px;
+								height: 15px;
+								i {
+									width: 15px;
+									height: 15px;
+									background-size: 13px !important;
+								}
+							}
+							a:first-child {
+								margin-right: 20px;
+							}
 						}
 					}
-					.galleryTabCont {
-						.galleryTabs {
-							.galleryTab {
-								a {
-									font-size: 16px;
-								}
-							}
-						}
+					.galleryListCont {
 						.gallerySlideCont {
-							.swiper-button-next {
-								top: 10%;
-								&::after {
-									font-size: 16px;
-								}
-							}
-							.swiper-button-prev {
-								top: 10%;
-								&::after {
-									font-size: 16px;
-								}
-							}
 							.swiper-wrapper {
 								.swiper-slide {
 									.listCont {
-										.galleryTitle {
-											font-size: 18px;
-										}
 										.galleryImg {
-											height: 70%;
+											height: 120px;
 										}
 									}
 								}
+							}
+							.swiper-button-prev,
+							.swiper-button-next {
+								width: 40px;
+								height: 40px;
+								&::after {
+									font-size: 16px;
+								}
+							}
+							.swiper-button-next {
+								left: 40px;
 							}
 						}
 					}
 				}
 			}
-			.boardCont {
-				height: calc(100vh - 60px);
+			.flickrCont {
 				.inner {
-					.boardWrap {
-						.contentsTitle {
-							@include sectionTitle($fz: 30px);
+					.flickrList {
+						.flickrItem {
+							.itemBox {
+							}
+						}
+					}
+					.flickrText {
+						.flickrTextBox {
+							.contentsText {
+								width: 70%;
+							}
+						}
+					}
+				}
+			}
+
+			.boardCont {
+				.inner {
+					flex-direction: column;
+					&::after {
+						@include line($wid: 0);
+					}
+					.boardTitleCont {
+						width: 100%;
+						height: 30%;
+						.bContWrap {
+							height: 100%;
+							.bTitleWrap {
+								height: 100%;
+								.bBox {
+									.boardDescWrap {
+										display: block;
+									}
+								}
+							}
+							.bTextWrap {
+								display: none;
+							}
+						}
+					}
+					.boardListCont {
+						width: 100%;
+						height: 70%;
+						.boardLists {
+							.boardList {
+								.boardBox {
+									.bListTitle {
+										@include sectionText($captionFz: 14px, $captionFontColor: $textColor);
+										margin-bottom: 10px;
+									}
+									.bListText {
+										@include sectionText($captionFz: 12px);
+									}
+								}
+							}
 						}
 					}
 				}
@@ -781,152 +966,101 @@
 				}
 			}
 			//galleryCont 영역
-			.galleryCont {
+			.youtubeCont {
 				.inner {
+					flex-direction: column;
 					.galleryTextCont {
 						width: 100%;
-						height: 45%;
-						border-right: none;
+						height: 40%;
+						border-right: 0;
 						border-bottom: 1px solid $borderColor;
+						.contentsTitle {
+							@include sectionTitle($fz: 20px);
+						}
 						.contentsText {
-							padding-left: 0;
-							margin-top: 20px;
+							@include sectionText($captionFz: 10px);
+							margin-top: 10px;
 							margin-bottom: 20px;
 						}
-					}
-					.galleryTabCont {
-						width: 100%;
-
-						.galleryTabs {
-							width: 100%;
-							height: 10%;
-							display: flex;
-							align-items: center;
-							border-bottom: 1px solid $borderColor;
-							.galleryTab {
-								width: 50%;
-								height: 100%;
-								display: flex;
-								align-items: center;
-								justify-content: center;
-								&:nth-of-type(1) {
-									border-right: 1px solid $borderColor;
+						.controls {
+							justify-content: flex-end;
+							a {
+								width: 12px;
+								height: 12px;
+								i {
+									width: 12px;
+									height: 12px;
+									background-size: 10px !important;
 								}
-								a {
-									display: block;
-									font-size: 15px;
-									color: $textColor;
-								}
-								&:hover {
-									background-color: $hoverColor;
-									a {
-										color: $backgroundColor;
-									}
-								}
-								&.on {
-									background-color: $hoverColor;
-									a {
-										color: $backgroundColor;
-									}
-								}
+							}
+							a:first-child {
+								margin-right: 16px;
 							}
 						}
+					}
+					.galleryListCont {
+						width: 100%;
+						height: 65%;
 						.gallerySlideCont {
-							height: 85%;
-							.swiper-button-next {
-								top: 15%;
-								&::after {
-									font-size: 12px;
-								}
-							}
-							.swiper-button-prev {
-								top: 15%;
-								&::after {
-									font-size: 12px;
-								}
-							}
-							// swiper
 							.swiper-wrapper {
-								position: absolute;
-								left: 0;
-								bottom: 0;
-								width: 100%;
-								height: 90%;
 								.swiper-slide {
 									.listCont {
-										.galleryTitle {
-											font-size: 14px;
-											font-weight: 300;
-											color: #9da592;
-											margin-bottom: 10px;
-										}
 										.galleryImg {
-											height: 80%;
+											height: 30%;
 										}
 										.galleryText {
-											.galleryNum {
-												font-size: 12px;
+											.galleryTitle {
+												font-size: 16px;
+												margin-bottom: 10px;
 											}
 											.galleryInfo {
 												font-size: 12px;
 											}
+											.galleryDate {
+												font-size: 14px;
+											}
 										}
 									}
 								}
 							}
-							.gallerySlide {
-								transition: all 0.5s;
-								opacity: 0;
-
-								&.on {
-									opacity: 1;
+							.swiper-button-prev,
+							.swiper-button-next {
+								width: 30px;
+								height: 30px;
+								&::after {
+									font-size: 14px;
 								}
+							}
+							.swiper-button-next {
+								left: 30px;
 							}
 						}
 					}
 				}
 			}
-			//boardCont 영역
-			.boardCont {
+			.flickrCont {
 				.inner {
-					width: 100%;
-					padding: 20px;
-					.boardWrap {
-						.boardMo {
-							margin-bottom: 20px;
-						}
-						.boardMoBtn {
-							display: block;
-						}
-						.boardBox {
-							align-items: flex-end;
-							flex-direction: column;
-							margin-bottom: 20px;
-							.boardTextArea {
-								width: 100%;
-								height: 150px;
-								margin-right: 0;
-								margin-bottom: 10px;
-							}
-							.boardBtn {
-								display: none;
+					.flickrList {
+						height: 70%;
+						.flickrItem {
+							.itemBox {
 							}
 						}
 					}
-					.boardInfo {
-						padding-left: 0;
-						.sectionAccodion {
-							margin: 0;
-							.tab {
-								label {
-									h2 {
-										font-size: 16px;
-									}
-									h3 {
-										font-size: 16px;
-									}
-								}
+					.flickrText {
+						position: relative;
+						height: 30%;
+						.flickrTextBox {
+							.contentsText {
+								width: 100%;
 							}
+						}
+						.galleryBtn {
+							position: absolute;
+							top: 30px;
+							right: 30px;
+							padding-top: 0;
+							width: auto;
 						}
 					}
 				}
@@ -934,53 +1068,72 @@
 		}
 	}
 }
+@media screen and (max-width: $sMobile) {
+	#main {
+		.wrap {
+			//galleryCont 영역
+			.galleryCont {
+				.inner {
+					.galleryTextCont {
+						.contentsTitle {
+							@include sectionTitle($fz: 18px);
+						}
+						.contentsText {
+							@include sectionText($captionFz: 10px);
+							margin-top: 10px;
+							margin-bottom: 10px;
+						}
+					}
 
-//animation
-//
-@keyframes type {
-	0% {
-		width: 0;
-	}
-}
-
-@keyframes type2 {
-	0% {
-		width: 0;
-	}
-	50% {
-		width: 0;
-	}
-	100% {
-		width: 100;
-	}
-}
-
-@keyframes type3 {
-	0% {
-		width: 0;
-	}
-	50% {
-		width: 0;
-	}
-	100% {
-		width: 100;
-	}
-}
-
-@keyframes type4 {
-	0% {
-		width: 0;
-	}
-	50% {
-		width: 0;
-	}
-	100% {
-		width: 100;
-	}
-}
-
-@keyframes blink {
-	to {
-		opacity: 0;
+					.galleryListCont {
+						.gallerySlideCont {
+							.swiper-wrapper {
+								.swiper-slide {
+									.listCont {
+										.galleryChannel {
+											font-size: 14px;
+											margin-bottom: 10px;
+											padding-bottom: 5px;
+										}
+										.galleryImg {
+											height: 20%;
+											margin-bottom: 10px;
+										}
+										.galleryText {
+											padding-top: 10px;
+											.galleryTitle {
+												font-size: 14px;
+											}
+											.galleryInfo {
+												font-size: 12px;
+											}
+										}
+										.galleryDate {
+											font-size: 12px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.flickrCont {
+				.inner {
+					.flickrList {
+						.flickrItem {
+							.itemBox {
+								.hoverFlickr {
+									top: 350px;
+									bottom: auto;
+									width: 280px;
+									height: 280px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
