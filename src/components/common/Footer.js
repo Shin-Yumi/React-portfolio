@@ -29,10 +29,10 @@ function Footer() {
                 <h2 className="footerContTitle">Social</h2>
                 <ul className="snsWrap">
                   <li className="snsList">
-                    <Link className="snsLink" to="/">Instagram</Link>
+                    <Link className="snsLink" to="https://www.instagram.com/voguekorea/">Instagram</Link>
                   </li>
                   <li className="snsList">
-                    <Link className="snsLink" to="/">Blog</Link>
+                    <Link className="snsLink" to="https://www.vogue.co.kr/">Blog</Link>
                   </li>
                 </ul>
               </div>

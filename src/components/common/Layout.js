@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import useScrollFadeIn from '../assets/Scroll';
 
 function Layout(props) {
 	return (
@@ -7,8 +8,10 @@ function Layout(props) {
 				<div className='subContents'>
 					<header className={`subHeader ${props.name}`}>
 						<div className='inner'>
-							<h1 className='subHeaderTitle'>{props.name}</h1>
-							<div className='subHeaderMenu'>
+							<h1 className='subHeaderTitle' {...useScrollFadeIn('up', 1, 0)}>
+								{props.name}
+							</h1>
+							<div className='subHeaderMenu' {...useScrollFadeIn('up', 1, 0)}>
 								<ul>
 									<li className='subHeadaerMenuList'>
 										<Link to={`/${props.name}/${props.sub01}`}>{props.sub01}</Link>
@@ -23,8 +26,12 @@ function Layout(props) {
 					<section className='subSection'>
 						<div className='inner'>
 							<div className='sectionExp'>
-								<h3 className='expTitle'>{props.title} / <span>{props.subTitle}</span></h3>
-								<p className='expCaption'>{props.expCaption}</p>
+								<h3 className='expTitle' {...useScrollFadeIn('up', 1, 0)}>
+									{props.title} / <span>{props.subTitle}</span>
+								</h3>
+								<p className='expCaption' {...useScrollFadeIn('up', 1, 0)}>
+									{props.expCaption}
+								</p>
 							</div>
 							<div className='sectionCont'>{props.children}</div>
 						</div>

@@ -1,25 +1,26 @@
-import Contents from "./Contents";
-
+import useScrollFadeIn from '../assets/Scroll';
 function VisualMain() {
 	return (
-		<Contents name='mainCont'>
-					<article className='contentsHalf visualCont'>
-						<div className='visualImgBox'>
-							<div className='visualImg'></div>
-						</div>
-					</article>
-					<article className='contentsHalf mainDescription'>
-						<div className='mainTextBox'>
-							<h1 className='mainTitle'>VOGUE</h1>
-							<p className='mainInfo'>
-								패션 바이블 보그는 전 세계 27개 시장에서 발행되고 있는 130년의 전통을 지닌 가장 권위
-								있는 패션 매거진입니다
-							</p>
-						</div>
-					</article>
-				</Contents>
+		<section className="contents mainCont myScroll">
+			<div className='inner'>
+				<article className='contentsHalf visualCont'>
+					<div className='visualImgBox' {...useScrollFadeIn('right', 1, 0)}>
+						<div className='visualImg' ></div>
+					</div>
+				</article>
+				<article className='contentsHalf mainDescription' >
+					<div className='mainTextBox' {...useScrollFadeIn('right', 1, 0)}>
+						<h1 className='mainTitle' {...useScrollFadeIn('up', 2, 0)}>
+							Vogue
+						</h1>
+						<p className='mainInfo' {...useScrollFadeIn('up', 2, 0)}>
+							패션 바이블 보그는 전 세계 27개 시장에서 발행되고 있는 130년의 전통을 지닌 가장 권위 있는 패션 매거진입니다
+						</p>
+					</div>
+				</article>
+			</div>
+		</section>
 	);
 }
 
 export default VisualMain;
-

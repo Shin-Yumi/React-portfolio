@@ -7,6 +7,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import youtubeReducer from './redux/youtubeSlice';
 import flickrReducer from './redux/flickrSlice';
 import menuReducer from './redux/menuSlice';
+import { CookiesProvider } from 'react-cookie';
 
 const store = configureStore({
 	reducer: {
@@ -29,10 +30,12 @@ export default function ScrollToTop() {
 ReactDOM.render(
 	<React.StrictMode>
 		<HashRouter>
-			<Provider store={store}>
-				<ScrollToTop />
-				<App />
-			</Provider>
+			<CookiesProvider>
+				<Provider store={store}>
+					<ScrollToTop />
+					<App />
+				</Provider>
+			</CookiesProvider>
 		</HashRouter>
 	</React.StrictMode>,
 	document.getElementById('root')

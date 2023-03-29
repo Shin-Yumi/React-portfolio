@@ -27,14 +27,7 @@ function Gallery() {
 
 	return (
 		<>
-			<Layout
-				name={name}
-				title={title}
-				subTitle={subTitle}
-				expCaption={expCaption}
-				sub01={sub01}
-				sub02={sub02}
-			>
+			<Layout name={name} title={title} subTitle={subTitle} expCaption={expCaption} sub01={sub01} sub02={sub02}>
 				<div className='youtube'>
 					{Loading && (
 						<div className='loading'>
@@ -48,6 +41,7 @@ function Gallery() {
 					<div id='youtube' ref={frame}>
 						{Vids.map((el, index) => {
 							const tit = el.snippet.title;
+							const desc = el.snippet.description;
 							const date = el.snippet.publishedAt;
 
 							return (
@@ -57,15 +51,24 @@ function Gallery() {
 										className='pic'
 										onClick={(e) => {
 											e.preventDefault();
-											open.current.open();
-											setIndex(index);
 										}}
 									>
 										<img src={el.snippet.thumbnails.high.url} alt={el.snippet.title} />
 									</Link>
 									<div className='con'>
-										<h2>{tit.length > 60 ? tit.substr(0, 60) + '...' : tit}</h2>
+										<h2>{tit.length > 20 ? tit.substr(0, 20) + '...' : tit}</h2>
+										<p>{desc.length > 120 ? desc.substr(0, 120) + '...' : desc}</p>
 										<span>{date.split('T')[0]}</span>
+									</div>
+									<div
+										className='galleryBtn'
+										onClick={() => {
+											open.current.open();
+											setIndex(index);
+										}}
+									>
+										<i className='arrow'></i>
+										<img src={process.env.PUBLIC_URL + '/img/circle.svg'} alt="" />
 									</div>
 								</article>
 							);

@@ -1,41 +1,54 @@
-import Contents from './Contents';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
+import useScrollFadeIn from '../assets/Scroll';
 
 function AboutMain() {
 	return (
-		<Contents name='aboutCont'>
-			<article className='contentsHalf aboutImgFull'>
-				<div className='aboutImg'>
-					<figure className='aboutFigure'>
-						<img src={process.env.PUBLIC_URL + '/img/about02.jpg'} alt='' />
-					</figure>
-				</div>
-			</article>
-			<article className='contentsHalf aboutDescription'>
-				<div className='aboutTextBox'>
-					<h1 className='contentsTitle'>ABOUT</h1>
-					<div className='aboutDescBox'>
-						<div className='subTitle'>
-							<h2 className='aboutSubTitle'>about company</h2>
-							<hr className='contentsLine' />
-							<span className='subTitleDesc'>Organization & Map</span>
-						</div>
+		<section className='contents aboutCont myScroll'>
+			<div className='inner'>
+				<article className='contentsHalf aboutImgFull'>
+					<div className='aboutImg'>
+						<figure className='aboutFigure'>
+							<video
+								src={process.env.PUBLIC_URL + '/img/vogue.mp4'}
+								loop
+								autoPlay
+								muted
+								{...useScrollFadeIn('left', 1, 0)}
+							></video>
+						</figure>
+					</div> 
+				</article>
+				<article className='contentsHalf aboutDescription'>
+					<div className='aboutTextBox' {...useScrollFadeIn('left', 1, 0)}>
+						<h1 className='contentsTitle' {...useScrollFadeIn('up', 1, 1)}>
+							ABOUT
+						</h1>
+						<div className='aboutDescBox'>
+							<div className='subTitle'>
+								<h2 className='aboutSubTitle' {...useScrollFadeIn('up', 1, 1)}>
+									about company
+								</h2>
+								<hr className='contentsLine' {...useScrollFadeIn('up', 1, 1)} />
+								<span className='subTitleDesc' {...useScrollFadeIn('up', 1, 1)}>
+									Organization & Map
+								</span>
+							</div>
 
-						<p className='aboutDesc'>
-							차별화 된 기획과 크리에이티브한 비주얼로 사람들에게 영감을 주는 패션 매거진의 대명사
-							보그 코리아. 웹, 모바일, 소셜 미디어 등 다양한 디지털 플랫폼과 프린트 매거진을 통해
-							강력한 하나의 브랜드로 존재감을 발휘하고 있습니다
-						</p>
-						<div className='contBtn'>
-							<Link to='/about/organization' className='btnText'>
-								view &nbsp; <span> about</span>
-							</Link>
+							<p className='aboutDesc' {...useScrollFadeIn('up', 1, 0)}>
+								차별화 된 기획과 크리에이티브한 비주얼로 사람들에게 영감을 주는 패션 매거진의 대명사 보그 코리아. 웹, 모바일, 소셜
+								미디어 등 다양한 디지털 플랫폼과 프린트 매거진을 통해 강력한 하나의 브랜드로 존재감을 발휘하고 있습니다
+							</p>
+							<div className='contBtn' {...useScrollFadeIn('up', 1, 0)}>
+								<Link to='/about/organization' className='btnText'>
+									view &nbsp; <span> about</span>
+								</Link>
+							</div>
 						</div>
 					</div>
-				</div>
-			</article>
-		</Contents>
+				</article>
+			</div>
+		</section>
 	);
 }
 

@@ -14,10 +14,11 @@ import 'swiper/css/pagination';
 function GallMain() {
 	const Vids = useSelector((store) => store.youtube.data);
 	const [Index, setIndex] = useState(0);
+	const open = useRef(null);
 
 	//Swiper 컴포넌트에서 생성되는 인스턴스를 담을 객체
 	const [Instance, setInstance] = useState(null);
-	const open = useRef(null);
+
 	const btnStart = useRef(null);
 	const btnStop = useRef(null);
 
@@ -27,7 +28,7 @@ function GallMain() {
 				<div className='galleryTextCont'>
 					<div>
 						<h1 className='contentsTitle'>Youtube</h1>
-						<p className='contentsText' >
+						<p className='contentsText'>
 							새로운 청키 스니커즈가 등장하는 것처럼 이 신발의 활용법도 점점 다양해지고 있습니다. 켄달 제너, 두아 리파와 같이 옷을
 							잘 입는 셀럽들은 각기 다른 방식으로 이 신발을 소화하고 있죠. 셀럽들이 제안한 청키 스니커즈 활용법을 확인해봅시다
 						</p>

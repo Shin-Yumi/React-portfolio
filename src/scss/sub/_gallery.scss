@@ -2,27 +2,60 @@
 	//youtube scss
 	#youtube {
 		display: flex;
-		align-items: center;
 		flex-wrap: wrap;
 		transform: translateY(100px);
 		transition: 1s;
 		opacity: 0;
+		margin: 0 -30px;
+
 		&.on {
 			opacity: 1;
 			transform: translateY(0);
 		}
 
 		.youtubeCont {
-			width: 49.5%;
-			padding: 20px;
-			border: 1px solid $borderColor;
-			margin-right: 1%;
-			margin-top: 1%;
-			box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+			position: relative;
+			width: calc(100% / 3);
+			height: 400px;
+			padding: 50px 20px 50px 20px;
+			border-top: 1px solid $borderColor;
+			border-right: 1px solid $borderColor;
+			overflow: hidden;
+			&:nth-of-type(3n) {
+				border-right: 0;
+			}
+			&:hover {
+				padding: 60px 20px;
+				.pic {
+					margin-bottom: 60px;
+					transform: scale(1.6) translateX(10px);
+					img {
+						filter: grayscale(0);
+					}
+				}
+				.con {
+					transform: translateX(20px);
+				}
+				.galleryBtn {
+					right: 40px;
+					bottom: 40px;
+					transform: scale(1.2);
+					img {
+						animation-name: rotate;
+						animation-duration: 5s;
+						animation-iteration-count: infinite;
+						animation-timing-function: linear;
+					}
+				}
+			}
 			.pic {
-				width: 100%;
+				width: 250px;
+				height: 140px;
 				display: block;
 				margin-bottom: 20px;
+				transition: 0.5s;
+				transform: scale(1) translateX(0);
+				transform-origin: 0 50%;
 				img {
 					width: 100%;
 					height: 100%;
@@ -31,21 +64,58 @@
 				}
 			}
 			.con {
+				width: 70%;
+				transform: translateX(0);
+				transition: 0.5s;
 				> h2 {
-					@include sectionText($captionFz: 18px, $captionFontColor: $textColor);
-					margin-bottom: 8px;
+					position: relative;
+					transition: 0.5s;
+					@include sectionTitle($fz: 20px);
+					margin-bottom: 20px;
 				}
-
+				> p {
+					@include sectionSubTitle($subFz: 16px, $subFontColor: $borderColor);
+					margin-bottom: 10px;
+				}
 				> span {
-					@include sectionText($captionFz: 16px, $captionFontColor: $hoverColor);
+					@include sectionText($captionFz: 12px, $captionFontColor: $hoverColor);
 				}
 			}
-			&:nth-of-type(-n + 2) {
-				margin-top: 0;
+			.galleryBtn {
+				position: absolute;
+				right: 20px;
+				bottom: 20px;
+				width: 60px;
+				height: 60px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				border-radius: 50%;
+				transition: 0.5s;
+				transform: scale(0.8);
+				i {
+					position: absolute;
+					z-index: 2;
+					display: flex;
+					width: 25px;
+					height: 25px;
+					background: url('../../../public/img/arrow.png') no-repeat center;
+					background-size: 25px !important;
+				}
+				img {
+					width: 300%;
+					height: 300%;
+				}
 			}
-			&:nth-of-type(even) {
-				margin-right: 0;
-			}
+		}
+	}
+	@keyframes rotate {
+		from {
+			transform: rotate(360deg);
+		}
+		to {
+			transform: rotate(0);
 		}
 	}
 	.loading {
@@ -89,6 +159,7 @@
 	}
 }
 #flickr {
+	margin-bottom: 80px;
 	.searchBox {
 		width: 100%;
 		font-size: 0;
@@ -216,7 +287,6 @@
 					width: 100%;
 					padding: 20px;
 					border: 1px solid $borderColor;
-					box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
 					.galleryImg {
 						img {
 							width: 100%;
@@ -286,6 +356,32 @@
 	.youtube {
 		#youtube {
 			.youtubeCont {
+				&:hover {
+					padding: 50px 20px;
+					.pic {
+						margin-bottom: 40px;
+						transform: scale(1.2) translateX(0px);
+						img {
+							filter: grayscale(0);
+						}
+					}
+					.con {
+						transform: translateX(0px);
+					}
+					.galleryBtn {
+						right: 40px;
+						bottom: 40px;
+						transform: scale(1.1);
+						img {
+							animation-name: rotate;
+							animation-duration: 5s;
+							animation-iteration-count: infinite;
+							animation-timing-function: linear;
+						}
+					}
+				}
+				.pic {
+				}
 				.con {
 					> h2 {
 						@include sectionText($captionFz: 16px, $captionFontColor: $textColor);
@@ -300,8 +396,52 @@
 		}
 	}
 }
+@media screen and (max-width: $Ltablet) {
+	.youtube {
+		#youtube {
+			.youtubeCont {
+				.pic {
+					width: 220px;
+					height: 120px;
+				}
+			}
+		}
+	}
+	#flickr {
+		margin-bottom: 50px;
+	}
+}
 
 @media screen and (max-width: $tablet) {
+	.youtube {
+		#youtube {
+			.youtubeCont {
+				width: 50%;
+				&:hover {
+					.pic {
+						margin-bottom: 60px;
+						transform: scale(1.6) translateX(0px);
+					}
+					.con {
+						transform: translateX(20px);
+					}
+					.galleryBtn {
+						transform: scale(1.2);
+					}
+				}
+				&:nth-of-type(3n) {
+					border-right: 1px solid $borderColor;
+				}
+				&:nth-of-type(even) {
+					border-right: 0;
+				}
+				.pic {
+					width: 180px;
+					height: 100px;
+				}
+			}
+		}
+	}
 	#flickr {
 		.wrap {
 			.list {
@@ -320,6 +460,23 @@
 			.youtubeCont {
 				width: 100%;
 				margin-right: 0;
+				border-right: 0;
+				&:hover {
+					padding: 60px 20px;
+					.pic {
+						margin-bottom: 60px;
+						transform: scale(1.6) translateX(0);
+					}
+					.con {
+						transform: translateX(0);
+					}
+					.galleryBtn {
+						transform: scale(1.1);
+					}
+				}
+				&:nth-of-type(3n) {
+					border-right: 0;
+				}
 				.pic {
 					margin-bottom: 10px;
 				}

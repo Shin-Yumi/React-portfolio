@@ -13,35 +13,37 @@ function FlickrMain() {
 		<section className={`contents flickrCont myScroll`}>
 			<div className='inner'>
 				<article className='contentsHalf flickrList'>
-					{Imgs.map((item, index) => {
+					{Imgs.map((img, index) => {
 						if (index >= 4) return null;
-						const imgSrcBig = `https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg`;
+						const imgSrcBig = `https://live.staticflickr.com/${img.server}/${img.id}_${img.secret}_b.jpg`;
 
 						return (
-							<>
-								<div key={item.id} className='flickrItem'>
-									<div className='itemBox'>
-										<Link
-											to='/'
-											className='galleryImg'
-											onClick={(e) => {
-												e.preventDefault();
-												open.current.open();
-												setIndex(index);
-											}}
-										>
-											<img className='thumb' src={imgSrcBig} alt={item.title} />
-										</Link>
-										<aside className='hoverFlickr'>
-											<div className='fDesc'>
-												<h1 className='popTit'>Flickr Description</h1>
-												<p className='galleryOwner'>owner : {item.owner}</p>
-												<p className='galleryTitle'>Title : {item.title}</p>
-											</div>
-										</aside>
-									</div>
+							<div key={img.id} className='flickrItem'>
+								<div className='itemBox'>
+									<Link
+										to='/'
+										className='galleryImg'
+										onClick={(e) => {
+											e.preventDefault();
+										}}
+									>
+										<img className='thumb' src={imgSrcBig} alt={img.title} />
+									</Link>
+									<aside
+										className='hoverFlickr'
+										onClick={() => {
+											open.current.open();
+											setIndex(index);
+										}}
+									>
+										<div className='fDesc'>
+											<h1 className='popTit'>Flickr Description</h1>
+											<p className='galleryOwner'>owner : {img.owner}</p>
+											<p className='galleryTitle'>Title : {img.title}</p>
+										</div>
+									</aside>
 								</div>
-							</>
+							</div>
 						);
 					})}
 					<Modal ref={open}>

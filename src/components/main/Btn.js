@@ -2,7 +2,7 @@ import { useEffect, useRef, useCallback } from 'react';
 import Anim from '../assets/anime';
 
 function Btns({ setScrolled, setPos }) {
-	const num = useRef(4);
+	const num = useRef(5);
 	const pos = useRef([]);
 	const btnRef = useRef(null);
 	const speed = useRef(500);
@@ -13,9 +13,9 @@ function Btns({ setScrolled, setPos }) {
 
 		for (const sec of secs) {
 			if (matchMedia('screen and (min-width: 1024px)').matches) {
-				pos.current.push(sec.offsetTop - 80);
+				pos.current.push(sec.offsetTop - 79);
 			} else {
-				pos.current.push(sec.offsetTop - 60);
+				pos.current.push(sec.offsetTop - 59);
 			}
 		}
 

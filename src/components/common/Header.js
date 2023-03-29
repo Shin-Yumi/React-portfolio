@@ -1,14 +1,15 @@
-import { useDispatch } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import { toggle } from '../../redux/menuSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Header(props) {
 	const dispatch = useDispatch();
+	const menu = useSelector((store) => store.menu.open);
 	const active = { color: '#9DA592' };
 
 	return (
 		<>
-			<header id='header'>
+			<header id='header' className={props.type}>
 				<div className='inner'>
 					<div className='logo'>
 						<h1 className='headerLogo'>
@@ -49,11 +50,11 @@ function Header(props) {
 					</nav>
 					<Link
 						to='/'
-						className='hamMenu'
 						onClick={(e) => {
 							e.preventDefault();
 							dispatch(toggle());
 						}}
+						className={`hamMenu ${menu ? 'on' : ''}`}
 					>
 						<span>메뉴호출</span>
 					</Link>

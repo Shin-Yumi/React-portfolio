@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Header from '../common/Header';
 import AboutMain from './AboutMain';
 import VisualMain from './VisualMain';
 import YoutubeMain from './YoutubeMain';
@@ -11,6 +12,7 @@ function Main(props) {
 	const [Pos, setPos] = useState([]);
 	return (
 		<main id='main'>
+			<Header type={'main'} menu={props.menu} />
 			<div className='wrap'>
 				<VisualMain />
 				<AboutMain Scrolled={Scrolled} Pos={Pos[1]} />

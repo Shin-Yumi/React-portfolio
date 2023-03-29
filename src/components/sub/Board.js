@@ -1,17 +1,18 @@
 import { Link } from 'react-router-dom';
 import Layout from '../common/Layout';
 import { useState, useEffect, useRef } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import { faTrash, faUpload, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 function Board() {
 	const name = 'Board';
 	const title = 'Board';
 	const subTitle = '자유게시판';
-	const expCaption =
-		'미풍양속을 해치지 않는 범위 내에서 Vogue에 대한 의견을 자유롭게 작성해주세요.';
+	const expCaption = '미풍양속을 해치지 않는 범위 내에서 Vogue에 대한 의견을 자유롭게 작성해주세요.';
 
 	const getLocalData = () => {
 		const data = localStorage.getItem('post');
-
 		return JSON.parse(data);
 	};
 
@@ -102,60 +103,60 @@ function Board() {
 						</div>
 					</div>
 				</div>
-
-				<table>
-					<caption className='hidden'>회원 자유 게시판</caption>
-					<thead className='hidden'>
-						<tr>
-							<th scope='col'>번호</th>
-							<th scope='col'>게시글제목</th>
-						</tr>
-					</thead>
-					<tbody>
+				<div className='boardListWrap'>
+					<ul className='boardLists'>
 						{Posts.map((post, idx) => {
+							const title = post.title;
+							const content = post.content;
 							return (
-								<tr key={idx}>
+								<li className='boardList' key={idx}>
 									{post.enableUpdate ? (
 										<>
-											<td>
-												<div className='boardList'>
+											<div className='bListBox'>
+												<div className='listBox'>
 													<div className='enableBox'>
 														<input type='text' defaultValue={post.title} ref={inputEdit} />
 
-														<textarea
-															cols='30'
-															rows='4'
-															defaultValue={post.content}
-															ref={textareaEdit}
-														></textarea>
+														<textarea cols='30' rows='4' defaultValue={post.content} ref={textareaEdit}></textarea>
 														<div className='enableBtnBox'>
-															<button onClick={() => disableUpdate(idx)}>CANCEL</button>
-															<button onClick={() => updatePost(idx)}>UPDATE</button>
+															<button onClick={() => updatePost(idx)}>
+																<FontAwesomeIcon icon={faUpload} />
+															</button>
+															<button onClick={() => disableUpdate(idx)}>
+																<FontAwesomeIcon icon={faXmark} />
+															</button>
 														</div>
 													</div>
 												</div>
-											</td>
+											</div>
 										</>
 									) : (
 										<>
-											<td>
-												<div className='boardList'>
-													<p className='boardTit'>{post.title}</p>
-													<p className='boardTxt'>{post.content}</p>
-													<div className='btnSet'>
+											<div>
+												<div className='bListBox'>
+													<div className='boxText'>
+														<p className='boardTit'>{title.length > 20 ? title.substr(0, 20) + '...' : title}</p>
+														<p className='boardTxt'>{content.length > 100 ? content.substr(0, 100) + '...' : content}</p>
+													</div>
 
-														<button onClick={() => enableUpdate(idx)}>EDIT</button>
-														<button onClick={() => deletePost(idx)}>DELETE</button>
+													<div className='btnSet'>
+														<button onClick={() => enableUpdate(idx)}>
+															<FontAwesomeIcon icon={faPenToSquare} />
+														</button>
+														<button onClick={() => deletePost(idx)}>
+															<FontAwesomeIcon icon={faTrash} />
+														</button>
 													</div>
 												</div>
-											</td>
+											</div>
 										</>
 									)}
-								</tr>
+								</li>
 							);
 						})}
-					</tbody>
-				</table>
+					</ul>
+				</div>
+
 				<div className='pagination'>
 					<Link to='/' className='prev'></Link>
 

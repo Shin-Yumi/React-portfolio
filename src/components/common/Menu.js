@@ -12,9 +12,10 @@ function Menu() {
 
 	useEffect(() => {
 		window.addEventListener('resize', () => {
-			if (window.innerWidth >= 778) dispatch(close());
+			// 브라우저 폭이 늘어나면 close함수로 전역 state값을 false로 변경후 dispatch로 리듀서에 전달
+			if (window.innerWidth >= 1180) dispatch(close());
 		});
-	});
+	}, [dispatch]);
 
 	return (
 		<AnimatePresence>

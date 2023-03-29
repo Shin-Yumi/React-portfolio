@@ -5,7 +5,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const fetchYoutube = createAsyncThunk('youtube/requestYoutube', async () => {
 	const key = 'AIzaSyA6RtwwaDd7lctAx_sccqFQtFnSErCl-jc';
 	const playlistId = 'PLzCu2b6-wIU-bhiFEskx9kppoLyJS-l5G';
-	const num = 10;
+	const num = 12;
 	const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=${key}&playlistId=${playlistId}&maxResults=${num}`;
 
 	const response = await axios.get(url);
