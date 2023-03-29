@@ -12,7 +12,7 @@ function FlickrMain() {
 	return (
 		<section className={`contents flickrCont myScroll`}>
 			<div className='inner'>
-				<article className='contentsHalf flickrList'>
+				<article className='contentsHalf flickrList' {...useScrollFadeIn('right', 1, 0)}>
 					{Imgs.map((img, index) => {
 						if (index >= 4) return null;
 						const imgSrcBig = `https://live.staticflickr.com/${img.server}/${img.id}_${img.secret}_b.jpg`;
