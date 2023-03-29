@@ -33,8 +33,6 @@ function App() {
 	const [hasCookie, setHasCookie] = useState(true);
 	const [appCookies, setAppCookies] = useCookies();
 
-	console.log(appCookies);
-
 	const getExpiredDate = (day) => {
 		const date = new Date();
 		date.setDate(date.getDate() + day);
