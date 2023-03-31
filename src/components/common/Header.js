@@ -2,7 +2,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { useRef } from 'react';
 
 function Header(props) {
-	const menu = useRef(false);
+	const open = useRef(false);
 	const active = { color: '#9DA592' };
 
 	return (
@@ -47,9 +47,9 @@ function Header(props) {
 						</ul>
 					</nav>
 					<Link
-						ref={menu}
 						to='/'
-						className='hamMenu'
+						ref={open}
+						className={`hamMenu ${open.current === true ? ' on' : 'hamMenu'}`}
 						onClick={(e) => {
 							e.preventDefault();
 							props.menu.current.setToggle();

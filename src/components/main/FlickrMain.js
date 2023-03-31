@@ -19,8 +19,7 @@ function FlickrMain() {
 						const imgSrcBig = `https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg`;
 
 						return (
-							<>
-								<div key={item.id} className='flickrItem'>
+							<div key={item.id} className='flickrItem'>
 									<div className='itemBox'>
 										<Link
 											to='/'
@@ -42,7 +41,6 @@ function FlickrMain() {
 										</aside>
 									</div>
 								</div>
-							</>
 						);
 					})}
 					<Modal ref={open}>
