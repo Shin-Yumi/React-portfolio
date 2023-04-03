@@ -8,7 +8,7 @@ function Footer() {
             <div className="footerLogo">
               <h1 className="logo">
                 <Link className="logoText" to="/">
-                  <span className="logoTitle">SHIN YUMI</span>
+                  <span className="logoTitle">PORTFOLIO</span>
                   <span className="logoSub">Front-end Developer</span>
                 </Link>
               </h1>
