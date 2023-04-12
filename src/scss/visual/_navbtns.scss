@@ -1,0 +1,16 @@
+.navBtns {
+	position: absolute;
+	bottom: 5vh;
+	left: 5vw;
+	display: flex;
+	gap: 40px;
+
+	li {
+		@include sectionSubTitle($subFz: 20px, $fontWeight: 400, $subFontColor: $borderColor);
+		cursor: pointer;
+
+		&.on {
+			color: $textColor;
+		}
+	}
+}

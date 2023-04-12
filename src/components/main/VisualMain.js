@@ -1,23 +1,21 @@
-import useScrollFadeIn from '../assets/Scroll';
+import { useState } from 'react';
+import NavBtns from '../visual/NavBtns';
+import Slide1 from '../visual/Slide1';
+import Slide2 from '../visual/Slide2';
+import Slide3 from '../visual/Slide3';
+
 function VisualMain() {
+	const [Active, setActive] = useState(0);
 	return (
-		<section className="contents mainCont myScroll">
+		<section className='contents mainCont myScroll'>
 			<div className='inner'>
-				<article className='contentsHalf visualCont'>
-					<div className='visualImgBox' {...useScrollFadeIn('right', 1, 0)}>
-						<div className='visualImg' ></div>
-					</div>
-				</article>
-				<article className='contentsHalf mainDescription' >
-					<div className='mainTextBox' {...useScrollFadeIn('right', 1, 0)}>
-						<h1 className='mainTitle' {...useScrollFadeIn('up', 2, 0)}>
-							Vogue
-						</h1>
-						<p className='mainInfo' {...useScrollFadeIn('up', 2, 0)}>
-							패션 바이블 보그는 전 세계 27개 시장에서 발행되고 있는 130년의 전통을 지닌 가장 권위 있는 패션 매거진입니다
-						</p>
-					</div>
-				</article>
+				<figure id='visual'>
+					<Slide1 Active={Active} />
+					<Slide2 Active={Active} />
+					<Slide3 Active={Active} />
+
+					<NavBtns setActive={setActive} Active={Active} />
+				</figure>
 			</div>
 		</section>
 	);
