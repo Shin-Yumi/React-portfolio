@@ -10,9 +10,9 @@ function VisualMain() {
 		<section className='contents mainCont myScroll'>
 			<div className='inner'>
 				<figure id='visual'>
-					{Active === 0 && <Slide1 />}
-					{Active === 1 && <Slide2 />}
-					{Active === 2 && <Slide3 />}
+					<Slide1 Active={Active} />
+					<Slide2 Active={Active} />
+					<Slide3 Active={Active} />
 
 					<NavBtns setActive={setActive} Active={Active} />
 				</figure>

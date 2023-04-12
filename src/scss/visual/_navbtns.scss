@@ -1,0 +1,18 @@
+.navBtns {
+	position: absolute;
+	bottom: 5vh;
+	left: 5vw;
+	display: flex;
+	gap: 40px;
+
+	li {
+		font-size: 20px;
+		cursor: pointer;
+		color: #999;
+		font-weight: bold;
+
+		&.on {
+			color: #333;
+		}
+	}
+}

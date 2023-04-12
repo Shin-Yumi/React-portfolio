@@ -1,0 +1,12 @@
+#visual {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+
+	@import 'slide1';
+	@import 'slide2';
+	@import 'slide3';
+
+	@import 'navbtns';
+}

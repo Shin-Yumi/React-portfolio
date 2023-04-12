@@ -10,55 +10,9 @@
 		//mainCont 영역
 		.mainCont {
 			width: 100%;
-			// visual 영역
-			.visualCont {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				.visualImgBox {
-					width: 400px;
-					height: 500px;
-					overflow: hidden;
-					margin: 0 auto;
-					&:hover {
-						.visualImg {
-							transform: scale(1.2);
-						}
-					}
-				}
-				.visualImg {
-					width: 100%;
-					height: 100%;
-					background-image: url(../../../public/img/main-dummy.jpg);
-					background-repeat: no-repeat;
-					background-position: center;
-					background-size: cover;
-					filter: grayscale(1);
-					transition: 0.5s;
-				}
-			}
-
-			// description 영역
-			.mainDescription {
-				position: relative;
-				.mainTextBox {
-					position: absolute;
-					left: 0;
-					bottom: 30px;
-					padding: 50px 160px 50px 50px;
-					.mainTitle {
-						font-family: $titleFont;
-						font-size: 30px;
-						font-weight: 400;
-						letter-spacing: -0.56px;
-						line-height: 1;
-						text-transform: uppercase;
-						color: #333;
-						margin-bottom: 10px;
-					}
-					.mainInfo {
-						@include sectionText;
-					}
+			.inner {
+				&::after {
+					@include line($wid: 0);
 				}
 			}
 		}
