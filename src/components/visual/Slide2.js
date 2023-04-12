@@ -28,11 +28,11 @@ function Slide2({ Active }) {
 					<article className='top'>
 						<motion.div
 							className='pic'
-							initial={{ y: '200%', scale: 2, opacity: 0 }}
+							initial={{ y: '100%', scale: 2, opacity: 0 }}
 							animate={{ y: '0%', scale: 1, opacity: 1, transition: { duration: 1, delay: 1.7 } }}
 							exit={{ y: '200%', scale: 2, opacity: 0, transition: { duration: 2 } }}
 						>
-							<img src={process.env.PUBLIC_URL + '/img/dummy-gallery02.jpg'} alt='pic2' />
+							<img src={process.env.PUBLIC_URL + '/img/main2.jpg'} alt='pic2' />
 						</motion.div>
 						<motion.div
 							className='line'
@@ -49,7 +49,7 @@ function Slide2({ Active }) {
 								animate={{ y: '0%', opacity: 1, transition: { duration: 0.5, delay: 1.7 } }}
 								exit={{ y: '-100%', opacity: 0, transition: { duration: 2 } }}
 							>
-								Typography 01
+								The Rules of Attraction
 							</motion.h1>
 
 							<motion.p
@@ -57,8 +57,7 @@ function Slide2({ Active }) {
 								animate={{ y: '0%', opacity: 1, transition: { duration: 0.5, delay: 1.9 } }}
 								exit={{ y: '-100%', opacity: 0, transition: { duration: 2 } }}
 							>
-								Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam tempore laborum
-								doloribus! Eaque, quam facilis!
+								First comes love. Then comes marriage. Then comes therapy. Justin and Hailey Bieber open up to Rob Haskell about their tumultuous, passionate, not-always-easy but absolutely all-in romance.
 							</motion.p>
 
 							<motion.div
@@ -76,15 +75,14 @@ function Slide2({ Active }) {
 								animate={{ y: '0%', opacity: 1, transition: { duration: 0.5, delay: 2.1 } }}
 								exit={{ y: '-100%', opacity: 0, transitino: { duration: 2 } }}
 							>
-								Typography 02
+								Miss Universe
 							</motion.h1>
 							<motion.p
 								initial={{ y: '-100%', opacity: 0 }}
 								animate={{ y: '0%', opacity: 1, transition: { duration: 0.5, delay: 2.2 } }}
 								exit={{ y: '-100%', opacity: 0, transitino: { duration: 2 } }}
 							>
-								Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam tempore laborum
-								doloribus! Eaque, quam facilis!
+								On the eve of her second Star Wars blockbuster, British actress DAISY RIDLEY ponders fame, her fears, and the lightsaber workout.
 							</motion.p>
 							<motion.div
 								className='line'
@@ -100,15 +98,14 @@ function Slide2({ Active }) {
 								animate={{ y: '0%', opacity: 1, transition: { duration: 0.5, delay: 2.4 } }}
 								exit={{ y: '-100%', opacity: 0, transitino: { duration: 2 } }}
 							>
-								Typography 03
+								Leading Lady
 							</motion.h1>
 							<motion.p
 								initial={{ y: '-100%', opacity: 0 }}
 								animate={{ y: '0%', opacity: 1, transition: { duration: 0.5, delay: 2.6 } }}
 								exit={{ y: '-100%', opacity: 0, transitino: { duration: 2 } }}
 							>
-								Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam tempore laborum
-								doloribus! Eaque, quam facilis!
+								From envisioning a more inclusive White House to embracing fearless fashion, Michelle Obama is poised to become the most transformative First Lady in history.
 							</motion.p>
 						</div>
 					</article>

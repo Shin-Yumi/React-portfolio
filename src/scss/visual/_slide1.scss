@@ -15,7 +15,7 @@
 		position: relative;
 		width: 50%;
 		height: 100%;
-		padding: 5vw;
+		padding: 30px;
 
 		h1 {
 			@include sectionTitle;
@@ -44,14 +44,14 @@
 			flex-wrap: wrap;
 			align-content: flex-end;
 			overflow: hidden;
-			padding: 2vw;
+			padding: 30px;
 
 			h1 {
-        @include sectionSubTitle($subFz: 50px);
-        margin-bottom: 30px;
+        @include sectionTitle($fz:30px);
+        margin-bottom: 20px;
       }
       >p {
-        @include sectionText;
+        @include sectionSubTitle($subFz: 16px);
       }
 
 			.line {
@@ -80,6 +80,7 @@
 					width: 100%;
 					height: 100%;
 					object-fit: cover;
+          filter: saturate(1.3) contrast(0.7) sepia(.1);
 				}
 			}
 		}

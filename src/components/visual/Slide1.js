@@ -30,7 +30,7 @@ function Slide1({ Active }) {
 							animate={{ scale: 1, transition: { duration: 1 } }}
 							exit={{ scale: 4, transition: { duration: 1 } }}
 						>
-							Vogue
+							VOGUE ARCHIVE
 						</motion.h1>
 						<motion.div
 							className='line'
@@ -47,15 +47,14 @@ function Slide1({ Active }) {
 								animate={{ opacity: 1, y: '0%', transition: { duration: 0.5, delay: 1.5 } }}
 								exit={{ opacity: 0, y: '100%', transition: { duration: 1 } }}
 							>
-								Typograph
+								Spotlight
 							</motion.h1>
 							<motion.p
 								initial={{ opacity: 0, y: '100%' }}
 								animate={{ opacity: 1, y: '0%', transition: { duration: 0.5, delay: 1.7 } }}
 								exit={{ opacity: 0, y: '100%', transition: { duration: 1 } }}
 							>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ratione culpa
-								provident, accusamus dolores illo atque nulla repellat commodi eligendi.
+								How did Kendall Jenner transcend childhood TV infamy, the paparazzi—even her own famous family—to become the breakout model of her generation? By owning it.
 							</motion.p>
 							<motion.div
 								className='line'
@@ -72,7 +71,7 @@ function Slide1({ Active }) {
 								animate={{ x: '0%', y: '0%', transition: { duration: 0.5, delay: 1.9 } }}
 								exit={{ x: '-100%', y: '-100%', transition: { duration: 1 } }}
 							>
-								<img src={process.env.PUBLIC_URL + '/img/dummy-gallery03.jpg'} alt='pic1' />
+								<img src={process.env.PUBLIC_URL + '/img/main.jpg'} alt='pic1' />
 							</motion.div>
 						</div>
 					</article>

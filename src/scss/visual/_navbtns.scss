@@ -6,13 +6,11 @@
 	gap: 40px;
 
 	li {
-		font-size: 20px;
+		@include sectionSubTitle($subFz: 20px, $fontWeight: 400, $subFontColor: $borderColor);
 		cursor: pointer;
-		color: #999;
-		font-weight: bold;
 
 		&.on {
-			color: #333;
+			color: $textColor;
 		}
 	}
 }
