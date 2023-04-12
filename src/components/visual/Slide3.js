@@ -16,7 +16,7 @@ function Slide3({ Active }) {
 							animate={{ x: '0%', opacity: 1, transition: { duration: 1, delay: 2.3 } }}
 							exit={{ x: '-100%', opacity: 0, transition: { duration: 1 } }}
 						>
-							Typography
+							FASHION
 						</motion.h1>
 						<ul>
 							<li>
@@ -25,7 +25,7 @@ function Slide3({ Active }) {
 									animate={{ y: '0%', opacity: 1, transition: { duration: 0.5, delay: 2 } }}
 									exit={{ y: '60%', opacity: 0, transition: { duration: 1 } }}
 								>
-									Title comes here
+									The Penelope Tree
 								</motion.h2>
 								<motion.div
 									className='line'
@@ -40,7 +40,7 @@ function Slide3({ Active }) {
 									animate={{ y: '0%', opacity: 1, transition: { duration: 0.5, delay: 2.1 } }}
 									exit={{ y: '60%', opacity: 0, transition: { duration: 1 } }}
 								>
-									Title comes here
+									A Choice of Past
 								</motion.h2>
 								<motion.div
 									className='line'
@@ -55,7 +55,7 @@ function Slide3({ Active }) {
 									animate={{ y: '0%', opacity: 1, transition: { duration: 0.5, delay: 2.2 } }}
 									exit={{ y: '60%', opacity: 0, transition: { duration: 1 } }}
 								>
-									Title comes here
+									Balconies in Lisbon
 								</motion.h2>
 								<motion.div
 									className='line'
@@ -70,7 +70,7 @@ function Slide3({ Active }) {
 									animate={{ y: '0%', opacity: 1, transition: { duration: 0.5, delay: 2.3 } }}
 									exit={{ y: '60%', opacity: 0, transition: { duration: 1 } }}
 								>
-									Title comes here
+									The Sound of Makeup
 								</motion.h2>
 								<motion.div
 									className='line'
@@ -85,7 +85,7 @@ function Slide3({ Active }) {
 									animate={{ y: '0%', opacity: 1, transition: { duration: 0.5, delay: 2.4 } }}
 									exit={{ y: '60%', opacity: 0, transition: { duration: 1 } }}
 								>
-									Title comes here
+									American Fashion we Love
 								</motion.h2>
 								<motion.div
 									className='line'
@@ -103,7 +103,7 @@ function Slide3({ Active }) {
 							animate={{ y: '0%', scale: 1, opacity: 1, transition: { duration: 1, delay: 2 } }}
 							exit={{ y: '-200%', scale: 4, opacity: 0, transition: { duration: 1 } }}
 						>
-							SLIDE 03
+							VINTAGE VOGUE
 						</motion.h1>
 						<motion.div
 							className='line'
