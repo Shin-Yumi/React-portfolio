@@ -14,3 +14,15 @@
 		}
 	}
 }
+@media screen and (max-width: $tablet) {
+	.navBtns {
+		bottom: 2vh;
+		left: 3vw;
+		display: flex;
+		gap: 30px;
+		li {
+			@include sectionSubTitle($subFz: 16px, $fontWeight: 400, $subFontColor: $borderColor);
+		}
+
+	}
+}

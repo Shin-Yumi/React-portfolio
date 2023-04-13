@@ -61,10 +61,48 @@
 		.line {
 			width: 1px;
 			height: 100%;
-			background: #333;
+			background: $borderColor;
 			position: absolute;
 			bottom: 0;
 			left: 0;
+		}
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	#slide3 {
+		.left {
+			width: 100%;
+			height: 70%;
+			h1 {
+				@include sectionSubTitle($subFz: 30px);
+			}
+	
+			ul {
+				li {
+					width: 100%;
+					padding: 20px 0px 10px;
+					position: relative;
+					&:first-child {
+						padding: 0 0 10px;
+					}
+					> h2 {
+						@include sectionSubTitle($subFz: 20px);
+					}
+				}
+			}
+		}
+
+		.right {
+			width: 100%;
+			height: 30%;
+
+			h1 {
+				@include sectionTitle($fz: 40px);
+			} 
+			.line {
+				display: none;
+			}
 		}
 	}
 }
@@ -74,12 +112,32 @@
 		.left {
 			width: 100%;
 			height: 70%;
+			h1 {
+				@include sectionSubTitle($subFz: 24px);
+			}
+	
+			ul {
+				li {
+					width: 100%;
+					padding: 20px 0px 10px;
+					position: relative;
+					&:first-child {
+						padding: 0 0 10px;
+					}
+					> h2 {
+						@include sectionSubTitle($subFz: 18px);
+					}
+				}
+			}
 		}
 
 		.right {
 			width: 100%;
 			height: 30%;
 
+			h1 {
+				@include sectionTitle($fz: 30px);
+			} 
 			.line {
 				display: none;
 			}

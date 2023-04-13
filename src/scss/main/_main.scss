@@ -852,12 +852,16 @@
 						.boardLists {
 							.boardList {
 								.boardBox {
+									padding: 20px;
 									.bListTitle {
 										@include sectionText($captionFz: 14px, $captionFontColor: $textColor);
 										margin-bottom: 10px;
 									}
 									.bListText {
 										@include sectionText($captionFz: 12px);
+										height: 70%;
+										overflow: hidden;
+										text-overflow: ellipsis;
 									}
 								}
 							}
