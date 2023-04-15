@@ -9,7 +9,7 @@ function Layout(props) {
 					<header className={`subHeader ${props.name}`}>
 						<div className='inner'>
 							<h1 className='subHeaderTitle' {...useScrollFadeIn('up', 1, 0)}>
-								{props.name}
+								{props.name} 
 							</h1>
 							<div className='subHeaderMenu' {...useScrollFadeIn('up', 1, 0)}>
 								<ul>

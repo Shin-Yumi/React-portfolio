@@ -41,7 +41,7 @@ sub section scss 작업
 							display: flex;
 							align-items: center;
 							li {
-								border-bottom: 1px solid #777;
+								
 								a {
 									display: block;
 									@include sectionText($captionFz: 16px, $captionFontColor: #333);
