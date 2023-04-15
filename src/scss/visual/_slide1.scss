@@ -47,12 +47,12 @@
 			padding: 30px;
 
 			h1 {
-        @include sectionTitle($fz:30px);
-        margin-bottom: 20px;
-      }
-      >p {
-        @include sectionSubTitle($subFz: 16px);
-      }
+				@include sectionTitle($fz: 30px);
+				margin-bottom: 20px;
+			}
+			> p {
+				@include sectionSubTitle($subFz: 16px);
+			}
 
 			.line {
 				position: absolute;
@@ -80,14 +80,14 @@
 					width: 100%;
 					height: 100%;
 					object-fit: cover;
-          filter: saturate(1.3) contrast(0.7) sepia(.1);
+					filter: grayscale(0.8);
 				}
 			}
 		}
 	}
 }
 
-@media screen and (max-width: $mobile) {
+@media screen and (max-width: $tablet) {
 	#slide1 {
 		.left {
 			width: 100%;
@@ -106,7 +106,33 @@
 			height: 70%;
 
 			.top {
-				padding-bottom: 50px;
+				height: 40%;
+				padding-bottom: 30px;
+			}
+			.bottom {
+				height: 60%;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	#slide1 {
+		.left {
+			h1 {
+				@include sectionTitle($fz: 40px);
+			}
+		}
+
+		.right {
+			.top {
+				h1 {
+					@include sectionTitle($fz: 24px);
+					margin-bottom: 20px;
+				}
+				> p {
+					@include sectionSubTitle($subFz: 14px);
+				}
 			}
 		}
 	}

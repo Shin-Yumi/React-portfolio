@@ -71,7 +71,7 @@
 	}
 }
 
-@media screen and (max-width: $mobile) {
+@media screen and (max-width: $tablet) {
 	#slide2 {
 		.top {
 			height: 30%;
@@ -91,6 +91,14 @@
 
 			> div {
 				flex: auto;
+				padding: 5vw 0 0 2vw;
+				h1 {
+					@include sectionSubTitle($subFz: 20px);
+					margin-bottom: 20px;
+				}
+				>p {
+					@include sectionText($captionFz: 14px);
+				}
 
 				.line {
 					width: 100%;
@@ -98,6 +106,25 @@
 					position: absolute;
 					top: auto;
 					bottom: 0;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	#slide2 {
+
+		.bottom {
+
+			> div {
+				padding: 5vw 0 0 2vw;
+				h1 {
+					@include sectionSubTitle($subFz: 18px);
+					margin-bottom: 10px;
+				}
+				>p {
+					@include sectionText($captionFz: 12px);
 				}
 			}
 		}
