@@ -1,6 +1,6 @@
 # React-portfolio
 
-![screencapture-localhost-3000-React-portfolio-2023-03-04-22_23_17](https://user-images.githubusercontent.com/95734153/222904330-18057250-2c60-46ec-8370-93ce45624fcc.png)
+![screencapture-localhost-3000-2023-04-19-08_51_09](https://user-images.githubusercontent.com/95734153/232928982-1cce05c7-3cdb-4db2-b95d-f75d8ad5daeb.png)
 
 ```
 React 17버전을 사용하여 만든 기업형 사이트 portfolio입니다.
@@ -52,7 +52,7 @@ React 17버전을 사용하여 만든 기업형 사이트 portfolio입니다.
   + Btn.js // main.js 안의 컨텐츠 이동 버튼 컴포넌트
   + VisualMain.js // main page의 비쥬얼 영역
   + AboutMain.js // main page의 어바웃 영역
-  + youTubeMain.js // main page의 유투브영역
+  + YouTubeMain.js // main page의 유투브영역
   + FlickrMain.js // main page의 flickr갤러리 영역
   + BaordMain.js // main page의 보드(자유게시판) 영역
 
