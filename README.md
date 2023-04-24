@@ -31,6 +31,13 @@ React 17버전을 사용하여 만든 기업형 사이트 portfolio입니다.
 
 # Project Directory
 
+## Assets component
++ js => (src > components > assets)
++ style => (src > scss > assets)
+  + anime.js // anime 플러그인
+  + MediaQuery.js // 메인 비쥬얼 반응형 hook
+  + Scroll.js // scroll event hook
+
 ## Common component
 
 + js => (src > components > common)
@@ -67,6 +74,15 @@ React 17버전을 사용하여 만든 기업형 사이트 portfolio입니다.
   + Youtube.js // 갤러리페이지의 youtube page에 해당
   + Join.js // 회원가입 페이지
   + Map.js // 어바웃 페이지의 map page에 해당
+
+  ## Visual
++ VisualMain.js에 import
++ js => (src > components > visual)
++ style => (src > scss > visual)
+  + NavBtn.js // page 이동 버튼
+  + Slide1.js // visual 1 slide
+  + Slide2.js // visual 2 slide
+  + Slide3.js // visual 3 slide
 
 ! 모든 페이지의 스타일은 style.scss에 import
 
